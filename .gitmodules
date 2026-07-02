@@ -1,0 +1,3 @@
+[submodule "bilibili-api-collect"]
+	path = bilibili-api-collect
+	url = https://github.com/gxwane/bilibili-api-collect-mirror.git
