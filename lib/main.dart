@@ -280,7 +280,7 @@ class MyApp extends StatelessWidget {
       popupMenuTheme: PopupMenuThemeData(
         surfaceTintColor: isDynamic ? colorScheme.onSurfaceVariant : null,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         elevation: 1,
         surfaceTintColor: isDark ? colorScheme.onSurfaceVariant : null,
         shadowColor: Colors.transparent,

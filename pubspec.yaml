@@ -159,7 +159,7 @@ dependencies:
   nil: ^1.1.1
   catcher_2: ^2.0.0-alpha.2
   logger: ^2.0.2+1
-  path: 1.9.0
+  path: 1.9.1
   #瀑布流
   waterfall_flow: ^3.0.3
   #跑马灯
@@ -168,6 +168,7 @@ dependencies:
   extended_text: ^14.0.1
   # 调色板
   flex_seed_scheme: ^3.4.1
+  flutter_mailer: 3.0.2
 #  android_window: ^0.4.0
 dependency_overrides:
 #  mime:
