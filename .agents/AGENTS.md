@@ -65,6 +65,7 @@ JAR 文件缓存位置：`E:\Documents\PiliPalaX\build\media_kit_libs_android_vi
 
 ## 注意事项
 
+- **必须提交 `pubspec.lock`**：本项目是一个面相终端用户的 Application，为了绝对保证编译稳定性并切断第三方依赖的“幽灵升级”，**必须强制提交 `pubspec.lock` 文件**。此规则覆写全局配置中的 `Avoid committing package manager lockfiles` 规则。每次新增或有意升级依赖时，请连同 lock 文件一起 commit。
 - 编译过程中出现的大量 `Warning: 'namespace' is not specified` 和 `Overriding compileSdk` 是正常的，不影响构建
 - `android/build.gradle` 中的 `buildDir` 使用了 `new File()` 绝对路径写法，请勿改回相对路径字符串
 - 构建产物 APK 输出路径：`build\app\outputs\flutter-apk\app-debug.apk`

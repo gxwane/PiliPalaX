@@ -37,10 +37,10 @@ packages:
     dependency: "direct main"
     description:
       name: app_links
-      sha256: "433df2e61b10519407475d7f69e470789d23d593f28224c38ba1068597be7950"
+      sha256: "5f88447519add627fe1cbcab4fd1da3d4fed15b9baf29f28b22535c95ecee3e8"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.3.3"
+    version: "6.4.1"
   app_links_linux:
     dependency: transitive
     description:
