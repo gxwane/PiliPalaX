@@ -1,9 +1,11 @@
 allprojects {
     repositories {
-        maven { url "https://maven.aliyun.com/repository/google" }
-        maven { url "https://maven.aliyun.com/repository/central" }
-        maven { url "https://maven.aliyun.com/repository/jcenter" }
-        maven { url "https://maven.aliyun.com/repository/public" }
+        if (System.getenv("CI") != "true") {
+            maven { url "https://maven.aliyun.com/repository/google" }
+            maven { url "https://maven.aliyun.com/repository/central" }
+            maven { url "https://maven.aliyun.com/repository/jcenter" }
+            maven { url "https://maven.aliyun.com/repository/public" }
+        }
         maven { url "http://download.flutter.io"
             allowInsecureProtocol = true
         }
