@@ -1,15 +1,9 @@
 name: PiliPalaX Release
 on:
   push:
-    branches:
-      - 'main'
-    paths-ignore:
-      - '**.md'
-      - '**.txt'
-      - '.github/**'
-      - '.vscode/**'
-      - '.idea/**'
-      - '!.github/workflows/release.yml'
+    tags:
+      - 'v*'
+
 jobs:
   build_matrix:
     name: Build Release (${{ matrix.target_platform }})
@@ -21,8 +15,6 @@ jobs:
           - build_os: ubuntu-latest
           - target_platform: iOS
             build_os: macos-latest
-    outputs:
-      new_version: ${{ steps.update_version.outputs.new_version }}
 
     steps:
       - name: Checkout code
@@ -30,30 +22,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Update version
-        id: update_version
-        run: |
-          last_tag=$(git tag --sort=committerdate | tail -1)
-          new_version_name=$(echo $last_tag | awk -F'[.+-]' '{$3++; print $1 "." $2 "." $3}')
-          new_version_code=$(echo $last_tag | awk -F'+' '{$NF++; print $NF}')
-
-          new_version=${new_version_name}-beta+${new_version_code}
-          if [[ $(yq -r .version pubspec.yaml | egrep -o "^[0-9]+\.[0-9]+\.[0-9]+") > "$last_tag" ]]; then
-            new_version=$(yq -r .version pubspec.yaml | cut -d "+" -f 1)+${new_version_code}
-          fi
-          yq ".version=\"${new_version}\"" pubspec.yaml > tmp.yaml
-          mv tmp.yaml pubspec.yaml
-
-          echo "new_version: $new_version" 
-          echo "new_version=$new_version" >> $GITHUB_OUTPUT
-
       - name: 安装Java环境
         uses: actions/setup-java@v3
         if: startsWith(matrix.target_platform, 'android')
         with:
           distribution: 'zulu'
           java-version: '21'
-          token: ${{ secrets.GIT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 安装Flutter
         uses: subosito/flutter-action@v2
@@ -106,7 +81,7 @@ jobs:
       - name: 重命名安装包
         if: startsWith(matrix.target_platform, 'android')
         run: |
-          version_name=$(yq -e .version pubspec.yaml | cut -d "+" -f 1)
+          version_name=${{ github.ref_name }}
           for file in build/app/outputs/flutter-apk/app-*.apk; do
             if [[ $file =~ app-(.?*)release.apk ]]; then
               new_file_name="build/app/outputs/flutter-apk/Pili-${BASH_REMATCH[1]}${version_name}.apk"
@@ -117,7 +92,7 @@ jobs:
       - name: 重命名安装包(iOS)
         if: matrix.target_platform == 'iOS'
         run: |
-          version_name=$(yq -e .version pubspec.yaml | cut -d "+" -f 1)
+          version_name=${{ github.ref_name }}
           for file in app.ipa; do
             new_file_name="build/Pili-${version_name}.ipa"
             mv "$file" "$new_file_name"
@@ -151,6 +126,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: PiliPalaX-*/*
-          prerelease: ${{ contains(needs.build_matrix.outputs.new_version, 'beta') }}
-          tag: ${{ needs.build_matrix.outputs.new_version }}
+          prerelease: ${{ contains(github.ref_name, 'beta') }}
+          generateReleaseNotes: true
           allowUpdates: true
