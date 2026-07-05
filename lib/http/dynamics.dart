@@ -1,5 +1,7 @@
+import 'dart:convert';
 import '../models/dynamics/result.dart';
 import '../models/dynamics/up.dart';
+import '../utils/wbi_sign.dart';
 import 'index.dart';
 
 class DynamicsHttp {
@@ -18,7 +20,11 @@ class DynamicsHttp {
       data['host_mid'] = mid;
       data.remove('timezone_offset');
     }
-    var res = await Request().get(Api.followDynamic, data: data);
+    
+    // 尝试添加 Wbi 签名防风控 (通常遇到 "请求数据发生错误" 都是 -352 风控)
+    Map<String, dynamic> signedData = await WbiSign().makSign(data);
+    
+    var res = await Request().get(Api.followDynamic, data: signedData);
     if (res.data['code'] == 0) {
       try {
         return {

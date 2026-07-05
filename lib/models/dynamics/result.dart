@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 
 class DynamicsDataModel {
   DynamicsDataModel({
@@ -11,11 +12,11 @@ class DynamicsDataModel {
   String? offset;
 
   DynamicsDataModel.fromJson(Map<String, dynamic> json) {
-    hasMore = json['has_more'];
+    hasMore = _parseBool(json['has_more']);
     items = json['items']
         .map<DynamicItemModel>((e) => DynamicItemModel.fromJson(e))
         .toList();
-    offset = json['offset'];
+    offset = _parseString(json['offset']);
   }
 }
 
@@ -39,11 +40,11 @@ class DynamicItemModel {
 
   DynamicItemModel.fromJson(Map<String, dynamic> json) {
     basic = json['basic'];
-    idStr = json['id_str'];
+    idStr = _parseString(json['id_str']);
     modules = ItemModulesModel.fromJson(json['modules']);
     orig = json['orig'] != null ? ItemOrigModel.fromJson(json['orig']) : null;
-    type = json['type'];
-    visible = json['visible'];
+    type = _parseString(json['type']);
+    visible = _parseBool(json['visible']);
   }
 }
 
@@ -64,10 +65,10 @@ class ItemOrigModel {
 
   ItemOrigModel.fromJson(Map<String, dynamic> json) {
     basic = json['basic'];
-    isStr = json['is_str'];
+    isStr = _parseString(json['is_str']);
     modules = ItemModulesModel.fromJson(json['modules']);
-    type = json['type'];
-    visible = json['visible'];
+    type = _parseString(json['type']);
+    visible = _parseBool(json['visible']);
   }
 }
 
@@ -136,16 +137,16 @@ class ModuleAuthorModel {
   Map? vip;
 
   ModuleAuthorModel.fromJson(Map<String, dynamic> json) {
-    face = json['face'];
-    following = json['following'];
-    jumpUrl = json['jump_url'];
-    label = json['label'];
-    mid = json['mid'];
-    name = json['name'];
-    pubAction = json['pub_action'];
-    pubTime = json['pub_time'];
-    pubTs = json['pub_ts'] == 0 ? null : json['pub_ts'];
-    type = json['type'];
+    face = _parseString(json['face']);
+    following = _parseBool(json['following']);
+    jumpUrl = _parseString(json['jump_url']);
+    label = _parseString(json['label']);
+    mid = _parseInt(json['mid']);
+    name = _parseString(json['name']);
+    pubAction = _parseString(json['pub_action']);
+    pubTime = _parseString(json['pub_time']);
+    pubTs = _parseInt(json['pub_ts']) == 0 ? null : _parseInt(json['pub_ts']);
+    type = _parseString(json['type']);
     vip = json['vip'];
   }
 }
@@ -211,7 +212,7 @@ class DynamicAddModel {
   String? common;
 
   DynamicAddModel.fromJson(Map<String, dynamic> json) {
-    type = json['type'];
+    type = _parseString(json['type']);
     vote = json['vote'] != null ? Vote.fromJson(json['vote']) : null;
     ugc = json['ugc'] != null ? Ugc.fromJson(json['ugc']) : null;
     reserve =
@@ -244,17 +245,15 @@ class Vote {
   int? voteId;
 
   Vote.fromJson(Map<String, dynamic> json) {
-    choiceCnt = json['choice_cnt'];
-    share = json['share'];
-    defaultShare = json['default_share'];
-    endTime = json['end_time'] is int
-        ? json['end_time']
-        : int.parse(json['end_time']);
-    joinNum = json['join_num'];
-    status = json['status'];
-    type = json['type'];
-    uid = json['uid'];
-    voteId = json['vote_id'];
+    choiceCnt = _parseInt(json['choice_cnt']);
+    share = _parseString(json['share']);
+    defaultShare = _parseInt(json['default_share']);
+    endTime = _parseInt(json['end_time']);
+    joinNum = _parseInt(json['join_num']);
+    status = _parseInt(json['status']);
+    type = _parseInt(json['type']);
+    uid = _parseInt(json['uid']);
+    voteId = _parseInt(json['vote_id']);
   }
 }
 
@@ -280,14 +279,14 @@ class Ugc {
   String? title;
 
   Ugc.fromJson(Map<String, dynamic> json) {
-    cover = json['cover'];
-    descSecond = json['desc_second'];
-    duration = json['duration'];
-    headText = json['head_text'];
-    idStr = json['id_str'];
-    jumpUrl = json['jump_url'];
-    multiLine = json['multi_line'];
-    title = json['title'];
+    cover = _parseString(json['cover']);
+    descSecond = _parseString(json['desc_second']);
+    duration = _parseString(json['duration']);
+    headText = _parseString(json['head_text']);
+    idStr = _parseString(json['id_str']);
+    jumpUrl = _parseString(json['jump_url']);
+    multiLine = _parseBool(json['multi_line']);
+    title = _parseString(json['title']);
   }
 }
 
@@ -320,14 +319,14 @@ class Reserve {
     button = json['button'];
     desc1 = json['desc1'];
     desc2 = json['desc2'];
-    jumpUrl = json['jump_url'];
-    reserveTotal = json['reserve_total'];
-    rid = json['rid'];
-    state = json['state'];
-    state = json['state'];
-    stype = json['stype'];
-    title = json['title'];
-    upMid = json['up_mid'];
+    jumpUrl = _parseString(json['jump_url']);
+    reserveTotal = _parseInt(json['reserve_total']);
+    rid = _parseInt(json['rid']);
+    state = _parseInt(json['state']);
+    state = _parseInt(json['state']);
+    stype = _parseInt(json['stype']);
+    title = _parseString(json['title']);
+    upMid = _parseInt(json['up_mid']);
   }
 }
 
@@ -345,10 +344,10 @@ class Good {
   String? jumpUrl;
 
   Good.fromJson(Map<String, dynamic> json) {
-    headIcon = json['head_icon'];
-    headText = json['head_text'];
+    headIcon = _parseString(json['head_icon']);
+    headText = _parseString(json['head_text']);
     items = json['items'].map<GoodItem>((e) => GoodItem.fromJson(e)).toList();
-    jumpUrl = json['jump_url'];
+    jumpUrl = _parseString(json['jump_url']);
   }
 }
 
@@ -372,13 +371,13 @@ class GoodItem {
   String? price;
 
   GoodItem.fromJson(Map<String, dynamic> json) {
-    brief = json['brief'];
-    cover = json['cover'];
+    brief = _parseString(json['brief']);
+    cover = _parseString(json['cover']);
     id = json['id'];
-    jumpDesc = json['jump_desc'];
-    jumpUrl = json['jump_url'];
-    name = json['name'];
-    price = json['price'];
+    jumpDesc = _parseString(json['jump_desc']);
+    jumpUrl = _parseString(json['jump_url']);
+    name = _parseString(json['name']);
+    price = _parseString(json['price']);
   }
 }
 
@@ -397,7 +396,7 @@ class DynamicDescModel {
             .map<RichTextNodeItem>((e) => RichTextNodeItem.fromJson(e))
             .toList()
         : [];
-    text = json['text'];
+    text = _parseString(json['text']);
   }
 }
 
@@ -420,6 +419,7 @@ class DynamicMajorModel {
   DynamicDrawModel? draw;
   DynamicArchiveModel? ugcSeason;
   DynamicOpusModel? opus;
+  DynamicArticleModel? article;
   DynamicArchiveModel? pgc;
   DynamicLiveModel? liveRcmd;
   DynamicLive2Model? live;
@@ -442,6 +442,9 @@ class DynamicMajorModel {
         : null;
     opus =
         json['opus'] != null ? DynamicOpusModel.fromJson(json['opus']) : null;
+    article = json['article'] != null
+        ? DynamicArticleModel.fromJson(json['article'])
+        : null;
     pgc =
         json['pgc'] != null ? DynamicArchiveModel.fromJson(json['pgc']) : null;
     liveRcmd = json['live_rcmd'] != null
@@ -454,7 +457,7 @@ class DynamicMajorModel {
         : null;
     none =
         json['none'] != null ? DynamicNoneModel.fromJson(json['none']) : null;
-    type = json['type'];
+    type = _parseString(json['type']);
     courses = json['courses'] ?? {};
   }
 }
@@ -471,9 +474,9 @@ class DynamicTopicModel {
   String? name;
 
   DynamicTopicModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    jumpUrl = json['jump_url'];
-    name = json['name'];
+    id = _parseInt(json['id']);
+    jumpUrl = _parseString(json['jump_url']);
+    name = _parseString(json['name']);
   }
 }
 
@@ -509,18 +512,18 @@ class DynamicArchiveModel {
   int? seasonId;
 
   DynamicArchiveModel.fromJson(Map<String, dynamic> json) {
-    aid = json['aid'] is String ? int.parse(json['aid']) : json['aid'];
+    aid = _parseInt(json['aid']);
     badge = json['badge'];
-    bvid = json['bvid'] ?? json['epid'].toString() ?? ' ';
-    cover = json['cover'];
-    disablePreview = json['disable_preview'];
-    durationText = json['duration_text'];
-    jumpUrl = json['jump_url'];
+    bvid = json['bvid'] ?? json['epid']?.toString() ?? UniqueKey().toString();
+    cover = _parseString(json['cover']);
+    disablePreview = _parseInt(json['disable_preview']);
+    durationText = _parseString(json['duration_text']);
+    jumpUrl = _parseString(json['jump_url']);
     stat = json['stat'] != null ? Stat.fromJson(json['stat']) : null;
-    title = json['title'];
-    type = json['type'];
-    epid = json['epid'];
-    seasonId = json['season_id'];
+    title = _parseString(json['title']);
+    type = _parseInt(json['type']);
+    epid = _parseInt(json['epid']);
+    seasonId = _parseInt(json['season_id']);
   }
 }
 
@@ -534,7 +537,7 @@ class DynamicDrawModel {
   List<DynamicDrawItemModel>? items;
 
   DynamicDrawModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     // ignore: prefer_null_aware_operators
     items = json['items'] != null
         ? json['items']
@@ -557,7 +560,7 @@ class DynamicOpusModel {
   SummaryModel? summary;
   String? title;
   DynamicOpusModel.fromJson(Map<String, dynamic> json) {
-    jumpUrl = json['jump_url'];
+    jumpUrl = _parseString(json['jump_url']);
     pics = json['pics'] != null
         ? json['pics']
             .map<OpusPicsModel>((e) => OpusPicsModel.fromJson(e))
@@ -565,7 +568,34 @@ class DynamicOpusModel {
         : [];
     summary =
         json['summary'] != null ? SummaryModel.fromJson(json['summary']) : null;
-    title = json['title'];
+    title = _parseString(json['title']);
+  }
+}
+
+class DynamicArticleModel {
+  DynamicArticleModel({
+    this.covers,
+    this.desc,
+    this.id,
+    this.jumpUrl,
+    this.label,
+    this.title,
+  });
+
+  List<String>? covers;
+  String? desc;
+  int? id;
+  String? jumpUrl;
+  String? label;
+  String? title;
+
+  DynamicArticleModel.fromJson(Map<String, dynamic> json) {
+    covers = json['covers'] != null ? List<String>.from(json['covers']) : [];
+    desc = _parseString(json['desc']);
+    id = _parseInt(json['id']);
+    jumpUrl = _parseString(json['jump_url']);
+    label = _parseString(json['label']);
+    title = _parseString(json['title']);
   }
 }
 
@@ -594,14 +624,14 @@ class DynamicCommonModel {
 
   DynamicCommonModel.fromJson(Map<String, dynamic> json) {
     badge = json['badge'];
-    jumpUrl = json['jump_url'];
-    cover = json['cover'];
-    label = json['label'];
-    desc = json['desc'];
-    id = json['id'];
-    sketchId = json['sketch_id'];
-    style = json['style'];
-    title = json['title'];
+    jumpUrl = _parseString(json['jump_url']);
+    cover = _parseString(json['cover']);
+    label = _parseString(json['label']);
+    desc = _parseString(json['desc']);
+    id = _parseString(json['id']);
+    sketchId = _parseString(json['sketch_id']);
+    style = _parseInt(json['style']);
+    title = _parseString(json['title']);
   }
 }
 
@@ -618,7 +648,7 @@ class SummaryModel {
     richTextNodes = json['rich_text_nodes']
         .map<RichTextNodeItem>((e) => RichTextNodeItem.fromJson(e))
         .toList();
-    text = json['text'];
+    text = _parseString(json['text']);
   }
 }
 
@@ -638,10 +668,10 @@ class RichTextNodeItem {
 
   RichTextNodeItem.fromJson(Map<String, dynamic> json) {
     emoji = json['emoji'] != null ? Emoji.fromJson(json['emoji']) : null;
-    origText = json['orig_text'];
-    text = json['text'];
-    type = json['type'];
-    rid = json['rid'];
+    origText = _parseString(json['orig_text']);
+    text = _parseString(json['text']);
+    type = _parseString(json['type']);
+    rid = _parseString(json['rid']);
   }
 }
 
@@ -658,10 +688,10 @@ class Emoji {
   String? text;
   int? type;
   Emoji.fromJson(Map<String, dynamic> json) {
-    iconUrl = json['icon_url'];
-    size = json['size'].toDouble();
-    text = json['text'];
-    type = json['type'];
+    iconUrl = _parseString(json['icon_url']);
+    size = _parseDouble(json['size']);
+    text = _parseString(json['text']);
+    type = _parseInt(json['type']);
   }
 }
 
@@ -671,7 +701,7 @@ class DynamicNoneModel {
   });
   String? tips;
   DynamicNoneModel.fromJson(Map<String, dynamic> json) {
-    tips = json['tips'];
+    tips = _parseString(json['tips']);
   }
 }
 
@@ -691,11 +721,11 @@ class OpusPicsModel {
   String? url;
 
   OpusPicsModel.fromJson(Map<String, dynamic> json) {
-    width = json['width'];
-    height = json['height'];
-    size = json['size'] != null ? json['size'].toInt() : 0;
-    src = json['src'];
-    url = json['url'];
+    width = _parseInt(json['width']);
+    height = _parseInt(json['height']);
+    size = _parseInt(json['size']) ?? 0;
+    src = _parseString(json['src']);
+    url = _parseString(json['url']);
   }
 }
 
@@ -713,11 +743,11 @@ class DynamicDrawItemModel {
   List? tags;
   int? width;
   DynamicDrawItemModel.fromJson(Map<String, dynamic> json) {
-    height = json['height'];
-    size = json['size'].toInt();
-    src = json['src'];
+    height = _parseInt(json['height']);
+    size = _parseInt(json['size']);
+    src = _parseString(json['src']);
     tags = json['tags'];
-    width = json['width'];
+    width = _parseInt(json['width']);
   }
 }
 
@@ -742,7 +772,7 @@ class DynamicLiveModel {
   Map? watchedShow;
 
   DynamicLiveModel.fromJson(Map<String, dynamic> json) {
-    content = json['content'];
+    content = _parseString(json['content']);
     if (json['content'] != null) {
       Map<String, dynamic> data = jsonDecode(json['content']);
 
@@ -788,14 +818,14 @@ class DynamicLive2Model {
 
   DynamicLive2Model.fromJson(Map<String, dynamic> json) {
     badge = json['badge'];
-    cover = json['cover'];
-    descFirst = json['desc_first'];
-    descSecond = json['desc_second'];
-    id = json['id'];
-    jumpUrl = json['jump_url'];
-    liveState = json['liv_state'];
-    reserveType = json['reserve_type'];
-    title = json['title'];
+    cover = _parseString(json['cover']);
+    descFirst = _parseString(json['desc_first']);
+    descSecond = _parseString(json['desc_second']);
+    id = _parseInt(json['id']);
+    jumpUrl = _parseString(json['jump_url']);
+    liveState = _parseInt(json['liv_state']);
+    reserveType = _parseInt(json['reserve_type']);
+    title = _parseString(json['title']);
   }
 }
 
@@ -829,8 +859,8 @@ class Comment {
   bool? forbidden;
 
   Comment.fromJson(Map<String, dynamic> json) {
-    count = json['count'] == 0 ? null : json['count'].toString();
-    forbidden = json['forbidden'];
+    count = _parseInt(json['count']) == 0 ? null : json['count'].toString();
+    forbidden = _parseBool(json['forbidden']);
   }
 }
 
@@ -840,8 +870,8 @@ class ForWard {
   bool? forbidden;
 
   ForWard.fromJson(Map<String, dynamic> json) {
-    count = json['count'] == 0 ? null : json['count'].toString();
-    forbidden = json['forbidden'];
+    count = _parseInt(json['count']) == 0 ? null : json['count'].toString();
+    forbidden = _parseBool(json['forbidden']);
   }
 }
 
@@ -858,9 +888,9 @@ class Like {
   bool? status;
 
   Like.fromJson(Map<String, dynamic> json) {
-    count = json['count'] == 0 ? null : json['count'].toString();
-    forbidden = json['forbidden'];
-    status = json['status'];
+    count = _parseInt(json['count']) == 0 ? null : json['count'].toString();
+    forbidden = _parseBool(json['forbidden']);
+    status = _parseBool(json['status']);
   }
 }
 
@@ -874,7 +904,38 @@ class Stat {
   String? play;
 
   Stat.fromJson(Map<String, dynamic> json) {
-    danmu = json['danmaku'];
-    play = json['play'];
+    danmu = _parseString(json['danmaku']);
+    play = _parseString(json['play']);
   }
+}
+
+int? _parseInt(dynamic value) {
+  if (value == null) return null;
+  if (value is int) return value;
+  if (value is double) return value.toInt();
+  if (value is String) return int.tryParse(value);
+  if (value is bool) return value ? 1 : 0;
+  return null;
+}
+
+bool? _parseBool(dynamic value) {
+  if (value == null) return null;
+  if (value is bool) return value;
+  if (value is int) return value == 1;
+  if (value is String) return value == 'true' || value == '1';
+  return null;
+}
+
+double? _parseDouble(dynamic value) {
+  if (value == null) return null;
+  if (value is double) return value;
+  if (value is int) return value.toDouble();
+  if (value is String) return double.tryParse(value);
+  return null;
+}
+
+String? _parseString(dynamic value) {
+  if (value == null) return null;
+  if (value is String) return value;
+  return value.toString();
 }
