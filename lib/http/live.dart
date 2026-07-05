@@ -12,7 +12,7 @@ class LiveHttp {
     if (res.data['code'] == 0) {
       return {
         'status': true,
-        'data': res.data['data']['list']
+        'data': (res.data['data']['recommend_room_list'] ?? res.data['data']['list'] ?? [])
             .map<LiveItemModel>((e) => LiveItemModel.fromJson(e))
             .toList()
       };

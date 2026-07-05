@@ -62,10 +62,10 @@ class LiveItemModel {
     pic = json['cover'];
     link = json['link'];
     face = json['face'];
-    parentId = json['parent_id'];
-    parentName = json['parent_name'];
-    areaId = json['area_id'];
-    areaName = json['area_name'];
+    parentId = json['parent_id'] ?? json['area_v2_parent_id'];
+    parentName = json['parent_name'] ?? json['area_v2_parent_name'];
+    areaId = json['area_id'] ?? json['area_v2_id'];
+    areaName = json['area_name'] ?? json['area_v2_name'];
     sessionId = json['session_id'];
     groupId = json['group_id'];
     pkId = json['pk_id'];

@@ -258,7 +258,7 @@ class Api {
   // 直播
   // ?page=1&page_size=30&platform=web
   static const String liveList =
-      '${HttpString.liveBaseUrl}/xlive/web-interface/v1/second/getUserRecommend';
+      '${HttpString.liveBaseUrl}/xlive/web-interface/v1/webMain/getMoreRecList';
 
   // 直播间详情
   // cid roomId
