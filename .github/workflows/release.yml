@@ -9,6 +9,7 @@ jobs:
     name: Build Release (${{ matrix.target_platform }})
     runs-on: ${{ matrix.build_os }}
     strategy:
+      fail-fast: false
       matrix:
         target_platform: [android-split-per-abi, android-universal, iOS]
         include:
