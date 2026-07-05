@@ -34,11 +34,11 @@ def _keyAlias = System.getenv("KEY_ALIAS") ?: keystoreProperties["keyAlias"]
 def _keyPassword = System.getenv("KEY_PASSWORD") ?: keystoreProperties["keyPassword"]
 
 android {
-    compileSdkVersion 34
+    compileSdkVersion 35
 
     namespace 'com.orz12.PiliPalaX'
     // ndkVersion flutter.ndkVersion
-    ndkVersion = "27.0.12077973"
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
