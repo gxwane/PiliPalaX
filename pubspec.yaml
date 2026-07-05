@@ -128,7 +128,7 @@ dependencies:
   # 高帧率
   flutter_displaymode: ^0.6.0
   # scheme跳转
-  app_links: ^6.3.0
+  app_links: 6.3.3
   # 弹幕
   canvas_danmaku:
     git:
