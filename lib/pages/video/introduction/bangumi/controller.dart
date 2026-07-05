@@ -55,6 +55,8 @@ class BangumiIntroController extends GetxController {
   RxBool hasCoin = false.obs;
   // 是否收藏
   RxBool hasFav = false.obs;
+  // 是否追番
+  RxBool hasFollow = false.obs;
   Box userInfoCache = GStorage.userInfo;
   bool userLogin = false;
   Rx<FavFolderData> favFolderData = FavFolderData().obs;
@@ -129,6 +131,9 @@ class BangumiIntroController extends GetxController {
     if (result['status']) {
       bangumiDetail.value = result['data'];
       epId = bangumiDetail.value.episodes!.first.id;
+      if (bangumiDetail.value.userStatus != null) {
+        hasFollow.value = bangumiDetail.value.userStatus!.follow == 1;
+      }
     } else {
       SmartDialog.showToast(result['msg']);
     }
@@ -330,18 +335,31 @@ class BangumiIntroController extends GetxController {
     } catch (_) {}
   }
 
-  // 追番
-  Future bangumiAdd() async {
-    var result =
-        await VideoHttp.bangumiAdd(seasonId: bangumiDetail.value.seasonId);
-    SmartDialog.showToast(result['msg']);
-  }
-
-  // 取消追番
-  Future bangumiDel() async {
-    var result =
-        await VideoHttp.bangumiDel(seasonId: bangumiDetail.value.seasonId);
-    SmartDialog.showToast(result['msg']);
+  // 切换追番状态
+  Future toggleFollow() async {
+    if (!userLogin) {
+      SmartDialog.showToast('账号未登录');
+      return;
+    }
+    bool currentStatus = hasFollow.value;
+    hasFollow.value = !currentStatus;
+    try {
+      var result;
+      if (currentStatus) {
+        result = await VideoHttp.bangumiDel(seasonId: bangumiDetail.value.seasonId);
+      } else {
+        result = await VideoHttp.bangumiAdd(seasonId: bangumiDetail.value.seasonId);
+      }
+      if (result['status']) {
+        SmartDialog.showToast(result['msg'] ?? (currentStatus ? '已取消追番' : '已追番'));
+      } else {
+        hasFollow.value = currentStatus;
+        SmartDialog.showToast(result['msg']);
+      }
+    } catch (e) {
+      hasFollow.value = currentStatus;
+      SmartDialog.showToast('操作失败: $e');
+    }
   }
 
   Future queryVideoInFolder() async {

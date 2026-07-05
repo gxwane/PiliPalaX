@@ -241,8 +241,8 @@ class _BangumiInfoState extends State<BangumiInfo> {
                                     SizedBox(
                                       width: 30,
                                       height: 30,
-                                      child: IconButton(
-                                        tooltip: '收藏',
+                                      child: Obx(() => IconButton(
+                                        tooltip: bangumiIntroController.hasFollow.value ? '取消追番' : '追番',
                                         style: ButtonStyle(
                                           padding: WidgetStateProperty.all(
                                               EdgeInsets.zero),
@@ -255,13 +255,17 @@ class _BangumiInfoState extends State<BangumiInfo> {
                                           }),
                                         ),
                                         onPressed: () =>
-                                            bangumiIntroController.bangumiAdd(),
+                                            bangumiIntroController.toggleFollow(),
                                         icon: Icon(
-                                          Icons.favorite_border_rounded,
-                                          color: t.colorScheme.primary,
+                                          bangumiIntroController.hasFollow.value
+                                              ? Icons.favorite_rounded
+                                              : Icons.favorite_border_rounded,
+                                          color: bangumiIntroController.hasFollow.value
+                                              ? t.colorScheme.primary
+                                              : t.colorScheme.outline,
                                           size: 22,
                                         ),
-                                      ),
+                                      )),
                                     ),
                                   ],
                                 ),
