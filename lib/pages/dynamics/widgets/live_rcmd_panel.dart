@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:get/get.dart';
 import 'package:PiliPalaX/common/constants.dart';
 import 'package:PiliPalaX/common/widgets/badge.dart';
@@ -10,7 +11,7 @@ import 'package:PiliPalaX/utils/utils.dart';
 import 'rich_node_panel.dart';
 
 final DynamicsController _dynamicsController = Get.put(DynamicsController());
-Widget liveRcmdPanel(item, context, {floor = 1}) {
+Widget liveRcmdPanel(item, context, {floor = 1, String? heroTag}) {
   TextStyle authorStyle =
       TextStyle(color: Theme.of(context).colorScheme.primary);
   DynamicLiveModel liveRcmd = item.modules.moduleDynamic.major.liveRcmd;
@@ -20,25 +21,28 @@ Widget liveRcmdPanel(item, context, {floor = 1}) {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       if (floor == 2) ...[
-        Row(
-          children: [
-            GestureDetector(
-              onTap: () => Get.toNamed(
-                  '/member?mid=${item.modules.moduleAuthor.mid}',
-                  arguments: {'face': item.modules.moduleAuthor.face}),
-              child: Text(
-                '@${item.modules.moduleAuthor.name}',
+        Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: '@${item.modules.moduleAuthor.name}',
                 style: authorStyle,
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () => Get.toNamed(
+                      '/member?mid=${item.modules.moduleAuthor.mid}',
+                      arguments: {'face': item.modules.moduleAuthor.face}),
               ),
-            ),
-            const SizedBox(width: 6),
-            Text(
-              Utils.dateFormat(item.modules.moduleAuthor.pubTs),
-              style: TextStyle(
-                  color: Theme.of(context).colorScheme.outline,
-                  fontSize: Theme.of(context).textTheme.labelSmall!.fontSize),
-            ),
-          ],
+              const WidgetSpan(child: SizedBox(width: 6)),
+              TextSpan(
+                text: Utils.dateFormat(item.modules.moduleAuthor.pubTs),
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.outline,
+                    fontSize: Theme.of(context).textTheme.labelSmall!.fontSize),
+              ),
+            ],
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
       const SizedBox(height: 4),
@@ -64,14 +68,14 @@ Widget liveRcmdPanel(item, context, {floor = 1}) {
               const EdgeInsets.symmetric(horizontal: StyleString.safeSpace),
           child: GestureDetector(
             onTap: () {
-              _dynamicsController.pushDetail(item, floor);
+              _dynamicsController.pushDetail(item, floor, heroTag: heroTag);
             },
             child: LayoutBuilder(builder: (context, box) {
               double width = box.maxWidth;
               return Stack(
                 children: [
                   Hero(
-                    tag: liveRcmd.roomId.toString(),
+                    tag: heroTag ?? liveRcmd.roomId.toString(),
                     child: NetworkImgLayer(
                       type: floor == 1 ? 'emote' : null,
                       width: width,

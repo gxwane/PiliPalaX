@@ -68,7 +68,7 @@ class DynamicsController extends GetxController
     initialValue.value = value;
   }
 
-  pushDetail(item, floor, {action = 'all'}) async {
+  pushDetail(item, floor, {action = 'all', String? heroTag}) async {
     feedBack();
 
     /// 点击评论action 直接查看评论
@@ -95,7 +95,7 @@ class DynamicsController extends GetxController
         try {
           int cid = await SearchHttp.ab2c(bvid: bvid);
           Get.toNamed('/video?bvid=$bvid&cid=$cid',
-              arguments: {'pic': cover, 'heroTag': bvid});
+              arguments: {'pic': cover, 'heroTag': heroTag ?? '${item.idStr}-$bvid'});
         } catch (err) {
           SmartDialog.showToast(err.toString());
         }
@@ -155,7 +155,7 @@ class DynamicsController extends GetxController
         });
         Get.toNamed('/liveRoom?roomid=${liveItem.roomId}', arguments: {
           'liveItem': liveItem,
-          'heroTag': liveItem.roomId.toString()
+          'heroTag': heroTag ?? liveItem.roomId.toString()
         });
         break;
 
@@ -168,7 +168,7 @@ class DynamicsController extends GetxController
         String cover = ugcSeason.cover!;
         int cid = await SearchHttp.ab2c(bvid: bvid);
         Get.toNamed('/video?bvid=$bvid&cid=$cid',
-            arguments: {'pic': cover, 'heroTag': bvid});
+            arguments: {'pic': cover, 'heroTag': heroTag ?? '${item.idStr}-$bvid'});
         break;
 
       /// 番剧查看
@@ -195,12 +195,11 @@ class DynamicsController extends GetxController
             String bvid = episode.bvid!;
             int cid = episode.cid!;
             String pic = episode.cover!;
-            String heroTag = Utils.makeHeroTag(cid);
             Get.toNamed(
               '/video?bvid=$bvid&cid=$cid&seasonId=${res['data'].seasonId}&epid=$epId',
               arguments: {
                 'pic': pic,
-                'heroTag': heroTag,
+                'heroTag': heroTag ?? Utils.makeHeroTag(cid),
                 'videoType': SearchType.media_bangumi,
                 'bangumiItem': res['data'],
               },

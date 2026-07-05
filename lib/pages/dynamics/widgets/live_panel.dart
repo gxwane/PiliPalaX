@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:get/get.dart';
 import 'package:PiliPalaX/common/widgets/network_img_layer.dart';
 import 'package:PiliPalaX/utils/utils.dart';
@@ -13,25 +14,28 @@ Widget livePanel(item, context, {floor = 1}) {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       if (floor == 2) ...[
-        Row(
-          children: [
-            GestureDetector(
-              onTap: () => Get.toNamed(
-                  '/member?mid=${item.modules.moduleAuthor.mid}',
-                  arguments: {'face': item.modules.moduleAuthor.face}),
-              child: Text(
-                '@${item.modules.moduleAuthor.name}',
+        Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: '@${item.modules.moduleAuthor.name}',
                 style: authorStyle,
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () => Get.toNamed(
+                      '/member?mid=${item.modules.moduleAuthor.mid}',
+                      arguments: {'face': item.modules.moduleAuthor.face}),
               ),
-            ),
-            const SizedBox(width: 6),
-            Text(
-              Utils.dateFormat(item.modules.moduleAuthor.pubTs),
-              style: TextStyle(
-                  color: Theme.of(context).colorScheme.outline,
-                  fontSize: Theme.of(context).textTheme.labelSmall!.fontSize),
-            ),
-          ],
+              const WidgetSpan(child: SizedBox(width: 6)),
+              TextSpan(
+                text: Utils.dateFormat(item.modules.moduleAuthor.pubTs),
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.outline,
+                    fontSize: Theme.of(context).textTheme.labelSmall!.fontSize),
+              ),
+            ],
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
       const SizedBox(height: 4),

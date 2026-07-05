@@ -12,10 +12,12 @@ import 'rich_node_panel.dart';
 class Content extends StatefulWidget {
   dynamic item;
   String? source;
+  String? heroTag;
   Content({
     super.key,
     this.item,
     this.source,
+    this.heroTag,
   });
 
   @override

@@ -46,42 +46,55 @@ class AuthorPanel extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  item.modules.moduleAuthor.name,
-                  // semanticsLabel: "Up主：${item.modules.moduleAuthor.name}",
-                  style: TextStyle(
-                    color: item.modules.moduleAuthor!.vip != null &&
-                            item.modules.moduleAuthor!.vip['status'] > 0
-                        ? const Color.fromARGB(255, 251, 100, 163)
-                        : Theme.of(context).colorScheme.onSurface,
-                    fontSize: Theme.of(context).textTheme.titleSmall!.fontSize,
-                  ),
-                ),
-              ],
-            ),
-            DefaultTextStyle.merge(
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.outline,
-                fontSize: Theme.of(context).textTheme.labelSmall!.fontSize,
-              ),
-              child: Row(
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
                 children: [
-                  Text(item.modules.moduleAuthor.pubTime),
-                  if (item.modules.moduleAuthor.pubTime != '' &&
-                      item.modules.moduleAuthor.pubAction != '')
-                    const Text(' '),
-                  Text(item.modules.moduleAuthor.pubAction),
+                  Flexible(
+                    child: Text(
+                      item.modules.moduleAuthor.name,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: item.modules.moduleAuthor!.vip != null &&
+                                item.modules.moduleAuthor!.vip['status'] > 0
+                            ? const Color.fromARGB(255, 251, 100, 163)
+                            : Theme.of(context).colorScheme.onSurface,
+                        fontSize: Theme.of(context).textTheme.titleSmall!.fontSize,
+                      ),
+                    ),
+                  ),
                 ],
               ),
-            )
-          ],
+              DefaultTextStyle.merge(
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.outline,
+                  fontSize: Theme.of(context).textTheme.labelSmall!.fontSize,
+                ),
+                child: Row(
+                  children: [
+                    Flexible(
+                      child: Text(
+                        item.modules.moduleAuthor.pubTime,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    if (item.modules.moduleAuthor.pubTime != '' &&
+                        item.modules.moduleAuthor.pubAction != '')
+                      const Text(' '),
+                    Flexible(
+                      child: Text(
+                        item.modules.moduleAuthor.pubAction,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
-        const Spacer(),
         SizedBox(
           width: 32,
           height: 32,

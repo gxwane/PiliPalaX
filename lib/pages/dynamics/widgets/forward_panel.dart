@@ -1,10 +1,12 @@
 // 转发
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:PiliPalaX/utils/utils.dart';
 
 import '../../../common/widgets/badge.dart';
+import '../../../common/widgets/hero_tag_generator.dart';
 import '../../../common/widgets/network_img_layer.dart';
 import '../../../models/dynamics/result.dart';
 import '../../preview/view.dart';
@@ -146,7 +148,7 @@ InlineSpan picsNodes(List<OpusPicsModel> pics) {
   );
 }
 
-Widget forWard(item, context, ctr, source, {floor = 1}) {
+Widget forWard(item, context, ctr, source, {floor = 1, String? heroTag}) {
   TextStyle authorStyle =
       TextStyle(color: Theme.of(context).colorScheme.primary);
 
@@ -167,26 +169,29 @@ Widget forWard(item, context, ctr, source, {floor = 1}) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (floor == 2) ...[
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () => Get.toNamed(
-                      '/member?mid=${item.modules.moduleAuthor.mid}',
-                      arguments: {'face': item.modules.moduleAuthor.face}),
-                  child: Text(
-                    '@${item.modules.moduleAuthor.name}',
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: '@${item.modules.moduleAuthor.name}',
                     style: authorStyle,
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () => Get.toNamed(
+                          '/member?mid=${item.modules.moduleAuthor.mid}',
+                          arguments: {'face': item.modules.moduleAuthor.face}),
                   ),
-                ),
-                const SizedBox(width: 6),
-                Text(
-                  Utils.dateFormat(item.modules.moduleAuthor.pubTs),
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.outline,
-                      fontSize:
-                          Theme.of(context).textTheme.labelSmall!.fontSize),
-                ),
-              ],
+                  const WidgetSpan(child: SizedBox(width: 6)),
+                  TextSpan(
+                    text: Utils.dateFormat(item.modules.moduleAuthor.pubTs),
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.outline,
+                        fontSize:
+                            Theme.of(context).textTheme.labelSmall!.fontSize),
+                  ),
+                ],
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 2),
 
@@ -238,7 +243,7 @@ Widget forWard(item, context, ctr, source, {floor = 1}) {
       );
     // 视频
     case 'DYNAMIC_TYPE_AV':
-      return videoSeasonWidget(item, context, 'archive', source, floor: floor);
+      return videoSeasonWidget(item, context, 'archive', source, floor: floor, heroTag: heroTag);
     // 文章
     case 'DYNAMIC_TYPE_ARTICLE':
       return Container(
@@ -248,50 +253,57 @@ Widget forWard(item, context, ctr, source, {floor = 1}) {
           child: articlePanel(item, context, floor: floor));
     // 转发
     case 'DYNAMIC_TYPE_FORWARD':
-      return InkWell(
-        onTap: () => ctr.pushDetail(item.orig, floor + 1),
-        child: Container(
-          padding:
-              const EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 8),
-          color: Theme.of(context).dividerColor.withOpacity(0.08),
-          child: forWard(item.orig, context, ctr, source, floor: floor + 1),
-        ),
+      return HeroTagGenerator(
+        builder: (context, innerHeroTag) {
+          return InkWell(
+            onTap: () => ctr.pushDetail(item.orig, floor + 1, heroTag: innerHeroTag),
+            child: Container(
+              padding:
+                  const EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 8),
+              color: Theme.of(context).dividerColor.withOpacity(0.08),
+              child: forWard(item.orig, context, ctr, source, floor: floor + 1, heroTag: innerHeroTag),
+            ),
+          );
+        },
       );
     // 直播
     case 'DYNAMIC_TYPE_LIVE_RCMD':
-      return liveRcmdPanel(item, context, floor: floor);
+      return liveRcmdPanel(item, context, floor: floor, heroTag: heroTag);
     // 直播
     case 'DYNAMIC_TYPE_LIVE':
       return livePanel(item, context, floor: floor);
     // 合集
     case 'DYNAMIC_TYPE_UGC_SEASON':
-      return videoSeasonWidget(item, context, 'ugcSeason', source);
+      return videoSeasonWidget(item, context, 'ugcSeason', source, heroTag: heroTag);
     case 'DYNAMIC_TYPE_WORD':
       InlineSpan? richNodes = richNode(item, context);
       return floor == 2
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () => Get.toNamed(
-                          '/member?mid=${item.modules.moduleAuthor.mid}',
-                          arguments: {'face': item.modules.moduleAuthor.face}),
-                      child: Text(
-                        '@${item.modules.moduleAuthor.name}',
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: '@${item.modules.moduleAuthor.name}',
                         style: authorStyle,
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => Get.toNamed(
+                              '/member?mid=${item.modules.moduleAuthor.mid}',
+                              arguments: {'face': item.modules.moduleAuthor.face}),
                       ),
-                    ),
-                    const SizedBox(width: 6),
-                    Text(
-                      Utils.dateFormat(item.modules.moduleAuthor.pubTs),
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.outline,
-                          fontSize:
-                              Theme.of(context).textTheme.labelSmall!.fontSize),
-                    ),
-                  ],
+                      const WidgetSpan(child: SizedBox(width: 6)),
+                      TextSpan(
+                        text: Utils.dateFormat(item.modules.moduleAuthor.pubTs),
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.outline,
+                            fontSize:
+                                Theme.of(context).textTheme.labelSmall!.fontSize),
+                      ),
+                    ],
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 8),
                 if (richNodes != null)
@@ -312,9 +324,9 @@ Widget forWard(item, context, ctr, source, {floor = 1}) {
                 )
               : const SizedBox(height: 0);
     case 'DYNAMIC_TYPE_PGC':
-      return videoSeasonWidget(item, context, 'pgc', source, floor: floor);
+      return videoSeasonWidget(item, context, 'pgc', source, floor: floor, heroTag: heroTag);
     case 'DYNAMIC_TYPE_PGC_UNION':
-      return videoSeasonWidget(item, context, 'pgc', source, floor: floor);
+      return videoSeasonWidget(item, context, 'pgc', source, floor: floor, heroTag: heroTag);
     // 直播结束
     case 'DYNAMIC_TYPE_NONE':
       return Row(

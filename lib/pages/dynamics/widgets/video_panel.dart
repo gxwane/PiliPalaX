@@ -1,5 +1,6 @@
 // 视频or合集
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:PiliPalaX/common/constants.dart';
@@ -11,7 +12,7 @@ import '../../../common/widgets/my_dialog.dart';
 import '../../../common/widgets/overlay_pop.dart';
 import 'rich_node_panel.dart';
 
-Widget videoSeasonWidget(item, context, type, source, {floor = 1}) {
+Widget videoSeasonWidget(item, context, type, source, {floor = 1, String? heroTag}) {
   TextStyle authorStyle =
       TextStyle(color: Theme.of(context).colorScheme.primary);
   // type archive  ugcSeason
@@ -33,29 +34,32 @@ Widget videoSeasonWidget(item, context, type, source, {floor = 1}) {
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
       if (floor == 2) ...[
-        Row(
-          children: [
-            GestureDetector(
-              onTap: () => Get.toNamed(
-                  '/member?mid=${item.modules.moduleAuthor.mid}',
-                  arguments: {'face': item.modules.moduleAuthor.face}),
-              child: Text(
-                item.modules.moduleAuthor.type == null
+        Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: item.modules.moduleAuthor.type == null
                     ? '@${item.modules.moduleAuthor.name}'
                     : item.modules.moduleAuthor.name,
                 style: authorStyle,
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () => Get.toNamed(
+                      '/member?mid=${item.modules.moduleAuthor.mid}',
+                      arguments: {'face': item.modules.moduleAuthor.face}),
               ),
-            ),
-            const SizedBox(width: 6),
-            Text(
-              item.modules.moduleAuthor.pubTs != null
-                  ? Utils.dateFormat(item.modules.moduleAuthor.pubTs)
-                  : item.modules.moduleAuthor.pubTime,
-              style: TextStyle(
-                  color: Theme.of(context).colorScheme.outline,
-                  fontSize: Theme.of(context).textTheme.labelSmall!.fontSize),
-            ),
-          ],
+              const WidgetSpan(child: SizedBox(width: 6)),
+              TextSpan(
+                text: item.modules.moduleAuthor.pubTs != null
+                    ? Utils.dateFormat(item.modules.moduleAuthor.pubTs)
+                    : item.modules.moduleAuthor.pubTime,
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.outline,
+                    fontSize: Theme.of(context).textTheme.labelSmall!.fontSize),
+              ),
+            ],
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(height: 6),
       ],
@@ -96,7 +100,7 @@ Widget videoSeasonWidget(item, context, type, source, {floor = 1}) {
                         context, OverlayPop(videoItem: content));
                   },
                   child: Hero(
-                    tag: content.bvid,
+                    tag: heroTag ?? _getHeroTag(item, content.bvid),
                     child: NetworkImgLayer(
                       type: null,
                       width: width,
@@ -144,20 +148,23 @@ Widget videoSeasonWidget(item, context, type, source, {floor = 1}) {
                                   .labelMedium!
                                   .fontSize,
                               color: Colors.white),
-                          child: Row(
-                            children: [
-                              if (content.durationText != null)
-                                Text(
-                                  content.durationText,
-                                  semanticsLabel:
-                                      '时长${Utils.durationReadFormat(content.durationText)}',
-                                ),
-                              if (content.durationText != null)
-                                const SizedBox(width: 6),
-                              Text(content.stat.play + '次围观'),
-                              const SizedBox(width: 6),
-                              Text(content.stat.danmu + '条弹幕')
-                            ],
+                          child: Text.rich(
+                            TextSpan(
+                              children: [
+                                if (content.durationText != null) ...[
+                                  TextSpan(
+                                    text: content.durationText,
+                                    semanticsLabel: '时长${Utils.durationReadFormat(content.durationText)}',
+                                  ),
+                                  const WidgetSpan(child: SizedBox(width: 6)),
+                                ],
+                                TextSpan(text: '${content.stat.play}次围观'),
+                                const WidgetSpan(child: SizedBox(width: 6)),
+                                TextSpan(text: '${content.stat.danmu}条弹幕'),
+                              ],
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         Image.asset(
@@ -186,4 +193,13 @@ Widget videoSeasonWidget(item, context, type, source, {floor = 1}) {
       ),
     ],
   );
+}
+
+String _getHeroTag(dynamic item, String? bvid) {
+  try {
+    if (item.idStr != null) {
+      return '${item.idStr}-$bvid';
+    }
+  } catch (_) {}
+  return Utils.makeHeroTag(bvid);
 }

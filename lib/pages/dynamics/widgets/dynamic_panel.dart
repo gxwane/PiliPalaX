@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:PiliPalaX/pages/dynamics/index.dart';
+import 'package:PiliPalaX/common/widgets/hero_tag_generator.dart';
 import 'action_panel.dart';
 import 'author_panel.dart';
 import 'content_panel.dart';
@@ -33,23 +34,27 @@ class DynamicPanel extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5),
         ),
-        child: InkWell(
-          onTap: () => _dynamicsController.pushDetail(item, 1),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(12, 12, 12, 6),
-                child: AuthorPanel(item: item),
+        child: HeroTagGenerator(
+          builder: (context, heroTag) {
+            return InkWell(
+              onTap: () => _dynamicsController.pushDetail(item, 1, heroTag: heroTag),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(12, 12, 12, 6),
+                    child: AuthorPanel(item: item),
+                  ),
+                  if (item!.modules!.moduleDynamic!.desc != null ||
+                      item!.modules!.moduleDynamic!.major != null)
+                    Content(item: item, source: source, heroTag: heroTag),
+                  forWard(item, context, _dynamicsController, source, heroTag: heroTag),
+                  const SizedBox(height: 2),
+                  if (source == null) ActionPanel(item: item),
+                ],
               ),
-              if (item!.modules!.moduleDynamic!.desc != null ||
-                  item!.modules!.moduleDynamic!.major != null)
-                Content(item: item, source: source),
-              forWard(item, context, _dynamicsController, source),
-              const SizedBox(height: 2),
-              if (source == null) ActionPanel(item: item),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );

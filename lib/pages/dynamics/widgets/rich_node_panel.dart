@@ -48,18 +48,13 @@ InlineSpan? richNode(item, context) {
           spanChildren.add(
             WidgetSpan(
               alignment: PlaceholderAlignment.middle,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  GestureDetector(
-                    onTap: () => Get.toNamed('/member?mid=${i.rid}',
-                        arguments: {'face': null}),
-                    child: Text(
-                      ' ${i.text}',
-                      style: authorStyle,
-                    ),
-                  ),
-                ],
+              child: GestureDetector(
+                onTap: () => Get.toNamed('/member?mid=${i.rid}',
+                    arguments: {'face': null}),
+                child: Text(
+                  ' ${i.text}',
+                  style: authorStyle,
+                ),
               ),
             ),
           );

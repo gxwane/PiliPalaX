@@ -6,7 +6,9 @@ import 'package:PiliPalaX/common/widgets/network_img_layer.dart';
 import 'package:PiliPalaX/pages/preview/index.dart';
 
 Widget picWidget(item, context) {
-  String type = item.modules.moduleDynamic.major.type;
+  var major = item.modules?.moduleDynamic?.major;
+  if (major == null) return const SizedBox();
+  String type = major.type ?? '';
   List pictures = [];
   if (type == 'MAJOR_TYPE_OPUS') {
     /// fix 图片跟rich_node_panel重复
@@ -14,13 +16,18 @@ Widget picWidget(item, context) {
     return const SizedBox();
   }
   if (type == 'MAJOR_TYPE_DRAW') {
-    pictures = item.modules.moduleDynamic.major.draw.items;
+    pictures = major.draw?.items ?? [];
+  }
+  if (type == 'MAJOR_TYPE_ARTICLE') {
+    pictures = major.article?.covers ?? [];
   }
   int len = pictures.length;
+  if (len == 0) return const SizedBox();
   List<String> picList = [];
   List<Widget> list = [];
   for (var i = 0; i < len; i++) {
-    picList.add(pictures[i].src ?? pictures[i].url);
+    String imgUrl = pictures[i] is String ? pictures[i] : (pictures[i].src ?? pictures[i].url);
+    picList.add(imgUrl);
     list.add(
       LayoutBuilder(
         builder: (context, BoxConstraints box) {
@@ -35,7 +42,7 @@ Widget picWidget(item, context) {
               );
             },
             child: NetworkImgLayer(
-              src: pictures[i].src ?? pictures[i].url,
+              src: imgUrl,
               width: box.maxWidth,
               height: box.maxWidth,
             ),
@@ -54,14 +61,18 @@ Widget picWidget(item, context) {
 
       double height = 0.0;
       if (len == 1) {
+        double picWidth = 1920;
         try {
-          origAspectRatio =
-              aspectRatio = pictures.first.width / pictures.first.height;
+          if (pictures.first is! String) {
+            origAspectRatio =
+                aspectRatio = pictures.first.width / pictures.first.height;
+            picWidth = (pictures.first.width ?? 1920).toDouble();
+          }
         } catch (_) {}
         if (aspectRatio < 0.4) {
           aspectRatio = 0.4;
         }
-        if (origAspectRatio < 0.5 || pictures.first.width < 1920) {
+        if (origAspectRatio < 0.5 || picWidth < 1920) {
           crossCount = 2;
           height = maxWidth / 2 / aspectRatio;
         }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:PiliPalaX/utils/utils.dart';
 
 import '../../../common/constants.dart';
@@ -7,36 +8,54 @@ import 'pic_panel.dart';
 Widget articlePanel(item, context, {floor = 1}) {
   TextStyle authorStyle =
       TextStyle(color: Theme.of(context).colorScheme.primary);
+      
+  var major = item.modules?.moduleDynamic?.major;
+  if (major == null) return const SizedBox();
+  
+  String title = '';
+  String summary = '';
+  if (major.opus != null) {
+    title = major.opus!.title ?? '';
+    if (major.opus!.summary?.text != 'undefined' && major.opus!.summary?.richTextNodes?.isNotEmpty == true) {
+      summary = major.opus!.summary!.richTextNodes!.first.text ?? '';
+    }
+  } else if (major.article != null) {
+    title = major.article!.title ?? '';
+    summary = major.article!.desc ?? '';
+  }
+      
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: StyleString.safeSpace),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (floor == 2) ...[
-          Row(
-            children: [
-              GestureDetector(
-                onTap: () {},
-                child: Text(
-                  '@${item.modules.moduleAuthor.name}',
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: '@${item.modules.moduleAuthor.name}',
                   style: authorStyle,
+                  recognizer: TapGestureRecognizer()..onTap = () {},
                 ),
-              ),
-              const SizedBox(width: 6),
-              Text(
-                Utils.dateFormat(item.modules.moduleAuthor.pubTs),
-                style: TextStyle(
-                    color: Theme.of(context).colorScheme.outline,
-                    fontSize: Theme.of(context).textTheme.labelSmall!.fontSize),
-              ),
-            ],
+                const WidgetSpan(child: SizedBox(width: 6)),
+                TextSpan(
+                  text: Utils.dateFormat(item.modules.moduleAuthor.pubTs),
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.outline,
+                      fontSize: Theme.of(context).textTheme.labelSmall!.fontSize),
+                ),
+              ],
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 8),
         ],
         Row(children: [
           Expanded(
               child: Text(
-            item.modules.moduleDynamic.major.opus.title,
+            title,
             style: Theme.of(context)
                 .textTheme
                 .titleMedium!
@@ -44,12 +63,9 @@ Widget articlePanel(item, context, {floor = 1}) {
           ))
         ]),
         const SizedBox(height: 2),
-        if (item.modules.moduleDynamic.major.opus.summary.text != 'undefined' &&
-            item.modules.moduleDynamic.major.opus.summary.richTextNodes
-                .isNotEmpty) ...[
+        if (summary.isNotEmpty) ...[
           Text(
-            item.modules.moduleDynamic.major.opus.summary.richTextNodes.first
-                .text,
+            summary,
             maxLines: 6,
             style: const TextStyle(height: 1.55),
             overflow: TextOverflow.ellipsis,
