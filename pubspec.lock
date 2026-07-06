@@ -574,11 +574,9 @@ packages:
   fl_pip:
     dependency: "direct main"
     description:
-      path: "."
-      ref: main
-      resolved-ref: "34dee7c3a993eb24b678e52d7aea420b6ab98f12"
-      url: "https://github.com/orz12/fl_pip.git"
-    source: git
+      path: "packages/fl_pip"
+      relative: true
+    source: path
     version: "3.2.0"
   flex_seed_scheme:
     dependency: "direct main"
