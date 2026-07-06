@@ -42,19 +42,6 @@ https://repo.huaweicloud.com/gradle/
 
 JAR 文件缓存位置：`E:\Documents\PiliPalaX\build\media_kit_libs_android_video\v1.1.5\`
 
-## 已修补的第三方插件
-
-以下插件因使用已废弃的 `PluginRegistry.Registrar`（Flutter v1 embedding）在新版 Flutter 下编译失败，
-已直接修改其 PubCache 中的 Java 源码，删除了旧的 `registerWith` 方法和相关 import：
-
-| 插件 | 修补文件位置 |
-|------|-------------|
-| `status_bar_control` 3.2.1 | `E:\PubCache\hosted\pub.flutter-io.cn\status_bar_control-3.2.1\android\...` |
-| `webview_cookie_manager` 2.0.6 | `E:\PubCache\hosted\pub.flutter-io.cn\webview_cookie_manager-2.0.6\android\...` |
-
-> [!WARNING]
-> 如果执行 `flutter pub get` 或清空 PubCache，这些修补会丢失，需要重新应用。
-> 未来应考虑将这两个插件 fork 到自己的仓库中，通过 git 依赖引用。
 
 ## API 适配记录
 
@@ -65,6 +52,7 @@ JAR 文件缓存位置：`E:\Documents\PiliPalaX\build\media_kit_libs_android_vi
 
 ## 注意事项
 
+- **不要提交 Brainstorming Spec 文档**：当使用 `/superpowers:brainstorming` 生成设计规范（Spec）文档时，仅将其保存到本地目录（如 `docs/superpowers/specs/`），**绝对不要**将其 `git commit` 到仓库中。
 - **必须提交 `pubspec.lock`**：本项目是一个面向终端用户的 Application，为了绝对保证编译稳定性并切断第三方依赖的“幽灵升级”，**必须强制提交 `pubspec.lock` 文件**。此规则覆写全局配置中的 `Avoid committing package manager lockfiles` 规则。每次新增或有意升级依赖时，请连同 lock 文件一起 commit。
 - 编译过程中出现的大量 `Warning: 'namespace' is not specified` 和 `Overriding compileSdk` 是正常的，不影响构建
 - `android/build.gradle` 中的 `buildDir` 使用了 `new File()` 绝对路径写法，请勿改回相对路径字符串

@@ -28,7 +28,7 @@ jobs:
         if: startsWith(matrix.target_platform, 'android')
         with:
           distribution: 'zulu'
-          java-version: '21'
+          java-version: '17'
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 安装Flutter
@@ -39,6 +39,7 @@ jobs:
 
       - name: 下载依赖
         run: flutter pub get
+
 
       - name: 解码生成 jks
         if: startsWith(matrix.target_platform, 'android')

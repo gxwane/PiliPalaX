@@ -67,7 +67,6 @@ dependencies:
   # 分享
   share_plus: ^10.0.2
   # cookie 管理
-  webview_cookie_manager: ^2.0.6
   # 浏览器
   webview_flutter: ^4.2.2
   # 解决sliver滑动不同步
@@ -135,7 +134,6 @@ dependencies:
       url: https://github.com/orz12/canvas_danmaku.git
       ref: main
   # 状态栏图标控制
-  status_bar_control: ^3.2.1
   # 代理
   system_proxy: ^0.1.0
   # 应用内悬浮窗
