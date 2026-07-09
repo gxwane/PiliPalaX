@@ -22,8 +22,10 @@ Future<VideoPlayerServiceHandler> initAudioService() async {
   );
 }
 
-class VideoPlayerServiceHandler extends BaseAudioHandler with SeekHandler {
+class VideoPlayerServiceHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   // static final List<MediaItem> _item = [];
+  static int _mediaItemIdCounter = 0;
+  
   Box setting = GStorage.setting;
   bool enableBackgroundPlay = true;
   // PlPlayerController player = PlPlayerController.getInstance();
@@ -122,8 +124,9 @@ class VideoPlayerServiceHandler extends BaseAudioHandler with SeekHandler {
     // print(StackTrace.current);
     if (!PlPlayerController.instanceExists()) return;
     print("artUri: $artUri");
+    _mediaItemIdCounter++;
     MediaItem mediaItem = MediaItem(
-      id: UniqueKey().toString(),
+      id: 'media_item_${DateTime.now().millisecondsSinceEpoch}_$_mediaItemIdCounter',
       title: title ?? "",
       artist: artist ?? "",
       duration: duration ?? Duration.zero,

@@ -9,12 +9,14 @@ class HeroTagGenerator extends StatefulWidget {
 }
 
 class _HeroTagGeneratorState extends State<HeroTagGenerator> {
+  static int _idCounter = 0;
   late final String _heroTag;
 
   @override
   void initState() {
     super.initState();
-    _heroTag = UniqueKey().toString();
+    _idCounter++;
+    _heroTag = 'hero_tag_$_idCounter';
   }
 
   @override

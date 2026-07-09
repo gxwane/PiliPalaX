@@ -511,10 +511,13 @@ class DynamicArchiveModel {
   int? epid;
   int? seasonId;
 
+  static int _fallbackIdCounter = 0;
+
   DynamicArchiveModel.fromJson(Map<String, dynamic> json) {
     aid = _parseInt(json['aid']);
     badge = json['badge'];
-    bvid = json['bvid'] ?? json['epid']?.toString() ?? UniqueKey().toString();
+    _fallbackIdCounter++;
+    bvid = json['bvid'] ?? json['epid']?.toString() ?? 'fallback_bvid_$_fallbackIdCounter';
     cover = _parseString(json['cover']);
     disablePreview = _parseInt(json['disable_preview']);
     durationText = _parseString(json['duration_text']);
