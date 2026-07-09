@@ -28,7 +28,7 @@ class SubItem extends StatelessWidget {
         },
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(12, 7, 12, 7),
+        padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
         child: LayoutBuilder(
           builder: (context, boxConstraints) {
             double width =
@@ -87,18 +87,23 @@ class VideoContent extends StatelessWidget {
             : '其它:${subFolderItem.type}';
     return Expanded(
       child: Stack(
+        fit: StackFit.expand,
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(10, 2, 6, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  subFolderItem.title!,
-                  textAlign: TextAlign.start,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 0.3,
+                Flexible(
+                  child: Text(
+                    subFolderItem.title!,
+                    textAlign: TextAlign.start,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.3,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -109,6 +114,8 @@ class VideoContent extends StatelessWidget {
                     fontSize: Theme.of(context).textTheme.labelMedium!.fontSize,
                     color: Theme.of(context).colorScheme.outline,
                   ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 2),
                 Text(
@@ -118,8 +125,9 @@ class VideoContent extends StatelessWidget {
                     fontSize: Theme.of(context).textTheme.labelMedium!.fontSize,
                     color: Theme.of(context).colorScheme.outline,
                   ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                const Spacer(),
               ],
             ),
           ),
