@@ -6,6 +6,7 @@ import 'package:PiliPalaX/models/model_owner.dart';
 import 'package:PiliPalaX/models/search/hot.dart';
 import 'package:PiliPalaX/models/user/info.dart';
 import 'global_data.dart';
+import 'storage_contract.dart';
 
 class GStorage {
   static late final Box<dynamic> userInfo;
@@ -18,34 +19,34 @@ class GStorage {
   static Future<void> init() async {
     final Directory dir = await getApplicationSupportDirectory();
     final String path = dir.path;
-    await Hive.initFlutter('$path/hive');
+    await Hive.initFlutter('$path/${StoragePathName.hive}');
     regAdapter();
     // 登录用户信息
     userInfo = await Hive.openBox(
-      'userInfo',
+      StorageBoxName.userInfo,
       compactionStrategy: (int entries, int deletedEntries) {
         return deletedEntries > 2;
       },
     );
     // 本地缓存
     localCache = await Hive.openBox(
-      'localCache',
+      StorageBoxName.localCache,
       compactionStrategy: (int entries, int deletedEntries) {
         return deletedEntries > 4;
       },
     );
     // 设置
-    setting = await Hive.openBox('setting');
+    setting = await Hive.openBox(StorageBoxName.setting);
     // 搜索历史
     historyWord = await Hive.openBox(
-      'historyWord',
+      StorageBoxName.historyWord,
       compactionStrategy: (int entries, int deletedEntries) {
         return deletedEntries > 10;
       },
     );
     // 视频设置
-    video = await Hive.openBox('video');
-    onlineCache = await Hive.openBox('onlineCache');
+    video = await Hive.openBox(StorageBoxName.video);
+    onlineCache = await Hive.openBox(StorageBoxName.onlineCache);
     GlobalData().imgQuality =
         setting.get(SettingBoxKey.defaultPicQa, defaultValue: 10); // 设置全局变量
   }

@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:PiliPalaX/utils/storage.dart';
+import 'package:PiliPalaX/utils/storage_contract.dart';
 import 'package:crypto/crypto.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class Utils {
 
   static Future<String> getCookiePath() async {
     final Directory tempDir = await getApplicationSupportDirectory();
-    final String tempPath = "${tempDir.path}/.plpl/";
+    final String tempPath = "${tempDir.path}/${StoragePathName.cookie}/";
     final Directory dir = Directory(tempPath);
     final bool b = await dir.exists();
     if (!b) {

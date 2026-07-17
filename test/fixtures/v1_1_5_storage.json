@@ -1,0 +1,28 @@
+{
+  "boxValues": {
+    "userInfo": {},
+    "localCache": {
+      "historyPause": true,
+      "wbiKeys": ["fixture-img-key", "fixture-sub-key"],
+      "timeStamp": 1721260800
+    },
+    "setting": {
+      "defaultVideoQa": 80,
+      "defaultAudioQa": 30280,
+      "themeMode": 2,
+      "schemeVariant": 10,
+      "videoSync": "display-resample",
+      "hardwareDecoding": "auto-safe"
+    },
+    "historyWord": {
+      "0": "PiliPalaX"
+    },
+    "video": {
+      "playSpeedDefault": 1.25,
+      "cacheVideoFit": 1
+    },
+    "onlineCache": {
+      "blackMidsList": [1, 2]
+    }
+  }
+}
