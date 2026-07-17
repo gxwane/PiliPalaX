@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:PiliPalaX/plugin/pl_player/controller.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +10,6 @@ import 'package:PiliPalaX/http/constants.dart';
 import 'package:PiliPalaX/http/user.dart';
 import 'package:PiliPalaX/http/video.dart';
 import 'package:PiliPalaX/models/user/fav_folder.dart';
-import 'package:PiliPalaX/models/video/ai.dart';
 import 'package:PiliPalaX/models/video_detail_res.dart';
 import 'package:PiliPalaX/pages/video/controller.dart';
 import 'package:PiliPalaX/pages/video/reply/index.dart';
@@ -27,7 +25,6 @@ import 'package:PiliPalaX/services/service_locator.dart';
 import '../../../../../http/search.dart';
 import '../../../../../models/model_hot_video_item.dart';
 import '../../related/index.dart';
-import '../widgets/group_panel.dart';
 
 class VideoIntroController extends GetxController {
   // 视频bvid
@@ -449,10 +446,13 @@ class VideoIntroController extends GetxController {
                   label: const Text('其它app打开')),
               TextButton.icon(
                   onPressed: () async {
-                    await Share.share('${videoDetail.value.title} '
+                    await SharePlus.instance.share(
+                      ShareParams(
+                        text: '${videoDetail.value.title} '
                             'UP主: ${videoDetail.value.owner!.name!}'
-                            ' - $videoUrl')
-                        .whenComplete(() {});
+                            ' - $videoUrl',
+                      ),
+                    );
                     Get.back();
                   },
                   icon: const Icon(Icons.share),
@@ -506,12 +506,14 @@ class VideoIntroController extends GetxController {
       return;
     }
     feedBack();
-    int mid = videoDetail.value.owner!.mid!;
-    MemberController _ = Get.put<MemberController>(MemberController(mid: mid),
-        tag: mid.toString());
-    await _.getInfo();
-    if (context.mounted) await _.actionRelationMod(context);
-    followStatus['attribute'] = _.attribute.value;
+    final int mid = videoDetail.value.owner!.mid!;
+    final MemberController memberController = Get.put<MemberController>(
+      MemberController(mid: mid),
+      tag: mid.toString(),
+    );
+    await memberController.getInfo();
+    if (context.mounted) await memberController.actionRelationMod(context);
+    followStatus['attribute'] = memberController.attribute.value;
     followStatus.refresh();
     Get.delete<MemberController>(tag: mid.toString());
   }

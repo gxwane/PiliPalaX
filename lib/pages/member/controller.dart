@@ -1,20 +1,14 @@
-import 'dart:convert';
-import 'package:PiliPalaX/http/constants.dart';
-import 'package:PiliPalaX/http/init.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:PiliPalaX/http/member.dart';
-import 'package:PiliPalaX/http/user.dart';
 import 'package:PiliPalaX/http/video.dart';
 import 'package:PiliPalaX/models/member/archive.dart';
 import 'package:PiliPalaX/models/member/coin.dart';
 import 'package:PiliPalaX/models/member/info.dart';
 import 'package:PiliPalaX/utils/storage.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:html/dom.dart' as dom;
-import 'package:html/parser.dart' as html_parser;
 
 import 'package:PiliPalaX/pages/video/introduction/widgets/group_panel.dart';
 
@@ -250,8 +244,13 @@ class MemberController extends GetxController with GetTickerProviderStateMixin {
     );
   }
 
-  void shareUser() {
-    Share.share('${memberInfo.value.card!.name} - https://space.bilibili.com/$mid');
+  Future<void> shareUser() async {
+    await SharePlus.instance.share(
+      ShareParams(
+        text:
+            '${memberInfo.value.card!.name} - https://space.bilibili.com/$mid',
+      ),
+    );
   }
 
   // 请求投币视频

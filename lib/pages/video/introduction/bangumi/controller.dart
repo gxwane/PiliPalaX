@@ -287,7 +287,9 @@ class BangumiIntroController extends GetxController {
                   label: const Text('其它app打开')),
               TextButton.icon(
                   onPressed: () async {
-                    await Share.share(videoUrl).whenComplete(() {});
+                    await SharePlus.instance.share(
+                      ShareParams(text: videoUrl),
+                    );
                     Get.back();
                   },
                   icon: const Icon(Icons.share),

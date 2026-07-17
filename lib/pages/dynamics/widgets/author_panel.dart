@@ -180,9 +180,12 @@ class MorePanel extends StatelessWidget {
             ),
             leading: const Icon(Icons.share_outlined, size: 19),
             onTap: () async {
-              await Share.share(
-                      '${HttpString.baseUrl}/opus/${item.idStr} UP主: ${item.modules.moduleAuthor.name}')
-                  .whenComplete(() {});
+              await SharePlus.instance.share(
+                ShareParams(
+                  text:
+                      '${HttpString.baseUrl}/opus/${item.idStr} UP主: ${item.modules.moduleAuthor.name}',
+                ),
+              );
             },
             minLeadingWidth: 0,
           ),

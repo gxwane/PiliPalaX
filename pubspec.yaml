@@ -44,36 +44,37 @@ dependencies:
   dio: ^5.10.0
   cookie_jar: ^4.0.9
   dio_cookie_manager: ^3.4.0
-  connectivity_plus: ^6.1.0
+  connectivity_plus: ^6.1.5
 
   # 图片
   cached_network_image: ^3.4.1
   extended_image: ^8.2.0
-  saver_gallery: ^4.0.1
+  saver_gallery: ^4.1.2
 
   # QRCode
   qr_flutter: ^4.1.0
 
   # 存储
-  path_provider: ^2.1.1
+  path_provider: ^2.1.6
   hive: ^2.2.3
   hive_flutter: ^1.1.0
 
   # 设备信息
-  device_info_plus: ^10.1.2
+  device_info_plus: ^11.5.0
   # 权限
-  permission_handler: ^11.0.1
+  permission_handler: ^12.0.3
   # 分享
-  share_plus: ^10.0.2
+  share_plus: ^11.1.0
   # cookie 管理
   # 浏览器
-  webview_flutter: ^4.2.2
+  webview_flutter: ^4.14.1
   # 解决sliver滑动不同步
   extended_nested_scroll_view: ^6.1.2
   # 上拉加载
   loading_more_list: ^6.0.0
   # 下拉刷新
   pull_to_refresh_notification: ^3.0.1
+  custom_refresh_indicator: ^4.0.1
   # 图标
   font_awesome_flutter: ^10.4.0
   material_design_icons_flutter: ^7.0.7296
@@ -120,23 +121,21 @@ dependencies:
   animations: ^2.0.8
 
   # 获取appx信息
-  package_info_plus: ^8.0.2
-  url_launcher: ^6.1.14
+  package_info_plus: ^8.3.1
+  url_launcher: ^6.3.2
   flutter_svg: ^2.0.7
   # 防抖节流
   easy_debounce: ^2.0.3
   # 高帧率
-  flutter_displaymode: ^0.6.0
+  flutter_displaymode: ^0.7.0
   # scheme跳转
-  app_links: 6.3.3
+  app_links: ^7.0.0
   # 弹幕
   canvas_danmaku:
     git:
       url: https://github.com/orz12/canvas_danmaku.git
       ref: main
   # 状态栏图标控制
-  # 代理
-  system_proxy: ^0.1.0
   # 应用内悬浮窗
   flutter_floating:
     git:

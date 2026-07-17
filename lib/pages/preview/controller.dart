@@ -29,7 +29,7 @@ class PreviewController extends GetxController {
   }
 
   // 图片分享
-  void onShareImg() async {
+  Future<void> onShareImg() async {
     SmartDialog.showLoading();
     var response = await Dio().get(imgList[initialPage.value],
         options: Options(responseType: ResponseType.bytes));
@@ -39,7 +39,12 @@ class PreviewController extends GetxController {
         "PiliPalaX_pic_${DateTime.now().toString().replaceAll(' ', '_').replaceAll(':', '-').split('.').first}.jpg";
     var path = '${temp.path}/$imgName';
     File(path).writeAsBytesSync(response.data);
-    Share.shareXFiles([XFile(path)], subject: imgList[initialPage.value]);
+    await SharePlus.instance.share(
+      ShareParams(
+        files: <XFile>[XFile(path)],
+        subject: imgList[initialPage.value],
+      ),
+    );
   }
 
   void onChange(int index) {
