@@ -69,7 +69,6 @@ class MsgHttp {
     String csrf = await Request.getCsrf();
     var res = await Request().get(Api.msgSysUserNotify, data: {
       'csrf': csrf,
-      'csrf': csrf,
       'page_size': 20,
     });
     if (res.data['code'] == 0) {
@@ -90,7 +89,6 @@ class MsgHttp {
     String csrf = await Request.getCsrf();
     var res = await Request().get(Api.msgSysUnifiedNotify, data: {
       'csrf': csrf,
-      'csrf': csrf,
       'page_size': 10,
     });
     if (res.data['code'] == 0) {
@@ -110,7 +108,6 @@ class MsgHttp {
   static Future msgSysUpdateCursor(int cursor) async {
     String csrf = await Request.getCsrf();
     var res = await Request().get(Api.msgSysUpdateCursor, data: {
-      'csrf': csrf,
       'csrf': csrf,
       'cursor': cursor,
     });

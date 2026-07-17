@@ -2,9 +2,7 @@ import 'dart:io';
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:html/dom.dart';
-import 'package:flutter/foundation.dart';
 import 'package:html/parser.dart';
 import 'index.dart';
 

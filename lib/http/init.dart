@@ -8,7 +8,6 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
-// import 'package:dio_http2_adapter/dio_http2_adapter.dart';
 import 'package:hive/hive.dart';
 import 'package:PiliPalaX/utils/id_utils.dart';
 import '../utils/login.dart';
@@ -159,15 +158,6 @@ class Request {
         setting.get(SettingBoxKey.systemProxyPort, defaultValue: '');
 
     dio = Dio(options);
-
-    /// fix 第三方登录 302重定向 跟iOS代理问题冲突
-    // ..httpClientAdapter = Http2Adapter(
-    //   ConnectionManager(
-    //     idleTimeout: const Duration(milliseconds: 10000),
-    //     onClientCreate: (_, ClientSetting config) =>
-    //         config.onBadCertificate = (_) => true,
-    //   ),
-    // );
 
     /// 设置代理
     if (enableSystemProxy) {

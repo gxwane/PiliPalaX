@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:dio/dio.dart';
 import '../models/dynamics/result.dart';
 import '../models/dynamics/up.dart';
 import '../utils/wbi_sign.dart';
