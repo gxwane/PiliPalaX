@@ -25,19 +25,19 @@ class BottomControl extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     Color colorTheme = Theme.of(context).colorScheme.primary;
-    final _ = controller!;
+    final PlPlayerController playerController = controller!;
     //阅读器限制
     Timer? accessibilityDebounce;
     double lastAnnouncedValue = -1;
     return Obx(() {
-      final int value = _.sliderPositionSeconds.value;
-      final int durationSec = _.durationSeconds.value;
-      final int buffer = _.bufferedSeconds.value;
+      final int value = playerController.sliderPositionSeconds.value;
+      final int durationSec = playerController.durationSeconds.value;
+      final int buffer = playerController.bufferedSeconds.value;
       if (value > durationSec || durationSec <= 0) {
         return nil;
       }
-      bool isEquivalentFullScreen = _.isFullScreen.value ||
-          !_.horizontalScreen &&
+      bool isEquivalentFullScreen = playerController.isFullScreen.value ||
+          !playerController.horizontalScreen &&
               MediaQuery.of(context).orientation == Orientation.landscape;
       return Container(
         color: Colors.transparent,
@@ -70,7 +70,7 @@ class BottomControl extends StatelessWidget implements PreferredSizeWidget {
                     thumbRadius: 7,
                     onDragStart: (duration) {
                       feedBack();
-                      _.onChangedSliderStart();
+                      playerController.onChangedSliderStart();
                     },
                     onDragUpdate: (duration) {
                       double newProgress = duration.timeStamp.inSeconds / durationSec;
@@ -84,12 +84,12 @@ class BottomControl extends StatelessWidget implements PreferredSizeWidget {
                           lastAnnouncedValue = newProgress;
                         });
                       }
-                      _.onUpdatedSliderProgress(duration.timeStamp);
+                      playerController.onUpdatedSliderProgress(duration.timeStamp);
                     },
                     onSeek: (duration) {
-                      _.onChangedSliderEnd();
-                      _.onChangedSlider(duration.inSeconds.toDouble());
-                      _.seekTo(Duration(seconds: duration.inSeconds),
+                      playerController.onChangedSliderEnd();
+                      playerController.onChangedSlider(duration.inSeconds.toDouble());
+                      playerController.seekTo(Duration(seconds: duration.inSeconds),
                           type: 'slider');
                       SemanticsService.announce(
                           "${(duration.inSeconds / durationSec * 100).round()}%",

@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
@@ -76,8 +75,6 @@ class PlPlayerController {
   final Rx<Duration> _buffered = Rx(Duration.zero);
   final Rx<String> _playerLog = Rx("");
   final RxInt bufferedSeconds = 0.obs;
-
-  final Rx<int> _playerCount = Rx(0);
 
   final Rx<double> _playbackSpeed = 1.0.obs;
   final Rx<double> _longPressSpeed = 2.0.obs;
