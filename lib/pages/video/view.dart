@@ -4,7 +4,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:PiliPalaX/services/service_locator.dart';
-import 'package:auto_orientation/auto_orientation.dart';
+import 'package:auto_orientation_v2/auto_orientation_v2.dart';
 import 'package:fl_pip/fl_pip.dart';
 // import 'package:fl_pip/fl_pip.dart';
 import 'package:flutter/services.dart';

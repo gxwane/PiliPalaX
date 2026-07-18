@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:auto_orientation/auto_orientation.dart';
+import 'package:auto_orientation_v2/auto_orientation_v2.dart';
 import 'package:flex_seed_scheme/flex_seed_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
