@@ -376,22 +376,6 @@ class ChatItem extends StatelessWidget {
                 'dynamicType': "read" //content['template_id'] ?? "",
               });
               return;
-              try {
-                SmartDialog.showLoading();
-                var bvid = content["bvid"];
-                final int cid = await SearchHttp.ab2c(bvid: bvid);
-                final String heroTag = Utils.makeHeroTag(bvid);
-                SmartDialog.dismiss<dynamic>().then(
-                  (e) => Get.toNamed<dynamic>('/video?bvid=$bvid&cid=$cid',
-                      arguments: <String, String?>{
-                        'pic': content['cover'],
-                        'heroTag': heroTag,
-                      }),
-                );
-              } catch (err) {
-                SmartDialog.dismiss();
-                SmartDialog.showToast(err.toString());
-              }
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

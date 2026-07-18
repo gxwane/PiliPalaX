@@ -1,12 +1,10 @@
 import 'dart:async';
 
 import 'package:PiliPalaX/models/common/reply_type.dart';
-import 'package:PiliPalaX/pages/video/reply/widgets/reply_item.dart';
 import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:path/path.dart';
 import 'package:PiliPalaX/http/search.dart';
 import 'package:PiliPalaX/models/common/search_type.dart';
 import 'package:PiliPalaX/pages/video/reply_reply/view.dart';
@@ -129,13 +127,8 @@ class PiliScheme {
         //fmt.Sprintf("bilibili://comment/detail/%d/%d/%d/?subType=%d&anchor=%d&showEnter=1&extraIntentId=%d", rp.Type, rp.Oid, rootID, subType, rp.RpID, extraIntentID)
         print(value.queryParameters);
         List<String> pathParts = path.split('/');
-        int type = int.parse(pathParts[2]);
         int oid = int.parse(pathParts[3]);
-        int rootId = int.parse(pathParts[4]);
-        int subType = int.parse(value.queryParameters['subType'] ?? '0');
         int RpID = int.parse(value.queryParameters['anchor'] ?? '0');
-        int extraIntentId =
-            int.parse(value.queryParameters['extraIntentId'] ?? '0');
         Get.to(
           () => Scaffold(
             appBar: AppBar(
@@ -289,19 +282,19 @@ class PiliScheme {
     // final String scheme = value.scheme!;
     final String host = value.host;
     final String path = value.path;
-    Map<String, String>? query = value.queryParameters;
+    final Map<String, String> query = value.queryParameters;
     RegExp regExp = RegExp(r'^((www\.)|(m\.))?bilibili\.com$');
     if (regExp.hasMatch(host)) {
       print('bilibili.com');
     } else if (host.contains('live')) {
-      int roomId = int.parse(path!.split('/').last);
+      int roomId = int.parse(path.split('/').last);
       Get.toNamed(
         '/liveRoom?roomid=$roomId',
         arguments: {'liveItem': null, 'heroTag': roomId.toString()},
       );
       return;
     } else if (host.contains('space')) {
-      var mid = path!.split('/').last;
+      var mid = path.split('/').last;
       Get.toNamed('/member?mid=$mid', arguments: {'face': ''});
       return;
     } else if (host == 'b23.tv') {
@@ -339,7 +332,7 @@ class PiliScheme {
       return;
     }
 
-    if (path != null) {
+    if (path.isNotEmpty) {
       List<String> pathPart = path.split('/');
       final String area = pathPart[1] == 'mobile' ? pathPart[2] : pathPart[1];
       switch (area) {
@@ -371,7 +364,7 @@ class PiliScheme {
         case 'read':
           print('专栏');
           late String id;
-          if (query != null && query['id'] != null) {
+          if (query['id'] != null) {
             id = 'cv${matchNum(query['id']!).first}';
           } else {
             id = 'cv${matchNum(path).first}';

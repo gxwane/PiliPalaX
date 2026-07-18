@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:PiliPalaX/models/video/ai.dart';
-import 'package:PiliPalaX/pages/video/index.dart';
 import 'package:PiliPalaX/utils/utils.dart';
 
 import '../../../plugin/pl_player/controller.dart';

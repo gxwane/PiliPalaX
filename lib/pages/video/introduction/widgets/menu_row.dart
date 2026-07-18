@@ -129,7 +129,7 @@ class ActionRowLineItem extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(30)),
             border: Border.all(
-              color: selectStatus!
+              color: selectStatus
                   ? Colors.transparent
                   : Theme.of(context).colorScheme.secondaryContainer,
             ),
@@ -141,7 +141,7 @@ class ActionRowLineItem extends StatelessWidget {
                 Icon(
                   icon,
                   size: 13,
-                  color: selectStatus!
+                  color: selectStatus
                       ? Theme.of(context).colorScheme.onSecondaryContainer
                       : Theme.of(context).colorScheme.outline,
                 ),
@@ -154,7 +154,7 @@ class ActionRowLineItem extends StatelessWidget {
                   text!,
                   style: TextStyle(
                       fontSize: 13,
-                      color: selectStatus!
+                      color: selectStatus
                           ? Theme.of(context).colorScheme.onSecondaryContainer
                           : Theme.of(context).colorScheme.outline),
                 ),

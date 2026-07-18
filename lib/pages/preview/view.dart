@@ -34,7 +34,6 @@ class _ImagePreviewState extends State<ImagePreview>
   Animation<double>? _doubleClickAnimation;
   late DoubleClickAnimationListener _doubleClickAnimationListener;
   List<double> doubleTapScales = <double>[1.0, 2.0];
-  bool _dismissDisabled = false;
 
   @override
   void initState() {
@@ -170,17 +169,9 @@ class _ImagePreviewState extends State<ImagePreview>
                       //reset to use
                       _doubleClickAnimationController.reset();
 
-                      if (begin == doubleTapScales[0]) {
-                        setState(() {
-                          _dismissDisabled = true;
-                        });
-                        end = doubleTapScales[1];
-                      } else {
-                        setState(() {
-                          _dismissDisabled = false;
-                        });
-                        end = doubleTapScales[0];
-                      }
+                      end = begin == doubleTapScales[0]
+                          ? doubleTapScales[1]
+                          : doubleTapScales[0];
 
                       _doubleClickAnimationListener = () {
                         state.handleDoubleTap(

@@ -1,4 +1,3 @@
-import 'package:PiliPalaX/models/video/ai.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -7,7 +6,6 @@ import 'package:PiliPalaX/utils/utils.dart';
 
 import 'package:PiliPalaX/pages/rank/zone/view.dart';
 
-import '../../../../http/video.dart';
 import '../../widgets/ai_detail.dart';
 import 'package:PiliPalaX/common/widgets/my_dialog.dart';
 

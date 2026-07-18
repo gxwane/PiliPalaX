@@ -7,7 +7,6 @@ import 'package:PiliPalaX/models/common/reply_type.dart';
 import 'package:PiliPalaX/models/video/reply/item.dart';
 import 'package:PiliPalaX/pages/video/reply/widgets/reply_item.dart';
 
-import '../../../../utils/utils.dart';
 import 'controller.dart';
 
 class VideoReplyReplyPanel extends StatefulWidget {

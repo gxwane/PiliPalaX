@@ -19,6 +19,8 @@ class _HiddenSettingState extends State<HiddenSetting> {
     print(val);
   }
 
+  Object? _nullValue() => null;
+
   @override
   Widget build(BuildContext context) {
     TextStyle titleStyle = Theme.of(context).textTheme.titleMedium!;
@@ -47,7 +49,7 @@ class _HiddenSettingState extends State<HiddenSetting> {
                 ),
                 ListTile(
                   onTap: () {
-                    test(null!.value);
+                    test(_nullValue()!);
                   },
                   dense: true,
                   title: const Text('非空断言'),

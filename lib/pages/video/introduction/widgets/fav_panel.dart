@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:PiliPalaX/common/widgets/http_error.dart';
 import 'package:PiliPalaX/utils/feed_back.dart';
 
-import '../../../../../utils/utils.dart';
-
 class FavPanel extends StatefulWidget {
   const FavPanel({super.key, this.ctr});
   final dynamic ctr;

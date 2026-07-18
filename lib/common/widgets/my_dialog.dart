@@ -1,6 +1,5 @@
 import 'package:PiliPalaX/common/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 
 class MyDialog {
   static Future<void> show(BuildContext context, Widget child) {

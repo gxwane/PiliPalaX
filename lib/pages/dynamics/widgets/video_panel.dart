@@ -1,7 +1,6 @@
 // 视频or合集
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:PiliPalaX/common/constants.dart';
 import 'package:PiliPalaX/common/widgets/badge.dart';

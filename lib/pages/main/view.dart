@@ -9,7 +9,6 @@ import 'package:PiliPalaX/models/common/dynamic_badge_mode.dart';
 import 'package:PiliPalaX/pages/dynamics/index.dart';
 import 'package:PiliPalaX/pages/home/index.dart';
 import 'package:PiliPalaX/pages/media/index.dart';
-import 'package:PiliPalaX/utils/event_bus.dart';
 import 'package:PiliPalaX/utils/feed_back.dart';
 import 'package:PiliPalaX/utils/storage.dart';
 import './controller.dart';

@@ -1,10 +1,8 @@
 import 'package:audio_service/audio_service.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:PiliPalaX/plugin/pl_player/index.dart';
 import 'package:PiliPalaX/utils/storage.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 Future<VideoPlayerServiceHandler> initAudioService() async {
   return await AudioService.init(

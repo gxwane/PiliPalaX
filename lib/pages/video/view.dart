@@ -12,7 +12,6 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:nil/nil.dart';
 import 'package:PiliPalaX/common/widgets/network_img_layer.dart';
 import 'package:PiliPalaX/http/user.dart';
 import 'package:PiliPalaX/models/common/search_type.dart';
@@ -29,7 +28,6 @@ import 'package:PiliPalaX/utils/storage.dart';
 import '../../../services/shutdown_timer_service.dart';
 import 'widgets/header_control.dart';
 import 'package:PiliPalaX/common/widgets/spring_physics.dart';
-import 'package:flutter_floating/floating/floating.dart';
 import 'package:flutter_floating/floating/manager/floating_manager.dart';
 import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 

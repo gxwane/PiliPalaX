@@ -35,8 +35,6 @@ import '../pages/member_search/index.dart';
 import '../pages/member_season/view.dart';
 import '../pages/member_series/view.dart';
 import '../pages/msg_feed_top/sys_msg/view.dart';
-import '../pages/rank/view.dart';
-import '../pages/rank/zone/view.dart';
 import '../pages/search/index.dart';
 import '../pages/search_result/index.dart';
 import '../pages/setting/extra_setting.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:PiliPalaX/common/constants.dart';
 import 'package:PiliPalaX/models/live/item.dart';
