@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:PiliPalaX/utils/feed_back.dart';
 
 class ActionRowItem extends StatelessWidget {
-  final Icon? icon;
-  final Icon? selectIcon;
+  final Widget? icon;
+  final Widget? selectIcon;
   final Function? onTap;
   final bool? loadingStatus;
   final String? text;
@@ -46,11 +46,15 @@ class ActionRowItem extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               if (icon != null) ...[
-                Icon(icon!.icon!,
+                IconTheme(
+                  data: IconThemeData(
                     size: 13,
                     color: selectStatus
                         ? Theme.of(context).colorScheme.primary
-                        : Theme.of(context).colorScheme.onSecondaryContainer),
+                        : Theme.of(context).colorScheme.onSecondaryContainer,
+                  ),
+                  child: icon!,
+                ),
                 const SizedBox(width: 6),
               ],
               AnimatedOpacity(

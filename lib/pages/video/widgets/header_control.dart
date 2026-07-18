@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
 import 'dart:math';
 
 // import 'package:fl_pip/fl_pip.dart';
@@ -32,7 +30,6 @@ import '../../danmaku/controller.dart';
 import '../../danmaku_block/index.dart';
 import '../../setting/widgets/select_dialog.dart';
 import 'package:PiliPalaX/pages/video/introduction/detail/index.dart';
-import 'package:marquee/marquee.dart';
 
 class HeaderControl extends StatefulWidget implements PreferredSizeWidget {
   const HeaderControl({
@@ -1611,7 +1608,7 @@ class _HeaderControlState extends State<HeaderControl> {
                 height: 38,
                 child: IconButton(
                   tooltip: '上一页',
-                  icon: const Icon(
+                  icon: const FaIcon(
                     FontAwesomeIcons.arrowLeft,
                     size: 15,
                     color: Colors.white,
@@ -1634,7 +1631,7 @@ class _HeaderControlState extends State<HeaderControl> {
                 height: 38,
                 child: IconButton(
                   tooltip: '返回主页',
-                  icon: const Icon(
+                  icon: const FaIcon(
                     FontAwesomeIcons.house,
                     size: 15,
                     color: Colors.white,

@@ -14,7 +14,6 @@ import 'package:PiliPalaX/common/widgets/stat/danmu.dart';
 import 'package:PiliPalaX/common/widgets/stat/view.dart';
 import 'package:PiliPalaX/models/video_detail_res.dart';
 import 'package:PiliPalaX/pages/video/introduction/detail/controller.dart';
-import 'package:PiliPalaX/pages/video/widgets/ai_detail.dart';
 import 'package:PiliPalaX/utils/feed_back.dart';
 import 'package:PiliPalaX/utils/storage.dart';
 import 'package:PiliPalaX/utils/utils.dart';
@@ -599,7 +598,7 @@ class _VideoInfoState extends State<VideoInfo> with TickerProviderStateMixin {
     return Row(children: <Widget>[
       Obx(
         () => ActionRowItem(
-          icon: const Icon(FontAwesomeIcons.thumbsUp),
+          icon: const FaIcon(FontAwesomeIcons.thumbsUp),
           onTap: handleState(videoIntroController.actionLikeVideo),
           selectStatus: videoIntroController.hasLike.value,
           loadingStatus: loadingStatus,
@@ -622,7 +621,7 @@ class _VideoInfoState extends State<VideoInfo> with TickerProviderStateMixin {
       const SizedBox(width: 8),
       Obx(
         () => ActionRowItem(
-          icon: const Icon(FontAwesomeIcons.heart),
+          icon: const FaIcon(FontAwesomeIcons.heart),
           onTap: () => showFavBottomSheet(),
           onLongPress: () => showFavBottomSheet(type: 'longPress'),
           selectStatus: videoIntroController.hasFav.value,
@@ -634,7 +633,7 @@ class _VideoInfoState extends State<VideoInfo> with TickerProviderStateMixin {
       ),
       const SizedBox(width: 8),
       ActionRowItem(
-        icon: const Icon(FontAwesomeIcons.comment),
+        icon: const FaIcon(FontAwesomeIcons.comment),
         onTap: () {
           videoDetailCtr.tabCtr.animateTo(1);
         },
@@ -645,7 +644,7 @@ class _VideoInfoState extends State<VideoInfo> with TickerProviderStateMixin {
       ),
       const SizedBox(width: 8),
       ActionRowItem(
-          icon: const Icon(FontAwesomeIcons.share),
+          icon: const FaIcon(FontAwesomeIcons.share),
           onTap: () => videoIntroController.actionShareVideo(),
           selectStatus: false,
           loadingStatus: loadingStatus,

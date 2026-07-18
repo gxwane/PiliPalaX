@@ -1229,7 +1229,7 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
                     playerController.showControls.value &&
                     (isEquivalentFullScreen || playerController.controlsLock.value),
                 child: ComBtn(
-                  icon: Icon(
+                  icon: FaIcon(
                     playerController.controlsLock.value
                         ? FontAwesomeIcons.lock
                         : FontAwesomeIcons.lockOpen,

@@ -70,7 +70,7 @@ class _ZanButtonState extends State<ZanButton> {
         onPressed: handleState(onLikeReply),
         child: Row(
           children: [
-            Icon(
+            FaIcon(
               widget.replyItem!.action == 1
                   ? FontAwesomeIcons.solidThumbsUp
                   : FontAwesomeIcons.thumbsUp,

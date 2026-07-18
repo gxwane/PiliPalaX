@@ -331,7 +331,7 @@ Widget forWard(item, context, ctr, source, {floor = 1, String? heroTag}) {
     case 'DYNAMIC_TYPE_NONE':
       return Row(
         children: [
-          const Icon(
+          const FaIcon(
             FontAwesomeIcons.ghost,
             size: 14,
           ),

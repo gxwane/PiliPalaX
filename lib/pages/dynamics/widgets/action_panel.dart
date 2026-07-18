@@ -83,7 +83,7 @@ class _ActionPanelState extends State<ActionPanel> {
             onPressed: () {
                 SmartDialog.showToast('暂不支持');
             },
-            icon: const Icon(
+            icon: const FaIcon(
               FontAwesomeIcons.shareFromSquare,
               size: 16,
               semanticLabel: "转发",
@@ -100,7 +100,7 @@ class _ActionPanelState extends State<ActionPanel> {
           child: TextButton.icon(
             onPressed: () => _dynamicsController.pushDetail(widget.item, 1,
                 action: 'comment'),
-            icon: const Icon(
+            icon: const FaIcon(
               FontAwesomeIcons.comment,
               size: 16,
               semanticLabel: "评论",
@@ -116,7 +116,7 @@ class _ActionPanelState extends State<ActionPanel> {
           flex: 1,
           child: TextButton.icon(
             onPressed: handleState(onLikeDynamic),
-            icon: Icon(
+            icon: FaIcon(
               stat.like!.status!
                   ? FontAwesomeIcons.solidThumbsUp
                   : FontAwesomeIcons.thumbsUp,

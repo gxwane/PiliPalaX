@@ -453,7 +453,7 @@ class _BangumiInfoState extends State<BangumiInfo> {
     return Row(children: [
       Obx(
         () => ActionRowItem(
-          icon: const Icon(FontAwesomeIcons.thumbsUp),
+          icon: const FaIcon(FontAwesomeIcons.thumbsUp),
           onTap: handleState(videoIntroController.actionLikeVideo),
           selectStatus: videoIntroController.hasLike.value,
           loadingStatus: widget.loadingStatus,
@@ -465,7 +465,7 @@ class _BangumiInfoState extends State<BangumiInfo> {
       const SizedBox(width: 8),
       Obx(
         () => ActionRowItem(
-          icon: const Icon(FontAwesomeIcons.b),
+          icon: const FaIcon(FontAwesomeIcons.b),
           onTap: handleState(videoIntroController.actionCoinVideo),
           selectStatus: videoIntroController.hasCoin.value,
           loadingStatus: widget.loadingStatus,
@@ -477,7 +477,7 @@ class _BangumiInfoState extends State<BangumiInfo> {
       const SizedBox(width: 8),
       Obx(
         () => ActionRowItem(
-          icon: const Icon(FontAwesomeIcons.heart),
+          icon: const FaIcon(FontAwesomeIcons.heart),
           onTap: () => showFavBottomSheet(),
           selectStatus: videoIntroController.hasFav.value,
           loadingStatus: widget.loadingStatus,
@@ -488,7 +488,7 @@ class _BangumiInfoState extends State<BangumiInfo> {
       ),
       const SizedBox(width: 8),
       ActionRowItem(
-        icon: const Icon(FontAwesomeIcons.comment),
+        icon: const FaIcon(FontAwesomeIcons.comment),
         onTap: () {
           videoDetailCtr.tabCtr.animateTo(1);
         },
@@ -500,7 +500,7 @@ class _BangumiInfoState extends State<BangumiInfo> {
       ),
       const SizedBox(width: 8),
       ActionRowItem(
-          icon: const Icon(FontAwesomeIcons.share),
+          icon: const FaIcon(FontAwesomeIcons.share),
           onTap: () => videoIntroController.actionShareVideo(),
           selectStatus: false,
           loadingStatus: widget.loadingStatus,

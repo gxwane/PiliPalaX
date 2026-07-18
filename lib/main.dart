@@ -1,7 +1,6 @@
 import 'dart:io';
 
 // import 'package:PiliPalaX/plugin/pl_player/android_window.dart';
-import 'package:PiliPalaX/plugin/pl_player/view.dart';
 
 // import 'package:android_window/android_window.dart';
 // import 'package:android_window/main.dart' as android_window;
@@ -178,11 +177,13 @@ class MyApp extends StatelessWidget {
             primaryKey: lightDynamic.primary,
             brightness: Brightness.light,
             variant: variant,
+            useExpressiveOnContainerColors: false,
           );
           darkColorScheme = SeedColorScheme.fromSeeds(
             primaryKey: darkDynamic.primary,
             brightness: Brightness.dark,
             variant: variant,
+            useExpressiveOnContainerColors: false,
           );
         } else {
           // dynamic取色失败，采用品牌色
@@ -190,11 +191,13 @@ class MyApp extends StatelessWidget {
             primaryKey: brandColor,
             brightness: Brightness.light,
             variant: variant,
+            useExpressiveOnContainerColors: false,
           );
           darkColorScheme = SeedColorScheme.fromSeeds(
             primaryKey: brandColor,
             brightness: Brightness.dark,
             variant: variant,
+            useExpressiveOnContainerColors: false,
           );
         }
         // 图片缓存
