@@ -9,16 +9,17 @@ pluginManagement {
 
     includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 
+    def useChinaMirrors = providers.gradleProperty("useChinaMirrors")
+        .map { it.toBoolean() }
+        .getOrElse(false) && System.getenv("CI") != "true"
+
     repositories {
-        if (System.getenv("CI") != "true") {
-            maven { url "https://maven.aliyun.com/repository/google" }
-            maven { url "https://maven.aliyun.com/repository/central" }
-            maven { url "https://maven.aliyun.com/repository/jcenter" }
-            maven { url "https://maven.aliyun.com/repository/public" }
+        if (useChinaMirrors) {
+            maven { url = uri("https://maven.aliyun.com/repository/google") }
+            maven { url = uri("https://maven.aliyun.com/repository/central") }
+            maven { url = uri("https://maven.aliyun.com/repository/public") }
         }
-        maven { url "http://download.flutter.io"
-            allowInsecureProtocol = true
-        }
+        maven { url = uri("https://storage.googleapis.com/download.flutter.io") }
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -27,9 +28,8 @@ pluginManagement {
 
 plugins {
     id "dev.flutter.flutter-plugin-loader" version "1.0.0"
-    id "com.android.application" version "8.7.0" apply false
-//    id "com.android.library" version "8.7.0" apply false
-    id "org.jetbrains.kotlin.android" version "2.0.20" apply false
+    id "com.android.application" version "8.11.1" apply false
+    id "org.jetbrains.kotlin.android" version "2.2.20" apply false
 }
 
 include ":app"

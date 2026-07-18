@@ -1,3 +1,5 @@
+import com.android.build.OutputFile
+
 plugins {
     id "com.android.application"
     id "kotlin-android"
@@ -34,15 +36,14 @@ def _keyAlias = System.getenv("KEY_ALIAS") ?: keystoreProperties["keyAlias"]
 def _keyPassword = System.getenv("KEY_PASSWORD") ?: keystoreProperties["keyPassword"]
 
 android {
-    compileSdkVersion 35
+    compileSdk = flutter.compileSdkVersion
 
-    namespace 'com.orz12.PiliPalaX'
-    // ndkVersion flutter.ndkVersion
-    ndkVersion = "28.2.13676358"
+    namespace = 'com.orz12.PiliPalaX'
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
         encoding = "UTF-8"
     }
 
@@ -55,26 +56,26 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.orz12.PiliPalaX"
+        applicationId = "com.orz12.PiliPalaX"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
-        minSdkVersion flutter.minSdkVersion
-        multiDexEnabled true
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutterVersionCode.toInteger()
+        versionName = flutterVersionName
+        minSdk = flutter.minSdkVersion
+        multiDexEnabled = true
     }
 
     signingConfigs {
         // 添加签名配置
         release {
             // 配置密钥库文件的位置、别名、密码等信息
-            storeFile _storeFile
-            storePassword _storePassword
-            keyAlias _keyAlias
-            keyPassword _keyPassword
-            v1SigningEnabled true
-            v2SigningEnabled true
+            storeFile = _storeFile
+            storePassword = _storePassword
+            keyAlias = _keyAlias
+            keyPassword = _keyPassword
+            v1SigningEnabled = true
+            v2SigningEnabled = true
         }
     }
 
@@ -82,17 +83,17 @@ android {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.release
+            signingConfig = signingConfigs.release
         }
         debug {
             //applicationId "com.orz12.PiliPalaX.debug"
-            applicationIdSuffix ".debug"
+            applicationIdSuffix = ".debug"
         }
     }
 }
 
 flutter {
-    source '../..'
+    source = '../..'
 }
 
 dependencies {
@@ -100,13 +101,20 @@ dependencies {
     api 'org.conscrypt:conscrypt-android:2.5.2'
 }
 
-ext.abiCodes = ["x86_64": 1, "armeabi-v7a": 2, "arm64-v8a": 3]
-import com.android.build.OutputFile
-android.applicationVariants.all { variant ->
-  variant.outputs.each { output ->
-    def abiVersionCode = project.ext.abiCodes.get(output.getFilter(OutputFile.ABI))
-    if (abiVersionCode != null) {
-      output.versionCodeOverride = variant.versionCode * 10 + abiVersionCode
+def abiCodes = [
+    "x86_64": 1,
+    "armeabi-v7a": 2,
+    "arm64-v8a": 3,
+]
+
+// Flutter 3.38 still rewrites split version codes through the legacy variant
+// API (flutter/flutter#166550), so this normalization must run after Flutter's
+// own listener until that upstream migration is complete.
+android.applicationVariants.configureEach { variant ->
+    variant.outputs.each { output ->
+        def abiCode = abiCodes[output.getFilter(OutputFile.ABI)]
+        if (abiCode != null) {
+            output.versionCodeOverride = variant.versionCode * 10 + abiCode
+        }
     }
-  }
 }
