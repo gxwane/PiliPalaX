@@ -30,4 +30,15 @@ void main() {
       );
     }
   });
+
+  test('root analysis excludes the standalone fl_pip example app', () {
+    final analysisOptions = File('analysis_options.yaml').readAsStringSync();
+
+    expect(
+      analysisOptions,
+      contains('packages/fl_pip/example/**'),
+      reason:
+          'the example has its own dependency graph and is not part of the app',
+    );
+  });
 }
