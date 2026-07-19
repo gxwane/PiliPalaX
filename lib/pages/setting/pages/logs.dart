@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:PiliPalaX/common/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:PiliPalaX/common/widgets/no_data.dart';
@@ -36,8 +37,9 @@ class _LogsPageState extends State<LogsPage> {
     List contentList = fileContent.split(splitToken).map((item) {
       return item
           .replaceAll(
-              '============================== CATCHER 2 LOG ==============================',
-              'PiliPalaX错误日志\n********************')
+            '============================== CATCHER 2 LOG ==============================',
+            'PiliPalaX错误日志\n********************',
+          )
           .replaceAll('DEVICE INFO', '设备信息')
           .replaceAll('APP INFO', '应用信息')
           .replaceAll('ERROR', '错误信息')
@@ -53,7 +55,7 @@ class _LogsPageState extends State<LogsPage> {
             if (l.startsWith("Crash occurred on")) {
               try {
                 date = DateTime.parse(
-                  l.split("Crash occurred on")[1].trim(),//.split('.')[0],
+                  l.split("Crash occurred on")[1].trim(), //.split('.')[0],
                 );
               } catch (e) {
                 debugPrint(e.toString());
@@ -75,15 +77,15 @@ class _LogsPageState extends State<LogsPage> {
   void copyLogs() async {
     await Clipboard.setData(ClipboardData(text: fileContent));
     if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('复制成功')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('复制成功')));
     }
   }
 
   void feedback() {
     launchUrl(
-      Uri.parse('https://github.com/orz12/pilipala/issues'),
+      Uri.parse(ProjectLinks.issues),
       // 系统自带浏览器打开
       mode: LaunchMode.externalApplication,
     );
@@ -92,9 +94,9 @@ class _LogsPageState extends State<LogsPage> {
   void clearLogsHandle() async {
     if (await clearLogs()) {
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('已清空')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('已清空')));
         logsContent = [];
         setState(() {});
       }
@@ -126,18 +128,12 @@ class _LogsPageState extends State<LogsPage> {
               }
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-              const PopupMenuItem<String>(
-                value: 'copy',
-                child: Text('复制日志'),
-              ),
+              const PopupMenuItem<String>(value: 'copy', child: Text('复制日志')),
               const PopupMenuItem<String>(
                 value: 'feedback',
                 child: Text('错误反馈'),
               ),
-              const PopupMenuItem<String>(
-                value: 'clear',
-                child: Text('清空日志'),
-              ),
+              const PopupMenuItem<String>(value: 'clear', child: Text('清空日志')),
             ],
           ),
           const SizedBox(width: 6),
@@ -178,7 +174,7 @@ class _LogsPageState extends State<LogsPage> {
                           },
                           icon: const Icon(Icons.copy_outlined, size: 16),
                           label: const Text('复制'),
-                        )
+                        ),
                       ],
                     ),
                     Padding(
@@ -197,11 +193,7 @@ class _LogsPageState extends State<LogsPage> {
                 );
               },
             )
-          : const CustomScrollView(
-              slivers: <Widget>[
-                NoData(),
-              ],
-            ),
+          : const CustomScrollView(slivers: <Widget>[NoData()]),
     );
   }
 }

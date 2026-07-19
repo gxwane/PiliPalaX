@@ -5,6 +5,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
+import 'package:PiliPalaX/common/constants.dart';
+import 'package:PiliPalaX/utils/app_update.dart';
 import 'package:PiliPalaX/utils/storage.dart';
 import 'package:PiliPalaX/utils/storage_contract.dart';
 import 'package:crypto/crypto.dart';
@@ -88,17 +90,18 @@ class Utils {
     if (videoItem.title is String) {
       semanticsLabel += videoItem.title;
     } else {
-      semanticsLabel +=
-          videoItem.title.map((e) => e['text'] as String).join('');
+      semanticsLabel += videoItem.title
+          .map((e) => e['text'] as String)
+          .join('');
     }
 
     if (!emptyStatCheck(videoItem.stat.view)) {
       semanticsLabel += ',${Utils.numFormat(videoItem.stat.view)}';
       semanticsLabel +=
           (videoItem.runtimeType.toString() == "RecVideoItemAppModel" &&
-                  videoItem.goto == 'picture')
-              ? '浏览'
-              : '播放';
+              videoItem.goto == 'picture')
+          ? '浏览'
+          : '播放';
     }
     if (!emptyStatCheck(videoItem.stat.danmu)) {
       semanticsLabel += ',${Utils.numFormat(videoItem.stat.danmu)}弹幕';
@@ -151,8 +154,9 @@ class Utils {
 
   // 完全相对时间显示
   static String formatTimestampToRelativeTime(timeStamp) {
-    var difference = DateTime.now()
-        .difference(DateTime.fromMillisecondsSinceEpoch(timeStamp * 1000));
+    var difference = DateTime.now().difference(
+      DateTime.fromMillisecondsSinceEpoch(timeStamp * 1000),
+    );
 
     if (difference.inDays > 365) {
       return '${difference.inDays ~/ 365}年前';
@@ -185,7 +189,10 @@ class Utils {
       currentYearStr = 'MM-DD hh:mm';
       lastYearStr = 'YY-MM-DD hh:mm';
       return CustomStamp_str(
-          timestamp: timeStamp, date: lastYearStr, toInt: false);
+        timestamp: timeStamp,
+        date: lastYearStr,
+        toInt: false,
+      );
     } else if (formatType == 'day') {
       if (distance <= 43200) {
         return CustomStamp_str(
@@ -209,10 +216,16 @@ class Utils {
     } else if (DateTime.fromMillisecondsSinceEpoch(time * 1000).year ==
         DateTime.fromMillisecondsSinceEpoch(timeStamp * 1000).year) {
       return CustomStamp_str(
-          timestamp: timeStamp, date: currentYearStr, toInt: false);
+        timestamp: timeStamp,
+        date: currentYearStr,
+        toInt: false,
+      );
     } else {
       return CustomStamp_str(
-          timestamp: timeStamp, date: lastYearStr, toInt: false);
+        timestamp: timeStamp,
+        date: lastYearStr,
+        toInt: false,
+      );
     }
   }
 
@@ -223,8 +236,9 @@ class Utils {
     bool toInt = true, // 去除0开头
   }) {
     timestamp ??= (DateTime.now().millisecondsSinceEpoch / 1000).round();
-    String timeStr =
-        (DateTime.fromMillisecondsSinceEpoch(timestamp * 1000)).toString();
+    String timeStr = (DateTime.fromMillisecondsSinceEpoch(
+      timestamp * 1000,
+    )).toString();
 
     dynamic dateArr = timeStr.split(' ')[0];
     dynamic timeArr = timeStr.split(' ')[1];
@@ -307,72 +321,54 @@ class Utils {
     return closestNumber;
   }
 
-  // 版本对比
-  static bool needUpdate(localVersion, remoteVersion) {
-    // 1.0.22-alpha.13+174 is newer then 1.0.22-beta.12+174
-    // 1.0.22-beta.13+174 is newer then 1.0.22-alpha.13+174
-    // 1.0.23+174 is newer than 1.0.22-beta.13+174
-    print('localVersion: $localVersion, remoteVersion: $remoteVersion');
-    if (localVersion == remoteVersion) {
-      return false;
+  static Future<LatestDataModel?> findAppUpdate(
+    String localVersion, {
+    String userAgent = 'mob',
+  }) async {
+    final parsedLocalVersion = AppUpdatePolicy.parseVersion(localVersion);
+    if (parsedLocalVersion == null) {
+      throw const FormatException('Invalid local application version');
     }
-    List<String> localVersionList0 = localVersion.split('+');
-    List<String> remoteVersionList0 = remoteVersion.split('+');
-    // 如果version code不同，则直接返回
-    if (localVersionList0[1] != remoteVersionList0[1]) {
-      return int.parse(localVersionList0[1]) < int.parse(remoteVersionList0[1]);
-    }
-    // 判断version name
-    List<String> localVersionList = localVersionList0[0].split('-');
-    List<String> remoteVersionList = remoteVersionList0[0].split('-');
-    if (localVersionList[0] != remoteVersionList[0]) {
-      List<String> localVersionParts = localVersionList[0].split('.');
-      List<String> remoteVersionParts = remoteVersionList[0].split('.');
-      int len = min(localVersionParts.length, remoteVersionParts.length);
-      for (int i = 0; i < len; i++) {
-        if (int.parse(localVersionParts[i]) !=
-            int.parse(remoteVersionParts[i])) {
-          return int.parse(localVersionParts[i]) <
-              int.parse(remoteVersionParts[i]);
-        }
-      }
-      return localVersionParts.length < remoteVersionParts.length;
-    } else if (localVersionList.length == 1 || remoteVersionList.length == 1) {
-      return localVersionList.length < remoteVersionList.length;
+
+    final endpoint = parsedLocalVersion.isPreRelease
+        ? ProjectLinks.releasesApi
+        : ProjectLinks.latestReleaseApi;
+    final response = await Request().get(endpoint, extra: {'ua': userAgent});
+    final rawData = response.data;
+    final List<LatestDataModel> releases;
+
+    if (rawData is List) {
+      releases = rawData
+          .whereType<Map<String, dynamic>>()
+          .map(LatestDataModel.fromJson)
+          .toList(growable: false);
+    } else if (rawData is Map<String, dynamic> &&
+        rawData['tag_name'] is String) {
+      releases = <LatestDataModel>[LatestDataModel.fromJson(rawData)];
     } else {
-      List<String> localVersionParts = localVersionList[1].split('.');
-      List<String> remoteVersionParts = remoteVersionList[1].split('.');
-      if (localVersionParts.length > 1 && remoteVersionParts.length > 1) {
-        if (localVersionParts[1] != remoteVersionParts[1]) {
-          return int.parse(localVersionParts[1]) <
-              int.parse(remoteVersionParts[1]);
-        }
-        return localVersionParts[0].compareTo(remoteVersionParts[0]) < 0;
-      }
-      return localVersionParts[0].compareTo(remoteVersionParts[0]) < 0;
+      throw const FormatException('Invalid GitHub Releases response');
     }
+
+    return AppUpdatePolicy.selectRelease(
+      localVersion: localVersion,
+      releases: releases,
+    );
   }
 
   // 检查更新
   static Future<bool> checkUpdate() async {
     SmartDialog.dismiss();
-    var currentInfo = await PackageInfo.fromPlatform();
-    var result = await Request().get(Api.latestApp, extra: {'ua': 'mob'});
-    if (result.data.isEmpty) {
-      SmartDialog.showToast('检查更新失败，github接口未返回数据，请检查网络');
+    final currentInfo = await PackageInfo.fromPlatform();
+    final localVersion = '${currentInfo.version}+${currentInfo.buildNumber}';
+    late final LatestDataModel? data;
+    try {
+      data = await findAppUpdate(localVersion);
+    } catch (_) {
+      SmartDialog.showToast('检查更新失败，请检查网络后重试');
       return false;
     }
-    LatestDataModel data = LatestDataModel.fromJson(result.data[0]);
-    String buildNumber = currentInfo.buildNumber;
-    String remoteVersion = data.tagName!;
-    if (Platform.isAndroid) {
-      buildNumber = buildNumber.substring(0, buildNumber.length - 1);
-    } else if (Platform.isIOS) {
-      remoteVersion = remoteVersion.replaceAll('-beta', '');
-    }
-    bool isUpdate =
-        Utils.needUpdate("${currentInfo.version}+$buildNumber", remoteVersion);
-    if (isUpdate) {
+    final update = data;
+    if (update != null) {
       SmartDialog.show(
         useSystem: true,
         animationType: SmartAnimationType.centerFade_otherSlide,
@@ -388,24 +384,25 @@ class Utils {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      data.tagName!,
+                      update.tagName ?? '',
                       style: const TextStyle(fontSize: 20),
                     ),
                     const SizedBox(height: 8),
-                    Text(data.body!),
+                    Text(update.body),
                     TextButton(
-                        onPressed: () {
-                          launchUrl(
-                            Uri.parse(
-                                "https://github.com/orz12/pilipala/commits/main/"),
-                            mode: LaunchMode.externalApplication,
-                          );
-                        },
-                        child: Text(
-                          "点此查看完整更新（即commit）内容",
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary),
-                        )),
+                      onPressed: () {
+                        launchUrl(
+                          Uri.parse(update.htmlUrl ?? ProjectLinks.releases),
+                          mode: LaunchMode.externalApplication,
+                        );
+                      },
+                      child: Text(
+                        '查看完整发行说明',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -418,21 +415,23 @@ class Utils {
                 },
                 child: Text(
                   '不再提醒',
-                  style:
-                      TextStyle(color: Theme.of(context).colorScheme.outline),
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.outline,
+                  ),
                 ),
               ),
               TextButton(
                 onPressed: () => SmartDialog.dismiss(),
                 child: Text(
                   '取消',
-                  style:
-                      TextStyle(color: Theme.of(context).colorScheme.outline),
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.outline,
+                  ),
                 ),
               ),
               TextButton(
-                onPressed: () => matchVersion(data),
-                child: const Text('Github'),
+                onPressed: () => matchVersion(update),
+                child: const Text('下载'),
               ),
             ],
           );
@@ -443,28 +442,28 @@ class Utils {
   }
 
   // 下载适用于当前系统的安装包
-  static Future matchVersion(data) async {
+  static Future<void> matchVersion(LatestDataModel data) async {
     await SmartDialog.dismiss();
-    // 获取设备信息
-    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    final releaseUrl = data.htmlUrl ?? ProjectLinks.releases;
     if (Platform.isAndroid) {
-      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-      // [arm64-v8a]
-      String abi = androidInfo.supportedAbis.first;
-      late String downloadUrl;
-      if (data.assets.isNotEmpty) {
-        for (var i in data.assets) {
-          if (i.downloadUrl.contains(abi)) {
-            downloadUrl = i.downloadUrl;
-          }
-        }
-        // 应用外下载
-        launchUrl(
-          Uri.parse(downloadUrl),
+      final androidInfo = await DeviceInfoPlugin().androidInfo;
+      final abi = androidInfo.supportedAbis.isEmpty
+          ? ''
+          : androidInfo.supportedAbis.first;
+      final asset = AppUpdatePolicy.selectAndroidAsset(data.assets, abi);
+      if (asset != null) {
+        await launchUrl(
+          Uri.parse(asset.downloadUrl!),
           mode: LaunchMode.externalApplication,
         );
+        return;
       }
+      SmartDialog.showToast('未找到适用于当前设备的安装包，已打开发行页面');
     }
+    await launchUrl(
+      Uri.parse(releaseUrl),
+      mode: LaunchMode.externalApplication,
+    );
   }
 
   // 时间戳转时间
@@ -497,7 +496,10 @@ class Utils {
   // }
 
   static String appSign(
-      Map<String, dynamic> params, String appkey, String appsec) {
+    Map<String, dynamic> params,
+    String appkey,
+    String appsec,
+  ) {
     params['appkey'] = appkey;
     var searchParams = Uri(queryParameters: params).query;
     var sortedParams = searchParams.split('&')..sort();
@@ -511,8 +513,10 @@ class Utils {
   }
 
   static List<int> generateRandomBytes(int minLength, int maxLength) {
-    return List<int>.generate(random.nextInt(maxLength - minLength + 1),
-        (_) => random.nextInt(0x60) + 0x20);
+    return List<int>.generate(
+      random.nextInt(maxLength - minLength + 1),
+      (_) => random.nextInt(0x60) + 0x20,
+    );
   }
 
   static String base64EncodeRandomString(int minLength, int maxLength) {

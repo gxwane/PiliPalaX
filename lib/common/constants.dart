@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
 
+class ProjectLinks {
+  ProjectLinks._();
+
+  static const String repository = 'https://github.com/gxwane/PiliPalaX';
+  static const String issues = '$repository/issues';
+  static const String releases = '$repository/releases';
+  static const String changelog = '$repository/blob/main/CHANGELOG.md';
+  static const String releasesApi =
+      'https://api.github.com/repos/gxwane/PiliPalaX/releases';
+  static const String latestReleaseApi = '$releasesApi/latest';
+}
+
 class StyleString {
   static const double cardSpace = 8;
   static const double safeSpace = 12;
@@ -21,8 +33,9 @@ class Constants {
   static const String traceId =
       '11111111111111111111111111111111:1111111111111111:0:0';
   static const String userAgent =
-  'Mozilla/5.0 BiliDroid/1.46.2 (bbcallen@gmail.com) os/android model/vivo mobi_app/android_hd build/2001100 channel/yingyongbao innerVer/2001100 osVer/14 network/2';
-  static const String statistics = '%7B%22appId%22%3A5%2C%22platform%22%3A3%2C%22version%22%3A%221.46.2%22%2C%22abtest%22%3A%22%22%7D';
+      'Mozilla/5.0 BiliDroid/1.46.2 (bbcallen@gmail.com) os/android model/vivo mobi_app/android_hd build/2001100 channel/yingyongbao innerVer/2001100 osVer/14 network/2';
+  static const String statistics =
+      '%7B%22appId%22%3A5%2C%22platform%22%3A3%2C%22version%22%3A%221.46.2%22%2C%22abtest%22%3A%22%22%7D';
   //Uri.encodeComponent('{"appId": 5,"platform": 3,"version": "1.46.2","abtest": ""}');
 
   //内容来自 https://passport.bilibili.com/web/generic/country/list
@@ -241,6 +254,6 @@ class Constants {
     {"id": 84, "cname": "海地", "country_id": "509"},
     {"id": 83, "cname": "关岛", "country_id": "1671"},
     {"id": 82, "cname": "瓜德罗普岛", "country_id": "590"},
-    {"id": 69, "cname": "菲律宾", "country_id": "63"}
+    {"id": 69, "cname": "菲律宾", "country_id": "63"},
   ];
 }

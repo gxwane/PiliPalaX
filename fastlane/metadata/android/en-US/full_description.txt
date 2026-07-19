@@ -1,10 +1,14 @@
-PiliPalaX is a third-party Bilibili client developed in Flutter, 
-fork from PiliPala (https://github.com/guozhigq/pilipala).
+PiliPalaX is an unofficial third-party Bilibili client built with Flutter for Android and iOS.
 
-Top Features:
+Key features:
 
-* List of recommended videos
-* List of hottest videos
-* Popular live streams
-* List of bangumis
-* Block videos from blacklisted users
+* Recommendations, trending videos, live streams, bangumi, feeds, and search
+* Video and audio quality selection, danmaku, subtitles, playback speed, gestures, and picture-in-picture
+* Likes, coins, favorites, comments, follows, watch later, and viewing history
+* Light and dark themes, dynamic colors, landscape support, guest mode, and incognito mode
+
+This project is maintained through human-AI collaboration. OpenAI Codex assists with parts of the code, issue analysis, testing, and documentation, and changes are manually tested before release.
+
+PiliPalaX continues development based on guozhigq/pilipala and orz12/PiliPalaX. We thank the original authors and all contributors.
+
+PiliPalaX is unofficial and is not affiliated with, authorized by, or partnered with Bilibili or its related entities. This project is intended only for learning and technical exchange. Users must follow applicable laws and platform rules.

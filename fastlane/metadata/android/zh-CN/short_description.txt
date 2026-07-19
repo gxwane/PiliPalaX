@@ -1,1 +1,1 @@
-使用 Flutter 开发的 BiliBili 第三方客户端
+使用 Flutter 开发的哔哩哔哩非官方第三方客户端

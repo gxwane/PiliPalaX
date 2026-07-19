@@ -1,4 +1,5 @@
 name: PiliPalaX Release
+
 on:
   push:
     tags:
@@ -8,119 +9,180 @@ permissions:
   contents: write
 
 jobs:
-  build_matrix:
-    name: Build Release (${{ matrix.target_platform }})
-    runs-on: ${{ matrix.build_os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        target_platform: [android-split-per-abi, android-universal, iOS]
-        include:
-          - build_os: ubuntu-latest
-          - target_platform: iOS
-            build_os: macos-latest
-
+  prepare:
+    name: Validate release metadata
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      prerelease: ${{ steps.version.outputs.prerelease }}
     steps:
-      - name: Checkout code
+      - name: Checkout tag
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: 安装Java环境
-        uses: actions/setup-java@v4
-        if: startsWith(matrix.target_platform, 'android')
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 安装Flutter
+      - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: 3.38.7
           channel: stable
+          cache: true
+      - name: Validate tag and pubspec version
+        id: version
+        shell: bash
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          pub_version=$(sed -n 's/^version:[[:space:]]*//p' pubspec.yaml | head -n 1 | tr -d '\r')
+          version="${pub_version%%+*}"
 
-      - name: 下载依赖
+          if [[ ! "${version}" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$ ]]; then
+            echo "pubspec.yaml contains an invalid semantic version: ${pub_version}" >&2
+            exit 1
+          fi
+          if [[ "${tag}" != "v${version}" ]]; then
+            echo "Tag ${tag} does not match pubspec version ${pub_version}; expected v${version}" >&2
+            exit 1
+          fi
+
+          echo "version=${version}" >> "${GITHUB_OUTPUT}"
+          if [[ "${version}" == *-* ]]; then
+            echo "prerelease=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "prerelease=false" >> "${GITHUB_OUTPUT}"
+          fi
+      - name: Resolve locked dependencies
         run: flutter pub get --enforce-lockfile
+      - name: Extract release notes from changelog
+        run: dart run tool/extract_changelog.dart "${{ github.ref_name }}" build/release-notes.md
+      - name: Upload release notes
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-notes
+          path: build/release-notes.md
+          if-no-files-found: error
+          retention-days: 7
 
-
-      - name: 解码生成 jks
-        if: startsWith(matrix.target_platform, 'android')
-        run: echo $KEYSTORE_BASE64 | base64 -di > android/app/vvex.jks
+  build:
+    name: Build ${{ matrix.target }}
+    needs: prepare
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: android-split-per-abi
+            platform: android
+            os: ubuntu-latest
+          - target: android-universal
+            platform: android
+            os: ubuntu-latest
+          - target: ios-unsigned
+            platform: ios
+            os: macos-latest
+    steps:
+      - name: Checkout tag
+        uses: actions/checkout@v4
+      - name: Set up Java
+        if: matrix.platform == 'android'
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 17
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.38.7
+          channel: stable
+          cache: true
+      - name: Resolve locked dependencies
+        run: flutter pub get --enforce-lockfile
+      - name: Configure Android signing
+        if: matrix.platform == 'android'
+        shell: bash
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-
-      - name: flutter build apk (universal)
-        if: matrix.target_platform == 'android-universal'
-        run: flutter build apk --release
+        run: |
+          if [[ -z "${KEYSTORE_BASE64}" ]]; then
+            echo "KEYSTORE_BASE64 is not configured" >&2
+            exit 1
+          fi
+          printf '%s' "${KEYSTORE_BASE64}" | base64 --decode > android/app/vvex.jks
+      - name: Build split Android APKs
+        if: matrix.target == 'android-split-per-abi'
+        run: flutter build apk --release --split-per-abi --no-pub
         env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-
-      - name: flutter build apk (split-per-abi)
-        if: matrix.target_platform == 'android-split-per-abi'
-        run: flutter build apk --release --split-per-abi
+      - name: Build universal Android APK
+        if: matrix.target == 'android-universal'
+        run: flutter build apk --release --no-pub
         env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-
-      - name: flutter build ios
-        if: matrix.target_platform == 'iOS'
+      - name: Build unsigned iOS app
+        if: matrix.platform == 'ios'
+        run: flutter build ios --release --no-codesign --no-pub
+      - name: Package split Android APKs
+        if: matrix.target == 'android-split-per-abi'
+        shell: bash
         run: |
-          flutter build ios --release --no-codesign
-          ln -sf build/ios/iphoneos Payload
-          zip -r9 app.ipa Payload/runner.app
-
-      - name: 重命名安装包
-        if: startsWith(matrix.target_platform, 'android')
+          version='${{ needs.prepare.outputs.version }}'
+          mkdir -p build/release
+          cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk "build/release/PiliPalaX-android-arm64-v8a-v${version}.apk"
+          cp build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk "build/release/PiliPalaX-android-armeabi-v7a-v${version}.apk"
+          cp build/app/outputs/flutter-apk/app-x86_64-release.apk "build/release/PiliPalaX-android-x86_64-v${version}.apk"
+      - name: Package universal Android APK
+        if: matrix.target == 'android-universal'
+        shell: bash
         run: |
-          version_name=${{ github.ref_name }}
-          for file in build/app/outputs/flutter-apk/app-*.apk; do
-            if [[ $file =~ app-(.?*)release.apk ]]; then
-              new_file_name="build/app/outputs/flutter-apk/Pili-${BASH_REMATCH[1]}${version_name}.apk"
-              mv "$file" "$new_file_name"
-            fi
-          done
-
-      - name: 重命名安装包(iOS)
-        if: matrix.target_platform == 'iOS'
+          version='${{ needs.prepare.outputs.version }}'
+          mkdir -p build/release
+          cp build/app/outputs/flutter-apk/app-release.apk "build/release/PiliPalaX-android-universal-v${version}.apk"
+      - name: Package unsigned iOS IPA
+        if: matrix.platform == 'ios'
+        shell: bash
         run: |
-          version_name=${{ github.ref_name }}
-          for file in app.ipa; do
-            new_file_name="build/Pili-${version_name}.ipa"
-            mv "$file" "$new_file_name"
-          done
-
-      - name: 上传至Artifacts (${{ matrix.target_platform }})
-        if : startsWith(matrix.target_platform, 'android')
+          version='${{ needs.prepare.outputs.version }}'
+          mkdir -p build/release Payload
+          cp -R build/ios/iphoneos/Runner.app Payload/
+          zip -qry "build/release/PiliPalaX-ios-unsigned-v${version}.ipa" Payload
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: PiliPalaX-${{ matrix.target_platform }}
-          path: build/app/outputs/flutter-apk/Pili-*.apk
+          name: PiliPalaX-${{ matrix.target }}
+          path: build/release/*
+          if-no-files-found: error
+          retention-days: 14
 
-      - name: 上传至Artifacts (iOS)
-        if: matrix.target_platform == 'iOS'
-        uses: actions/upload-artifact@v4
-        with:
-          name: PiliPalaX-iOS
-          path: build/Pili-*.ipa
-
-  upload:
-    name: Upload Release
+  publish:
+    name: Publish GitHub Release
+    needs: [prepare, build]
     runs-on: ubuntu-latest
-    needs: build_matrix
-
+    timeout-minutes: 15
     steps:
-      - name: 从Artifacts下载
+      - name: Download build artifacts
         uses: actions/download-artifact@v4
-
-      - name: 上传至GitHub Release
+        with:
+          pattern: PiliPalaX-*
+          path: dist
+          merge-multiple: true
+      - name: Download release notes
+        uses: actions/download-artifact@v4
+        with:
+          name: release-notes
+          path: release-notes
+      - name: Publish release
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: PiliPalaX-*/*
-          prerelease: ${{ contains(github.ref_name, 'beta') }}
-          generateReleaseNotes: true
+          tag: ${{ github.ref_name }}
+          name: PiliPalaX v${{ needs.prepare.outputs.version }}
+          artifacts: dist/*
+          artifactErrorsFailBuild: true
+          bodyFile: release-notes/release-notes.md
+          prerelease: ${{ needs.prepare.outputs.prerelease }}
+          generateReleaseNotes: false
           allowUpdates: true

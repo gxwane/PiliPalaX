@@ -1,1 +1,1 @@
-A third-party Bilibili client developed in Flutter
+An unofficial Bilibili client built with Flutter
