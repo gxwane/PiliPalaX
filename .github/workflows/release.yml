@@ -110,14 +110,14 @@ jobs:
           printf '%s' "${KEYSTORE_BASE64}" | base64 --decode > android/app/vvex.jks
       - name: Build split Android APKs
         if: matrix.target == 'android-split-per-abi'
-        run: flutter build apk --release --split-per-abi --no-pub
+        run: flutter build apk --release --split-per-abi
         env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       - name: Build universal Android APK
         if: matrix.target == 'android-universal'
-        run: flutter build apk --release --no-pub
+        run: flutter build apk --release
         env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}

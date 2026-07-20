@@ -74,6 +74,31 @@ void main() {
     }
   });
 
+  test('Android release builds regenerate release-mode plugin metadata', () {
+    final release = File('.github/workflows/release.yml').readAsStringSync();
+    final releaseBuildCommands = release
+        .split(RegExp(r'\r?\n'))
+        .map((line) => line.trim())
+        .where((line) => line.startsWith('run: flutter build apk --release'))
+        .toList();
+
+    expect(releaseBuildCommands, hasLength(2));
+    expect(
+      releaseBuildCommands,
+      everyElement(isNot(contains('--no-pub'))),
+      reason:
+          'Release builds must regenerate plugin metadata so dev-only native '
+          'plugins are filtered out.',
+    );
+
+    final validation = File(
+      '.github/workflows/upgrade-validation.yml',
+    ).readAsStringSync();
+    expect(validation, contains('name: Build Android release APK'));
+    expect(validation, contains('run: flutter build apk --release'));
+    expect(validation, isNot(contains('flutter build apk --debug --no-pub')));
+  });
+
   test('obsolete alpha distribution workflow is removed', () {
     expect(File('.github/workflows/alpha.yml').existsSync(), isFalse);
   });

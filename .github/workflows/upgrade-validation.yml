@@ -30,7 +30,7 @@ jobs:
         run: flutter test --no-pub
 
   android:
-    name: Build Android debug APK
+    name: Build Android release APK
     needs: quality
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -50,8 +50,25 @@ jobs:
           cache: true
       - name: Resolve locked dependencies
         run: flutter pub get --enforce-lockfile
+      - name: Create validation signing key
+        shell: bash
+        run: |
+          keytool -genkeypair -noprompt \
+            -keystore "${RUNNER_TEMP}/validation.jks" \
+            -storepass validation \
+            -alias validation \
+            -keypass validation \
+            -dname "CN=PiliPalaX CI" \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 1
       - name: Build
-        run: flutter build apk --debug --no-pub
+        run: flutter build apk --release
+        env:
+          KEYSTORE: ${{ runner.temp }}/validation.jks
+          KEYSTORE_PASSWORD: validation
+          KEY_ALIAS: validation
+          KEY_PASSWORD: validation
 
   ios:
     name: Build unsigned iOS app
