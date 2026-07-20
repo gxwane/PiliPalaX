@@ -69,4 +69,20 @@ void main() {
       );
     }
   });
+
+  test('current package version has non-empty release notes', () {
+    final pubspec = File('pubspec.yaml').readAsStringSync();
+    final changelog = File('CHANGELOG.md').readAsStringSync();
+    final versionMatch = RegExp(
+      r'^version:\s*([^\s+]+)(?:\+\S+)?$',
+      multiLine: true,
+    ).firstMatch(pubspec);
+
+    expect(versionMatch, isNotNull);
+    expect(
+      extractChangelogSection(changelog, versionMatch!.group(1)!),
+      isNotEmpty,
+    );
+    expect(changelog, contains('## [Unreleased]'));
+  });
 }
