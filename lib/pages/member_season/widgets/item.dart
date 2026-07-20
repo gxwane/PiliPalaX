@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/common/constants.dart';
-import 'package:PiliPalaX/common/widgets/badge.dart';
-import 'package:PiliPalaX/common/widgets/network_img_layer.dart';
-import 'package:PiliPalaX/common/widgets/stat/view.dart';
-import 'package:PiliPalaX/http/search.dart';
-import 'package:PiliPalaX/utils/utils.dart';
+import 'package:pilipalay/common/constants.dart';
+import 'package:pilipalay/common/widgets/badge.dart';
+import 'package:pilipalay/common/widgets/network_img_layer.dart';
+import 'package:pilipalay/common/widgets/stat/view.dart';
+import 'package:pilipalay/http/search.dart';
+import 'package:pilipalay/utils/utils.dart';
 
 class MemberSeasonItem extends StatelessWidget {
   final dynamic seasonItem;

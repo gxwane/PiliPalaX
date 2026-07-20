@@ -1,4 +1,4 @@
-import 'package:PiliPalaX/utils/extension.dart';
+import 'package:pilipalay/utils/extension.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';

@@ -1,8 +1,16 @@
 # 更新日志
 
-本文件记录 PiliPalaX 的公开版本变化。版本号遵循[语义化版本](https://semver.org/lang/zh-CN/)，尚未发布的变更统一记录在 `[Unreleased]`。
+本文件记录 PiliPalaY 的公开版本变化。版本号遵循[语义化版本](https://semver.org/lang/zh-CN/)，尚未发布的变更统一记录在 `[Unreleased]`。
 
 ## [Unreleased]
+
+### 重要说明
+
+- Android application ID 与 iOS bundle ID 已改为 `io.github.gxwane.pilipalay`，新应用会与 PiliPalaX 独立安装，不迁移旧应用数据。
+
+### 变更
+
+- 项目品牌由 PiliPalaX 更名为 PiliPalaY，并同步更新根 Dart 包名、应用内文案、平台工程名称、仓库链接与发行产物名称。
 
 ## [1.2.1] - 2026-07-20
 
@@ -344,10 +352,11 @@
 - 首次公开版本，包含直播、推荐、动态、投稿、番剧和视频播放。
 - 支持播放器手势、画质/音质/解码格式选择、点赞/投币/收藏、关注与用户主页、评论、历史记录和稍后再看。
 
-[Unreleased]: https://github.com/gxwane/PiliPalaX/compare/v1.2.0...HEAD
-[1.2.0]: https://github.com/gxwane/PiliPalaX/compare/v1.1.5...v1.2.0
-[1.1.5]: https://github.com/gxwane/PiliPalaX/compare/v1.1.4...v1.1.5
-[1.1.4]: https://github.com/gxwane/PiliPalaX/compare/v1.1.3...v1.1.4
-[1.1.3]: https://github.com/gxwane/PiliPalaX/compare/v1.1.2...v1.1.3
-[1.1.2]: https://github.com/gxwane/PiliPalaX/compare/v1.1.1...v1.1.2
-[1.1.1]: https://github.com/gxwane/PiliPalaX/releases/tag/v1.1.1
+[Unreleased]: https://github.com/gxwane/PiliPalaY/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/gxwane/PiliPalaY/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/gxwane/PiliPalaY/compare/v1.1.5...v1.2.0
+[1.1.5]: https://github.com/gxwane/PiliPalaY/compare/v1.1.4...v1.1.5
+[1.1.4]: https://github.com/gxwane/PiliPalaY/compare/v1.1.3...v1.1.4
+[1.1.3]: https://github.com/gxwane/PiliPalaY/compare/v1.1.2...v1.1.3
+[1.1.2]: https://github.com/gxwane/PiliPalaY/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/gxwane/PiliPalaY/releases/tag/v1.1.1

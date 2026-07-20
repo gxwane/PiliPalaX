@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/common/widgets/network_img_layer.dart';
-import 'package:PiliPalaX/models/follow/result.dart';
-import 'package:PiliPalaX/pages/follow/index.dart';
-import 'package:PiliPalaX/pages/video/introduction/widgets/group_panel.dart';
-import 'package:PiliPalaX/utils/feed_back.dart';
-import 'package:PiliPalaX/utils/utils.dart';
+import 'package:pilipalay/common/widgets/network_img_layer.dart';
+import 'package:pilipalay/models/follow/result.dart';
+import 'package:pilipalay/pages/follow/index.dart';
+import 'package:pilipalay/pages/video/introduction/widgets/group_panel.dart';
+import 'package:pilipalay/utils/feed_back.dart';
+import 'package:pilipalay/utils/utils.dart';
 
 import '../../../common/widgets/my_dialog.dart';
 

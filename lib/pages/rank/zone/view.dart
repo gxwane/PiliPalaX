@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/common/constants.dart';
-import 'package:PiliPalaX/common/skeleton/video_card_h.dart';
-import 'package:PiliPalaX/common/widgets/http_error.dart';
-import 'package:PiliPalaX/common/widgets/video_card_h.dart';
-import 'package:PiliPalaX/pages/home/index.dart';
-import 'package:PiliPalaX/pages/main/index.dart';
-import 'package:PiliPalaX/pages/rank/zone/index.dart';
+import 'package:pilipalay/common/constants.dart';
+import 'package:pilipalay/common/skeleton/video_card_h.dart';
+import 'package:pilipalay/common/widgets/http_error.dart';
+import 'package:pilipalay/common/widgets/video_card_h.dart';
+import 'package:pilipalay/pages/home/index.dart';
+import 'package:pilipalay/pages/main/index.dart';
+import 'package:pilipalay/pages/rank/zone/index.dart';
 
 import '../../../utils/grid.dart';
 

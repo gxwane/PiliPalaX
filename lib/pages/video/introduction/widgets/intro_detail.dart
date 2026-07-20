@@ -2,12 +2,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/utils/utils.dart';
+import 'package:pilipalay/utils/utils.dart';
 
-import 'package:PiliPalaX/pages/rank/zone/view.dart';
+import 'package:pilipalay/pages/rank/zone/view.dart';
 
 import '../../widgets/ai_detail.dart';
-import 'package:PiliPalaX/common/widgets/my_dialog.dart';
+import 'package:pilipalay/common/widgets/my_dialog.dart';
 
 class IntroDetail extends StatelessWidget {
   const IntroDetail({

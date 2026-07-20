@@ -1,4 +1,4 @@
-import 'package:PiliPalaX/models/github/latest.dart';
+import 'package:pilipalay/models/github/latest.dart';
 import 'package:pub_semver/pub_semver.dart';
 
 class AppUpdatePolicy {

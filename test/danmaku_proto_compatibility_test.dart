@@ -1,4 +1,4 @@
-import 'package:PiliPalaX/models/danmaku/dm.pb.dart';
+import 'package:pilipalay/models/danmaku/dm.pb.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

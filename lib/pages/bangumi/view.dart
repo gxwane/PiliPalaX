@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:nil/nil.dart';
-import 'package:PiliPalaX/common/constants.dart';
-import 'package:PiliPalaX/common/widgets/http_error.dart';
-import 'package:PiliPalaX/pages/home/index.dart';
-import 'package:PiliPalaX/pages/main/index.dart';
+import 'package:pilipalay/common/constants.dart';
+import 'package:pilipalay/common/widgets/http_error.dart';
+import 'package:pilipalay/pages/home/index.dart';
+import 'package:pilipalay/pages/main/index.dart';
 
 import '../../utils/grid.dart';
 import 'controller.dart';

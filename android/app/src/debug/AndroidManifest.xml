@@ -10,10 +10,10 @@
         />
 
     <application
-        android:label="PiliPalaX Debug"
+        android:label="PiliPalaY Debug"
         tools:replace="android:label">
         <activity
-            android:name="com.orz12.PiliPalaX.MainActivity"
+            android:name="io.github.gxwane.pilipalay.MainActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:theme="@style/LaunchTheme"
@@ -35,7 +35,7 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            <intent-filter android:label="PiliPalaX Debug">
+            <intent-filter android:label="PiliPalaY Debug">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -59,7 +59,7 @@
                 <!--<data android:host="bangumi.bilibili.com"/>-->
                 <!--<data android:host="space.bilibili.com"/>-->
             </intent-filter>
-            <intent-filter android:label="PiliPalaX Debug">
+            <intent-filter android:label="PiliPalaY Debug">
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEARCH" />
                 <category android:name="android.intent.category.DEFAULT" />

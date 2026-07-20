@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:PiliPalaX/pages/setting/widgets/select_dialog.dart';
-import 'package:PiliPalaX/plugin/pl_player/index.dart';
-import 'package:PiliPalaX/services/service_locator.dart';
-import 'package:PiliPalaX/utils/storage.dart';
+import 'package:pilipalay/pages/setting/widgets/select_dialog.dart';
+import 'package:pilipalay/plugin/pl_player/index.dart';
+import 'package:pilipalay/services/service_locator.dart';
+import 'package:pilipalay/utils/storage.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import 'package:PiliPalaX/plugin/pl_player/models/player_middle_gesture.dart';
-import 'package:PiliPalaX/plugin/pl_player/models/player_gesture_action.dart';
-import 'package:PiliPalaX/models/video/play/subtitle.dart';
+import 'package:pilipalay/plugin/pl_player/models/player_middle_gesture.dart';
+import 'package:pilipalay/plugin/pl_player/models/player_gesture_action.dart';
+import 'package:pilipalay/models/video/play/subtitle.dart';
 import 'widgets/switch_item.dart';
 
 class PlaySetting extends StatefulWidget {

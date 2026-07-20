@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:PiliPalaX/models/model_owner.dart';
-import 'package:PiliPalaX/models/search/hot.dart';
-import 'package:PiliPalaX/models/user/info.dart';
-import 'package:PiliPalaX/utils/storage_contract.dart';
+import 'package:pilipalay/models/model_owner.dart';
+import 'package:pilipalay/models/search/hot.dart';
+import 'package:pilipalay/models/user/info.dart';
+import 'package:pilipalay/utils/storage_contract.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 

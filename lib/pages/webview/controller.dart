@@ -1,9 +1,9 @@
 // ignore_for_file: avoid_print
 
 import 'package:get/get.dart';
-import 'package:PiliPalaX/http/init.dart';
-import 'package:PiliPalaX/utils/event_bus.dart';
-import 'package:PiliPalaX/utils/id_utils.dart';
+import 'package:pilipalay/http/init.dart';
+import 'package:pilipalay/utils/event_bus.dart';
+import 'package:pilipalay/utils/id_utils.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebviewController extends GetxController {

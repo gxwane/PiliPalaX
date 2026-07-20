@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:PiliPalaX/common/constants.dart';
-import 'package:PiliPalaX/models/member/coin.dart';
-import 'package:PiliPalaX/pages/member_coin/widgets/item.dart';
+import 'package:pilipalay/common/constants.dart';
+import 'package:pilipalay/models/member/coin.dart';
+import 'package:pilipalay/pages/member_coin/widgets/item.dart';
 
 class MemberCoinsPanel extends StatelessWidget {
   final List<MemberCoinsDataModel>? data;

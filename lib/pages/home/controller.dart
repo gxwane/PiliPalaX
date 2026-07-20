@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:PiliPalaX/models/common/side_bar_position.dart';
+import 'package:pilipalay/models/common/side_bar_position.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:PiliPalaX/models/common/tab_type.dart';
-import 'package:PiliPalaX/utils/storage.dart';
+import 'package:pilipalay/models/common/tab_type.dart';
+import 'package:pilipalay/utils/storage.dart';
 import '../../http/index.dart';
 import '../../utils/feed_back.dart';
 import '../mine/view.dart';

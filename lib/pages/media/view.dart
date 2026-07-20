@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/common/widgets/network_img_layer.dart';
-import 'package:PiliPalaX/models/user/fav_folder.dart';
-import 'package:PiliPalaX/pages/main/index.dart';
-import 'package:PiliPalaX/pages/media/index.dart';
-import 'package:PiliPalaX/utils/utils.dart';
+import 'package:pilipalay/common/widgets/network_img_layer.dart';
+import 'package:pilipalay/models/user/fav_folder.dart';
+import 'package:pilipalay/pages/main/index.dart';
+import 'package:pilipalay/pages/media/index.dart';
+import 'package:pilipalay/utils/utils.dart';
 
 import '../../common/constants.dart';
 

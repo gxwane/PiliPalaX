@@ -1,4 +1,4 @@
-import 'package:PiliPalaX/pages/video/introduction/widgets/action_row_item.dart';
+import 'package:pilipalay/pages/video/introduction/widgets/action_row_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

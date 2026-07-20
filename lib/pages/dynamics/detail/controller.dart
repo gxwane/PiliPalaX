@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:PiliPalaX/http/html.dart';
-import 'package:PiliPalaX/http/reply.dart';
-import 'package:PiliPalaX/models/common/reply_sort_type.dart';
-import 'package:PiliPalaX/models/video/reply/item.dart';
-import 'package:PiliPalaX/utils/feed_back.dart';
-import 'package:PiliPalaX/utils/storage.dart';
+import 'package:pilipalay/http/html.dart';
+import 'package:pilipalay/http/reply.dart';
+import 'package:pilipalay/models/common/reply_sort_type.dart';
+import 'package:pilipalay/models/video/reply/item.dart';
+import 'package:pilipalay/utils/feed_back.dart';
+import 'package:pilipalay/utils/storage.dart';
 
 class DynamicDetailController extends GetxController {
   DynamicDetailController(this.oid, this.type);

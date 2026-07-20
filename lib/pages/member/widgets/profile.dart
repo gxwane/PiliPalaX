@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/common/widgets/network_img_layer.dart';
-import 'package:PiliPalaX/models/live/item.dart';
-import 'package:PiliPalaX/models/member/info.dart';
-import 'package:PiliPalaX/utils/utils.dart';
+import 'package:pilipalay/common/widgets/network_img_layer.dart';
+import 'package:pilipalay/models/live/item.dart';
+import 'package:pilipalay/models/member/info.dart';
+import 'package:pilipalay/utils/utils.dart';
 
 class ProfilePanel extends StatelessWidget {
   final dynamic ctr;

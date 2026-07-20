@@ -1,9 +1,9 @@
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/http/user.dart';
-import 'package:PiliPalaX/http/video.dart';
-import 'package:PiliPalaX/models/user/fav_detail.dart';
-import 'package:PiliPalaX/models/user/fav_folder.dart';
+import 'package:pilipalay/http/user.dart';
+import 'package:pilipalay/http/video.dart';
+import 'package:pilipalay/models/user/fav_detail.dart';
+import 'package:pilipalay/models/user/fav_folder.dart';
 
 class FavDetailController extends GetxController {
   FavFolderItemData? item;

@@ -58,7 +58,7 @@ jobs:
             -storepass validation \
             -alias validation \
             -keypass validation \
-            -dname "CN=PiliPalaX CI" \
+            -dname "CN=PiliPalaY CI" \
             -keyalg RSA \
             -keysize 2048 \
             -validity 1

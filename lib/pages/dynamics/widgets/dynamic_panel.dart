@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/pages/dynamics/index.dart';
-import 'package:PiliPalaX/common/widgets/hero_tag_generator.dart';
+import 'package:pilipalay/pages/dynamics/index.dart';
+import 'package:pilipalay/common/widgets/hero_tag_generator.dart';
 import 'action_panel.dart';
 import 'author_panel.dart';
 import 'content_panel.dart';

@@ -1,4 +1,4 @@
-PiliPalaX is an unofficial third-party Bilibili client built with Flutter for Android and iOS.
+PiliPalaY is an unofficial third-party Bilibili client built with Flutter for Android and iOS.
 
 Key features:
 
@@ -9,6 +9,6 @@ Key features:
 
 This project is maintained through human-AI collaboration. OpenAI Codex assists with parts of the code, issue analysis, testing, and documentation, and changes are manually tested before release.
 
-PiliPalaX continues development based on guozhigq/pilipala and orz12/PiliPalaX. We thank the original authors and all contributors.
+PiliPalaY continues development based on guozhigq/pilipala and orz12/PiliPalaX. We thank the original authors and all contributors.
 
-PiliPalaX is unofficial and is not affiliated with, authorized by, or partnered with Bilibili or its related entities. This project is intended only for learning and technical exchange. Users must follow applicable laws and platform rules.
+PiliPalaY is unofficial and is not affiliated with, authorized by, or partnered with Bilibili or its related entities. This project is intended only for learning and technical exchange. Users must follow applicable laws and platform rules.

@@ -1,6 +1,6 @@
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/http/msg.dart';
+import 'package:pilipalay/http/msg.dart';
 
 import '../../../models/msg/msgfeed_reply_me.dart';
 

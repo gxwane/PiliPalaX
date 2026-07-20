@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:PiliPalaX/common/widgets/stat/danmu.dart';
-import 'package:PiliPalaX/common/widgets/stat/view.dart';
+import 'package:pilipalay/common/widgets/stat/danmu.dart';
+import 'package:pilipalay/common/widgets/stat/view.dart';
 import 'package:get/get.dart';
 
 class BangumiIntroDetail extends StatelessWidget {

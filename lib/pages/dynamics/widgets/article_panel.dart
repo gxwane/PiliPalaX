@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'package:PiliPalaX/utils/utils.dart';
+import 'package:pilipalay/utils/utils.dart';
 
 import '../../../common/constants.dart';
 import 'pic_panel.dart';

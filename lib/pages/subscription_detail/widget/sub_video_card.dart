@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:PiliPalaX/common/constants.dart';
-import 'package:PiliPalaX/common/widgets/stat/danmu.dart';
-import 'package:PiliPalaX/common/widgets/stat/view.dart';
-import 'package:PiliPalaX/http/search.dart';
-import 'package:PiliPalaX/models/common/search_type.dart';
-import 'package:PiliPalaX/utils/utils.dart';
-import 'package:PiliPalaX/common/widgets/network_img_layer.dart';
+import 'package:pilipalay/common/constants.dart';
+import 'package:pilipalay/common/widgets/stat/danmu.dart';
+import 'package:pilipalay/common/widgets/stat/view.dart';
+import 'package:pilipalay/http/search.dart';
+import 'package:pilipalay/models/common/search_type.dart';
+import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalay/common/widgets/network_img_layer.dart';
 import '../../../common/widgets/badge.dart';
 import '../../../models/user/sub_detail.dart';
 

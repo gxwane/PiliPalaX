@@ -1,15 +1,15 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:PiliPalaX/plugin/pl_player/index.dart';
-import 'package:PiliPalaX/utils/storage.dart';
+import 'package:pilipalay/plugin/pl_player/index.dart';
+import 'package:pilipalay/utils/storage.dart';
 
 Future<VideoPlayerServiceHandler> initAudioService() async {
   return await AudioService.init(
     builder: () => VideoPlayerServiceHandler(),
     config: const AudioServiceConfig(
-      androidNotificationChannelId: 'com.orz12.PiliPalaX.audio',
-      androidNotificationChannelName: 'Audio Service PiliPalaX',
+      androidNotificationChannelId: 'io.github.gxwane.pilipalay.audio',
+      androidNotificationChannelName: 'Audio Service PiliPalaY',
       androidNotificationOngoing: true,
       androidStopForegroundOnPause: true,
       fastForwardInterval: Duration(seconds: 10),

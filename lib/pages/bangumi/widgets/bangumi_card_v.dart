@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/common/constants.dart';
-import 'package:PiliPalaX/common/widgets/badge.dart';
-import 'package:PiliPalaX/http/search.dart';
-import 'package:PiliPalaX/models/bangumi/info.dart';
-import 'package:PiliPalaX/models/common/search_type.dart';
-import 'package:PiliPalaX/utils/utils.dart';
-import 'package:PiliPalaX/common/widgets/network_img_layer.dart';
+import 'package:pilipalay/common/constants.dart';
+import 'package:pilipalay/common/widgets/badge.dart';
+import 'package:pilipalay/http/search.dart';
+import 'package:pilipalay/models/bangumi/info.dart';
+import 'package:pilipalay/models/common/search_type.dart';
+import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalay/common/widgets/network_img_layer.dart';
 
 // 视频卡片 - 垂直布局
 class BangumiCardV extends StatelessWidget {

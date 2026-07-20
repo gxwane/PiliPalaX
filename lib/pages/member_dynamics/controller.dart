@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:PiliPalaX/http/member.dart';
-import 'package:PiliPalaX/models/dynamics/result.dart';
+import 'package:pilipalay/http/member.dart';
+import 'package:pilipalay/models/dynamics/result.dart';
 
 class MemberDynamicsController extends GetxController {
   MemberDynamicsController({required this.mid});

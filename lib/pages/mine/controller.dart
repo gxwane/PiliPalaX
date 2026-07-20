@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:PiliPalaX/http/user.dart';
-import 'package:PiliPalaX/models/common/theme_type.dart';
-import 'package:PiliPalaX/models/user/info.dart';
-import 'package:PiliPalaX/models/user/stat.dart';
-import 'package:PiliPalaX/utils/storage.dart';
+import 'package:pilipalay/http/user.dart';
+import 'package:pilipalay/models/common/theme_type.dart';
+import 'package:pilipalay/models/user/info.dart';
+import 'package:pilipalay/models/user/stat.dart';
+import 'package:pilipalay/utils/storage.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class MineController extends GetxController {

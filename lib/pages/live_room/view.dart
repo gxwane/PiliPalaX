@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:PiliPalaX/services/service_locator.dart';
+import 'package:pilipalay/services/service_locator.dart';
 import 'package:fl_pip/fl_pip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_floating/floating/manager/floating_manager.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/common/widgets/network_img_layer.dart';
-import 'package:PiliPalaX/plugin/pl_player/index.dart';
+import 'package:pilipalay/common/widgets/network_img_layer.dart';
+import 'package:pilipalay/plugin/pl_player/index.dart';
 
 import 'controller.dart';
 import 'widgets/bottom_control.dart';

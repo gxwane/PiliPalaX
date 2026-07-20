@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:PiliPalaX/common/constants.dart';
+import 'package:pilipalay/common/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/http/login.dart';
+import 'package:pilipalay/http/login.dart';
 import 'package:gt3_flutter_plugin/gt3_flutter_plugin.dart';
-import 'package:PiliPalaX/models/login/index.dart';
+import 'package:pilipalay/models/login/index.dart';
 import '../../utils/login.dart';
 import 'package:hive/hive.dart';
 import 'package:webview_flutter/webview_flutter.dart';

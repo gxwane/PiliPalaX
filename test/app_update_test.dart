@@ -1,5 +1,5 @@
-import 'package:PiliPalaX/models/github/latest.dart';
-import 'package:PiliPalaX/utils/app_update.dart';
+import 'package:pilipalay/models/github/latest.dart';
+import 'package:pilipalay/utils/app_update.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pub_semver/pub_semver.dart';
 
@@ -11,7 +11,7 @@ LatestDataModel release(
 }) {
   return LatestDataModel(
     tagName: tag,
-    htmlUrl: 'https://github.com/gxwane/PiliPalaX/releases/tag/$tag',
+    htmlUrl: 'https://github.com/gxwane/PiliPalaY/releases/tag/$tag',
     prerelease: prerelease,
     draft: draft,
     assets: assets,
@@ -93,11 +93,11 @@ void main() {
   group('AppUpdatePolicy.selectAndroidAsset', () {
     final assets = <AssetItem>[
       AssetItem(
-        name: 'PiliPalaX-android-universal-v1.3.0.apk',
+        name: 'PiliPalaY-android-universal-v1.3.0.apk',
         downloadUrl: 'https://example.invalid/universal.apk',
       ),
       AssetItem(
-        name: 'PiliPalaX-android-arm64-v8a-v1.3.0.apk',
+        name: 'PiliPalaY-android-arm64-v8a-v1.3.0.apk',
         downloadUrl: 'https://example.invalid/arm64.apk',
       ),
     ];
@@ -131,7 +131,7 @@ void main() {
     test('returns null when no usable APK exists', () {
       expect(
         AppUpdatePolicy.selectAndroidAsset(<AssetItem>[
-          AssetItem(name: 'PiliPalaX-ios-unsigned-v1.3.0.ipa'),
+          AssetItem(name: 'PiliPalaY-ios-unsigned-v1.3.0.ipa'),
         ], 'arm64-v8a'),
         isNull,
       );

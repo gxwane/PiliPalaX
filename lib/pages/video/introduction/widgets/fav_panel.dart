@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/common/widgets/http_error.dart';
-import 'package:PiliPalaX/utils/feed_back.dart';
+import 'package:pilipalay/common/widgets/http_error.dart';
+import 'package:pilipalay/utils/feed_back.dart';
 
 class FavPanel extends StatefulWidget {
   const FavPanel({super.key, this.ctr});

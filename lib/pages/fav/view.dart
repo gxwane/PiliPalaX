@@ -1,10 +1,10 @@
-import 'package:PiliPalaX/common/skeleton/video_card_h.dart';
+import 'package:pilipalay/common/skeleton/video_card_h.dart';
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/common/widgets/http_error.dart';
-import 'package:PiliPalaX/pages/fav/index.dart';
-import 'package:PiliPalaX/pages/fav/widgets/item.dart';
+import 'package:pilipalay/common/widgets/http_error.dart';
+import 'package:pilipalay/pages/fav/index.dart';
+import 'package:pilipalay/pages/fav/widgets/item.dart';
 
 import '../../common/constants.dart';
 import '../../utils/grid.dart';

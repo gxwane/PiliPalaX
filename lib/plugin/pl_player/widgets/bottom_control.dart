@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:nil/nil.dart';
-import 'package:PiliPalaX/plugin/pl_player/index.dart';
-import 'package:PiliPalaX/utils/feed_back.dart';
+import 'package:pilipalay/plugin/pl_player/index.dart';
+import 'package:pilipalay/utils/feed_back.dart';
 import 'dart:math';
 
 import '../../../common/widgets/audio_video_progress_bar.dart';

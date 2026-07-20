@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:PiliPalaX/http/user.dart';
-import 'package:PiliPalaX/models/user/fav_folder.dart';
-import 'package:PiliPalaX/utils/storage.dart';
+import 'package:pilipalay/http/user.dart';
+import 'package:pilipalay/models/user/fav_folder.dart';
+import 'package:pilipalay/utils/storage.dart';
 
 class MediaController extends GetxController {
   Rx<FavFolderData> favFolderData = FavFolderData().obs;

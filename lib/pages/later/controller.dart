@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/http/user.dart';
-import 'package:PiliPalaX/models/model_hot_video_item.dart';
+import 'package:pilipalay/http/user.dart';
+import 'package:pilipalay/models/model_hot_video_item.dart';
 
 class LaterController extends GetxController {
   final ScrollController scrollController = ScrollController();

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:PiliPalaX/common/widgets/video_card_h.dart';
-import 'package:PiliPalaX/models/common/search_type.dart';
-import 'package:PiliPalaX/pages/search_panel/index.dart';
+import 'package:pilipalay/common/widgets/video_card_h.dart';
+import 'package:pilipalay/models/common/search_type.dart';
+import 'package:pilipalay/pages/search_panel/index.dart';
 
 import '../../../common/constants.dart';
 import '../../../utils/grid.dart';

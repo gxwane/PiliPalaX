@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:PiliPalaX/models/common/rank_type.dart';
-import 'package:PiliPalaX/utils/storage.dart';
+import 'package:pilipalay/models/common/rank_type.dart';
+import 'package:pilipalay/utils/storage.dart';
 
 class RankController extends GetxController with GetTickerProviderStateMixin {
   bool flag = false;
