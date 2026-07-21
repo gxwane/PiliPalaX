@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [1.2.2] - 2026-07-22
+
 ### 重要说明
 
 - Android application ID 与 iOS bundle ID 已改为 `io.github.gxwane.pilipalaz`，新应用会与 PiliPalaX 独立安装，不迁移旧应用数据。
@@ -11,6 +13,7 @@
 ### 变更
 
 - 项目品牌由 PiliPalaX 更名为 PiliPalaZ，并同步更新根 Dart 包名、应用内文案、平台工程名称、仓库链接与发行产物名称。
+- 更新 Android 与 iOS 应用图标及启动画面，采用彩色 P+Z 标识。
 
 ## [1.2.1] - 2026-07-20
 
@@ -352,7 +355,8 @@
 - 首次公开版本，包含直播、推荐、动态、投稿、番剧和视频播放。
 - 支持播放器手势、画质/音质/解码格式选择、点赞/投币/收藏、关注与用户主页、评论、历史记录和稍后再看。
 
-[Unreleased]: https://github.com/gxwane/PiliPalaZ/compare/v1.2.1...HEAD
+[Unreleased]: https://github.com/gxwane/PiliPalaZ/compare/v1.2.2...HEAD
+[1.2.2]: https://github.com/gxwane/PiliPalaZ/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/gxwane/PiliPalaZ/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/gxwane/PiliPalaZ/compare/v1.1.5...v1.2.0
 [1.1.5]: https://github.com/gxwane/PiliPalaZ/compare/v1.1.4...v1.1.5

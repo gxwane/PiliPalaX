@@ -16,7 +16,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.2.1+114521
+version: 1.2.2+114522
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -180,8 +180,8 @@ flutter_launcher_icons:
   android: true
   ios: true
   remove_alpha_ios: true
-  image_path: assets/images/logo/logo_android_2.png
-  image_path_android: assets/images/logo/logo_android_2.png
+  image_path: icon_sources/pilipalaz_android_legacy.png
+  image_path_android: icon_sources/pilipalaz_android_legacy.png
   image_path_ios: assets/images/logo/logo_ios.png
   adaptive_icon_background: "#ffffff"
   adaptive_icon_foreground: assets/images/logo/logo_android_2.png
@@ -191,13 +191,18 @@ flutter_launcher_icons:
     image_path: assets/images/logo/logo_ios.png
 
 flutter_native_splash:
+  android: true
+  ios: true
+  web: false
   android_12:
     color: "#ffffff"
     color_dark: "#212121"
+    image: icon_sources/pilipalaz_splash.png
+    image_dark: icon_sources/pilipalaz_splash.png
   color: "#ffffff"
   color_dark: "#212121"
-  image: assets/images/logo/logo_android_2.png
-  image_dark: assets/images/logo/logo_android_2.png
+  image: icon_sources/pilipalaz_splash.png
+  image_dark: icon_sources/pilipalaz_splash.png
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
