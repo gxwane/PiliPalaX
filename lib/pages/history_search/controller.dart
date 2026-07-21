@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/http/user.dart';
-import 'package:pilipalay/models/user/history.dart';
+import 'package:pilipalaz/http/user.dart';
+import 'package:pilipalaz/models/user/history.dart';
 
 class HistorySearchController extends GetxController {
   final ScrollController scrollController = ScrollController();

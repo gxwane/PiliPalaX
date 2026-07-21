@@ -4,8 +4,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/models/video/ai.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/models/video/ai.dart';
+import 'package:pilipalaz/utils/utils.dart';
 
 import '../../../plugin/pl_player/controller.dart';
 

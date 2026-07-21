@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/http/reply.dart';
-import 'package:pilipalay/models/common/reply_sort_type.dart';
-import 'package:pilipalay/models/common/reply_type.dart';
-import 'package:pilipalay/models/video/reply/item.dart';
-import 'package:pilipalay/utils/feed_back.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/http/reply.dart';
+import 'package:pilipalaz/models/common/reply_sort_type.dart';
+import 'package:pilipalaz/models/common/reply_type.dart';
+import 'package:pilipalaz/models/video/reply/item.dart';
+import 'package:pilipalaz/utils/feed_back.dart';
+import 'package:pilipalaz/utils/storage.dart';
 
 class VideoReplyController extends GetxController {
   VideoReplyController(

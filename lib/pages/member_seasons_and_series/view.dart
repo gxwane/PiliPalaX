@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/constants.dart';
+import 'package:pilipalaz/common/constants.dart';
 import '../member/widgets/seasons.dart';
 import 'controller.dart';
 

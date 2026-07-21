@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/models/common/rcmd_type.dart';
-import 'package:pilipalay/pages/setting/widgets/select_dialog.dart';
-import 'package:pilipalay/utils/recommend_filter.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/models/common/rcmd_type.dart';
+import 'package:pilipalaz/pages/setting/widgets/select_dialog.dart';
+import 'package:pilipalaz/utils/recommend_filter.dart';
+import 'package:pilipalaz/utils/storage.dart';
 
 import 'widgets/switch_item.dart';
 

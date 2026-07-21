@@ -1,10 +1,10 @@
 // 内容
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/widgets/badge.dart';
-import 'package:pilipalay/common/widgets/network_img_layer.dart';
-import 'package:pilipalay/models/dynamics/result.dart';
-import 'package:pilipalay/pages/preview/index.dart';
+import 'package:pilipalaz/common/widgets/badge.dart';
+import 'package:pilipalaz/common/widgets/network_img_layer.dart';
+import 'package:pilipalaz/models/dynamics/result.dart';
+import 'package:pilipalaz/pages/preview/index.dart';
 
 import 'rich_node_panel.dart';
 

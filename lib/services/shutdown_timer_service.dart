@@ -1,7 +1,7 @@
 // 定时关闭服务
 import 'dart:async';
 import 'dart:io';
-import 'package:pilipalay/plugin/pl_player/index.dart';
+import 'package:pilipalaz/plugin/pl_player/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';

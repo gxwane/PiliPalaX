@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:pilipalay/http/user.dart';
+import 'package:pilipalaz/http/user.dart';
 
 import '../../models/user/sub_detail.dart';
 import '../../models/user/sub_folder.dart';

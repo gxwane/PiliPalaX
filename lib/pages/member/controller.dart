@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/http/member.dart';
-import 'package:pilipalay/http/video.dart';
-import 'package:pilipalay/models/member/archive.dart';
-import 'package:pilipalay/models/member/coin.dart';
-import 'package:pilipalay/models/member/info.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/http/member.dart';
+import 'package:pilipalaz/http/video.dart';
+import 'package:pilipalaz/models/member/archive.dart';
+import 'package:pilipalaz/models/member/coin.dart';
+import 'package:pilipalaz/models/member/info.dart';
+import 'package:pilipalaz/utils/storage.dart';
 import 'package:share_plus/share_plus.dart';
 
-import 'package:pilipalay/pages/video/introduction/widgets/group_panel.dart';
+import 'package:pilipalaz/pages/video/introduction/widgets/group_panel.dart';
 
 import '../../common/widgets/my_dialog.dart';
 

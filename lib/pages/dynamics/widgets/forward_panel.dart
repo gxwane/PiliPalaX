@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/utils/utils.dart';
 
 import '../../../common/widgets/badge.dart';
 import '../../../common/widgets/hero_tag_generator.dart';

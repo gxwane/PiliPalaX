@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/common/widgets/network_img_layer.dart';
-import 'package:pilipalay/models/dynamics/up.dart';
-import 'package:pilipalay/models/live/item.dart';
-import 'package:pilipalay/pages/dynamics/controller.dart';
-import 'package:pilipalay/utils/feed_back.dart';
-import 'package:pilipalay/utils/storage.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/common/widgets/network_img_layer.dart';
+import 'package:pilipalaz/models/dynamics/up.dart';
+import 'package:pilipalaz/models/live/item.dart';
+import 'package:pilipalaz/pages/dynamics/controller.dart';
+import 'package:pilipalaz/utils/feed_back.dart';
+import 'package:pilipalaz/utils/storage.dart';
+import 'package:pilipalaz/utils/utils.dart';
 
 class UpPanel extends StatefulWidget {
   final FollowUpModel? upData;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/widgets/network_img_layer.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/common/widgets/network_img_layer.dart';
+import 'package:pilipalaz/utils/utils.dart';
 
 import '../../../common/constants.dart';
 import '../../../utils/grid.dart';

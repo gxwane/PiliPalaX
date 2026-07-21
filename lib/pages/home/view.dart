@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:pilipalay/models/common/side_bar_position.dart';
+import 'package:pilipalaz/models/common/side_bar_position.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/widgets/network_img_layer.dart';
-import 'package:pilipalay/utils/feed_back.dart';
+import 'package:pilipalaz/common/widgets/network_img_layer.dart';
+import 'package:pilipalaz/utils/feed_back.dart';
 import './controller.dart';
-import 'package:pilipalay/common/widgets/spring_physics.dart';
+import 'package:pilipalaz/common/widgets/spring_physics.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

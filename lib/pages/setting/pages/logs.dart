@@ -1,8 +1,8 @@
 import 'dart:io';
-import 'package:pilipalay/common/constants.dart';
+import 'package:pilipalaz/common/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pilipalay/common/widgets/no_data.dart';
+import 'package:pilipalaz/common/widgets/no_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../services/loggeer.dart';
 
@@ -38,7 +38,7 @@ class _LogsPageState extends State<LogsPage> {
       return item
           .replaceAll(
             '============================== CATCHER 2 LOG ==============================',
-            'PiliPalaY错误日志\n********************',
+            'PiliPalaZ错误日志\n********************',
           )
           .replaceAll('DEVICE INFO', '设备信息')
           .replaceAll('APP INFO', '应用信息')

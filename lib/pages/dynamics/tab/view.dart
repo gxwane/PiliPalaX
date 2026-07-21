@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/utils/storage.dart';
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/constants.dart';
-import 'package:pilipalay/common/widgets/http_error.dart';
-import 'package:pilipalay/common/widgets/no_data.dart';
+import 'package:pilipalaz/common/constants.dart';
+import 'package:pilipalaz/common/widgets/http_error.dart';
+import 'package:pilipalaz/common/widgets/no_data.dart';
 import 'package:waterfall_flow/waterfall_flow.dart';
 
 import '../../../common/skeleton/dynamic_card.dart';

@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/pages/member/index.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/pages/member/index.dart';
+import 'package:pilipalaz/utils/utils.dart';
 
 import '../member_archive/view.dart';
 import '../member_dynamics/view.dart';
 import '../member_seasons_and_series/view.dart';
 import 'widgets/profile.dart';
-import 'package:pilipalay/common/widgets/spring_physics.dart';
+import 'package:pilipalaz/common/widgets/spring_physics.dart';
 
 class MemberPage extends StatefulWidget {
   const MemberPage({super.key});

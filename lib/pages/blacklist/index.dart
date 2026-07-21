@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/common/widgets/http_error.dart';
-import 'package:pilipalay/common/widgets/network_img_layer.dart';
-import 'package:pilipalay/http/black.dart';
-import 'package:pilipalay/models/user/black.dart';
-import 'package:pilipalay/utils/storage.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/common/widgets/http_error.dart';
+import 'package:pilipalaz/common/widgets/network_img_layer.dart';
+import 'package:pilipalaz/http/black.dart';
+import 'package:pilipalaz/models/user/black.dart';
+import 'package:pilipalaz/utils/storage.dart';
+import 'package:pilipalaz/utils/utils.dart';
 
 class BlackListPage extends StatefulWidget {
   const BlackListPage({super.key});

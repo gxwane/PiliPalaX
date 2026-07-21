@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:pilipalay/models/common/theme_type.dart';
+// import 'package:pilipalaz/models/common/theme_type.dart';
 
 class SlideDialog<T extends num> extends StatefulWidget {
   final T value;

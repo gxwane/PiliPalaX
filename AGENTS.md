@@ -1,11 +1,11 @@
-# PiliPalaY 项目开发规则
+# PiliPalaZ 项目开发规则
 
 ## 项目范围
 
-PiliPalaY 是使用 Flutter 开发的哔哩哔哩非官方第三方客户端。当前公开发行目标为 Android 与 iOS；除非任务明确要求，不要把仓库中的桌面平台目录视为正式发行目标。
+PiliPalaZ 是使用 Flutter 开发的哔哩哔哩非官方第三方客户端。当前公开发行目标为 Android 与 iOS；除非任务明确要求，不要把仓库中的桌面平台目录视为正式发行目标。
 
 - 保留用户已有和无关的工作区改动，不要清理、覆盖或提交它们。
-- 保持 Android application ID 与 iOS bundle ID 为 `io.github.gxwane.pilipalay`。
+- 保持 Android application ID 与 iOS bundle ID 为 `io.github.gxwane.pilipalaz`。
 - 真实依赖地址（包括 `orz12/canvas_danmaku` 与 `orz12/flutter_floating`）不是项目身份文案，不要为了仓库迁移而替换。
 
 ## 构建基线

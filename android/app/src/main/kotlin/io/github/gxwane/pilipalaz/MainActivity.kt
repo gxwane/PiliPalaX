@@ -1,4 +1,4 @@
-package io.github.gxwane.pilipalay
+package io.github.gxwane.pilipalaz
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine

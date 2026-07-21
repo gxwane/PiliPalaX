@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/constants.dart';
-import 'package:pilipalay/common/widgets/badge.dart';
-import 'package:pilipalay/common/widgets/network_img_layer.dart';
-import 'package:pilipalay/pages/preview/index.dart';
+import 'package:pilipalaz/common/constants.dart';
+import 'package:pilipalaz/common/widgets/badge.dart';
+import 'package:pilipalaz/common/widgets/network_img_layer.dart';
+import 'package:pilipalaz/pages/preview/index.dart';
 
 Widget picWidget(item, context) {
   var major = item.modules?.moduleDynamic?.major;

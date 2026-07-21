@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "PiliPalaY",
+            "name": "PiliPalaZ",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "PiliPalaY (profile mode)",
+            "name": "PiliPalaZ (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "PiliPalaY (release mode)",
+            "name": "PiliPalaZ (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

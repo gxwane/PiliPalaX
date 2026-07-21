@@ -2,11 +2,11 @@ import 'package:flex_seed_scheme/flex_seed_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/models/common/color_type.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/models/common/color_type.dart';
+import 'package:pilipalaz/utils/storage.dart';
 
 import '../../../models/common/theme_type.dart';
-import 'package:pilipalay/pages/setting/widgets/select_dialog.dart';
+import 'package:pilipalaz/pages/setting/widgets/select_dialog.dart';
 import '../controller.dart';
 
 class ColorSelectPage extends StatefulWidget {

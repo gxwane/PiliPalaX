@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/models/common/dynamics_type.dart';
-import 'package:pilipalay/models/common/reply_sort_type.dart';
-import 'package:pilipalay/pages/setting/widgets/select_dialog.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/models/common/dynamics_type.dart';
+import 'package:pilipalaz/models/common/reply_sort_type.dart';
+import 'package:pilipalaz/pages/setting/widgets/select_dialog.dart';
+import 'package:pilipalaz/utils/storage.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../utils/utils.dart';

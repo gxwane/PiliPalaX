@@ -1,6 +1,6 @@
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/http/video.dart';
+import 'package:pilipalaz/http/video.dart';
 import '../../../../models/model_hot_video_item.dart';
 
 class RelatedController extends GetxController {

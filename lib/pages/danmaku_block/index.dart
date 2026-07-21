@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/utils/storage.dart';
 
 import '../../http/danmaku_block.dart';
 import '../../models/user/danmaku_block.dart';
 import '../../plugin/pl_player/controller.dart';
-import 'package:pilipalay/common/widgets/spring_physics.dart';
+import 'package:pilipalaz/common/widgets/spring_physics.dart';
 
 import '../danmaku/controller.dart';
 

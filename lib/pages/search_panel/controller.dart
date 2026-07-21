@@ -1,10 +1,10 @@
-import 'package:pilipalay/utils/extension.dart';
+import 'package:pilipalaz/utils/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/http/search.dart';
-import 'package:pilipalay/models/common/search_type.dart';
-import 'package:pilipalay/utils/id_utils.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/http/search.dart';
+import 'package:pilipalaz/models/common/search_type.dart';
+import 'package:pilipalaz/utils/id_utils.dart';
+import 'package:pilipalaz/utils/utils.dart';
 
 class SearchPanelController extends GetxController {
   SearchPanelController({this.keyword, this.searchType});

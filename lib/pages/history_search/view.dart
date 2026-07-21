@@ -1,7 +1,7 @@
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/pages/history/widgets/item.dart';
+import 'package:pilipalaz/pages/history/widgets/item.dart';
 
 import '../../common/constants.dart';
 import '../../utils/grid.dart';

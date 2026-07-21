@@ -1,11 +1,11 @@
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/skeleton/video_reply.dart';
-import 'package:pilipalay/common/widgets/http_error.dart';
-import 'package:pilipalay/models/common/reply_type.dart';
-import 'package:pilipalay/models/video/reply/item.dart';
-import 'package:pilipalay/pages/video/reply/widgets/reply_item.dart';
+import 'package:pilipalaz/common/skeleton/video_reply.dart';
+import 'package:pilipalaz/common/widgets/http_error.dart';
+import 'package:pilipalaz/models/common/reply_type.dart';
+import 'package:pilipalaz/models/video/reply/item.dart';
+import 'package:pilipalaz/pages/video/reply/widgets/reply_item.dart';
 
 import 'controller.dart';
 

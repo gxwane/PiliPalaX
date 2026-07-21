@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/http/msg.dart';
-import 'package:pilipalay/models/msg/session.dart';
+import 'package:pilipalaz/http/msg.dart';
+import 'package:pilipalaz/models/msg/session.dart';
 import '../../utils/feed_back.dart';
 import '../../utils/storage.dart';
 

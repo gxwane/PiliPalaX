@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/utils/storage.dart';
 
-import 'package:pilipalay/plugin/pl_player/models/player_middle_gesture.dart';
-import 'package:pilipalay/plugin/pl_player/models/player_gesture_action.dart';
+import 'package:pilipalaz/plugin/pl_player/models/player_middle_gesture.dart';
+import 'package:pilipalaz/plugin/pl_player/models/player_gesture_action.dart';
 
 class GestureSelectPage extends StatefulWidget {
   const GestureSelectPage({super.key});

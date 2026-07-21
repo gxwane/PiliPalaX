@@ -19,7 +19,7 @@ void main() {
       'flutter analyze --no-pub --fatal-warnings --no-fatal-infos',
       '人工测试',
       '不要提交 `docs/`',
-      'io.github.gxwane.pilipalay',
+      'io.github.gxwane.pilipalaz',
     ]) {
       expect(
         guidance,
@@ -33,7 +33,7 @@ void main() {
       'repo.huaweicloud.com/gradle',
       'kotlin.jvm.target.validation.mode=warning',
       'media_kit_libs_android_video\\v1.1.5',
-      r'E:\Documents\PiliPalaY',
+      r'E:\Documents\PiliPalaZ',
       r'E:\PubCache',
       '默认直接在当前 `main` 分支',
     ]) {
@@ -65,11 +65,11 @@ void main() {
     expect(release, isNot(contains('generateReleaseNotes: true')));
 
     for (final artifact in <String>[
-      'PiliPalaY-android-arm64-v8a-v',
-      'PiliPalaY-android-armeabi-v7a-v',
-      'PiliPalaY-android-x86_64-v',
-      'PiliPalaY-android-universal-v',
-      'PiliPalaY-ios-unsigned-v',
+      'PiliPalaZ-android-arm64-v8a-v',
+      'PiliPalaZ-android-armeabi-v7a-v',
+      'PiliPalaZ-android-x86_64-v',
+      'PiliPalaZ-android-universal-v',
+      'PiliPalaZ-ios-unsigned-v',
     ]) {
       expect(release, contains(artifact), reason: '$artifact must be emitted');
     }

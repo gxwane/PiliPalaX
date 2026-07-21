@@ -1,21 +1,21 @@
 <div align="center">
-  <h1>PiliPalaY</h1>
+  <h1>PiliPalaZ</h1>
   <p>使用 Flutter 开发的哔哩哔哩非官方第三方客户端</p>
 
-  [![最新版本](https://img.shields.io/github/v/release/gxwane/PiliPalaY?display_name=tag&sort=semver)](https://github.com/gxwane/PiliPalaY/releases/latest)
-  [![发行构建](https://github.com/gxwane/PiliPalaY/actions/workflows/release.yml/badge.svg)](https://github.com/gxwane/PiliPalaY/actions/workflows/release.yml)
-  [![累计下载](https://img.shields.io/github/downloads/gxwane/PiliPalaY/total)](https://github.com/gxwane/PiliPalaY/releases)
-  [![GPL-3.0](https://img.shields.io/github/license/gxwane/PiliPalaY)](LICENSE)
+  [![最新版本](https://img.shields.io/github/v/release/gxwane/PiliPalaZ?display_name=tag&sort=semver)](https://github.com/gxwane/PiliPalaZ/releases/latest)
+  [![发行构建](https://github.com/gxwane/PiliPalaZ/actions/workflows/release.yml/badge.svg)](https://github.com/gxwane/PiliPalaZ/actions/workflows/release.yml)
+  [![累计下载](https://img.shields.io/github/downloads/gxwane/PiliPalaZ/total)](https://github.com/gxwane/PiliPalaZ/releases)
+  [![GPL-3.0](https://img.shields.io/github/license/gxwane/PiliPalaZ)](LICENSE)
 </div>
 
-PiliPalaY 面向 Android 与 iOS，提供视频浏览、播放、互动和个人内容管理等常用功能，并持续适配较新的 Flutter 与移动平台工具链。
+PiliPalaZ 面向 Android 与 iOS，提供视频浏览、播放、互动和个人内容管理等常用功能，并持续适配较新的 Flutter 与移动平台工具链。
 
 <div align="center">
-  <img src="assets/screenshots/510shots_so.png" width="32%" alt="PiliPalaY 首页">
-  <img src="assets/screenshots/174shots_so.png" width="32%" alt="PiliPalaY 视频页">
-  <img src="assets/screenshots/850shots_so.png" width="32%" alt="PiliPalaY 设置页">
+  <img src="assets/screenshots/510shots_so.png" width="32%" alt="PiliPalaZ 首页">
+  <img src="assets/screenshots/174shots_so.png" width="32%" alt="PiliPalaZ 视频页">
+  <img src="assets/screenshots/850shots_so.png" width="32%" alt="PiliPalaZ 设置页">
   <br>
-  <img src="assets/screenshots/main_screen.png" width="96%" alt="PiliPalaY 横屏界面">
+  <img src="assets/screenshots/main_screen.png" width="96%" alt="PiliPalaZ 横屏界面">
 </div>
 
 ## 主要功能
@@ -27,7 +27,7 @@ PiliPalaY 面向 Android 与 iOS，提供视频浏览、播放、互动和个人
 
 ## 下载
 
-安装包统一发布在 [GitHub Releases](https://github.com/gxwane/PiliPalaY/releases)。
+安装包统一发布在 [GitHub Releases](https://github.com/gxwane/PiliPalaZ/releases)。
 
 - Android：优先选择 `arm64-v8a` 安装包；不确定设备架构时可使用 `universal` 通用包。项目也会按发行矩阵提供 `armeabi-v7a` 与 `x86_64` 构建。
 - iOS：Release 中的 IPA 为未签名构建，需要使用者自行签名并安装。
@@ -60,7 +60,7 @@ flutter build apk --debug --no-pub
 
 正式 Android 与 iOS 构建由 GitHub Actions 的 Release 工作流完成。版本变更请同步更新 `pubspec.yaml` 和 [CHANGELOG.md](CHANGELOG.md)，提交前应完成格式化、测试和对应平台构建检查。
 
-问题与功能建议请提交到 [GitHub Issues](https://github.com/gxwane/PiliPalaY/issues)。
+问题与功能建议请提交到 [GitHub Issues](https://github.com/gxwane/PiliPalaZ/issues)。
 
 ## 维护与来源
 
@@ -73,7 +73,7 @@ flutter build apk --debug --no-pub
 
 ## 声明
 
-PiliPalaY 是非官方第三方客户端，与哔哩哔哩及其关联主体无隶属、授权或合作关系。本项目仅供学习与技术交流，使用者应遵守当地法律法规及相关平台规则。
+PiliPalaZ 是非官方第三方客户端，与哔哩哔哩及其关联主体无隶属、授权或合作关系。本项目仅供学习与技术交流，使用者应遵守当地法律法规及相关平台规则。
 
 本项目不提供任何破解内容。使用第三方客户端可能受到平台接口、账号策略和服务可用性变化的影响，相关风险由使用者自行判断和承担。
 

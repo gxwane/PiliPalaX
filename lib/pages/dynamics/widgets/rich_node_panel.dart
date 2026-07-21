@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/widgets/network_img_layer.dart';
-import 'package:pilipalay/http/search.dart';
-import 'package:pilipalay/utils/app_scheme.dart';
+import 'package:pilipalaz/common/widgets/network_img_layer.dart';
+import 'package:pilipalaz/http/search.dart';
+import 'package:pilipalaz/utils/app_scheme.dart';
 
 import '../../../models/dynamics/result.dart';
 

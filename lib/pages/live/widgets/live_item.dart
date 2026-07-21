@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/constants.dart';
-import 'package:pilipalay/models/live/item.dart';
-import 'package:pilipalay/utils/utils.dart';
-import 'package:pilipalay/common/widgets/network_img_layer.dart';
+import 'package:pilipalaz/common/constants.dart';
+import 'package:pilipalaz/models/live/item.dart';
+import 'package:pilipalaz/utils/utils.dart';
+import 'package:pilipalaz/common/widgets/network_img_layer.dart';
 
 import '../../../common/widgets/my_dialog.dart';
 import '../../../common/widgets/overlay_pop.dart';

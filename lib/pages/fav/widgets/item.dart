@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/constants.dart';
-import 'package:pilipalay/common/widgets/network_img_layer.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/common/constants.dart';
+import 'package:pilipalaz/common/widgets/network_img_layer.dart';
+import 'package:pilipalaz/utils/utils.dart';
 
 class FavItem extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables

@@ -1,5 +1,5 @@
-import 'package:pilipalay/http/danmaku.dart';
-import 'package:pilipalay/models/danmaku/dm.pb.dart';
+import 'package:pilipalaz/http/danmaku.dart';
+import 'package:pilipalaz/models/danmaku/dm.pb.dart';
 
 import '../../utils/storage.dart';
 

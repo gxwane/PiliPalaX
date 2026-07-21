@@ -4,10 +4,10 @@ import 'package:flex_seed_scheme/flex_seed_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/constants.dart';
-import 'package:pilipalay/common/widgets/network_img_layer.dart';
-import 'package:pilipalay/models/common/theme_type.dart';
-import 'package:pilipalay/models/user/info.dart';
+import 'package:pilipalaz/common/constants.dart';
+import 'package:pilipalaz/common/widgets/network_img_layer.dart';
+import 'package:pilipalaz/models/common/theme_type.dart';
+import 'package:pilipalaz/models/user/info.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../utils/storage.dart';
 import 'controller.dart';
@@ -59,7 +59,7 @@ class _MinePageState extends State<MinePage> {
                     ),
                     const SizedBox(width: 5),
                     Text(
-                      'PiliPalaY',
+                      'PiliPalaZ',
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/pages/setting/index.dart';
+import 'package:pilipalaz/pages/setting/index.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});

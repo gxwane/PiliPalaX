@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:pilipalay/models/model_owner.dart';
-import 'package:pilipalay/models/search/hot.dart';
-import 'package:pilipalay/models/user/info.dart';
+import 'package:pilipalaz/models/model_owner.dart';
+import 'package:pilipalaz/models/search/hot.dart';
+import 'package:pilipalaz/models/user/info.dart';
 import 'global_data.dart';
 import 'storage_contract.dart';
 

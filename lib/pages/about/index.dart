@@ -1,4 +1,4 @@
-import 'package:pilipalay/common/constants.dart';
+import 'package:pilipalaz/common/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -6,10 +6,10 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:pilipalay/models/github/latest.dart';
-import 'package:pilipalay/pages/setting/controller.dart';
-import 'package:pilipalay/utils/storage.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/models/github/latest.dart';
+import 'package:pilipalaz/pages/setting/controller.dart';
+import 'package:pilipalaz/utils/storage.dart';
+import 'package:pilipalaz/utils/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../utils/cache_manage.dart';
 
@@ -59,10 +59,10 @@ class _AboutPageState extends State<AboutPage> {
                 'assets/images/logo/logo_android_2.png',
               ),
               Text(
-                'PiliPalaY',
+                'PiliPalaZ',
                 textAlign: TextAlign.left,
                 style: Theme.of(context).textTheme.titleMedium,
-                semanticsLabel: 'PiliPalaY 与你一起，发现不一样的世界',
+                semanticsLabel: 'PiliPalaZ 与你一起，发现不一样的世界',
               ),
               Text(
                 '使用 Flutter 开发的哔哩哔哩非官方第三方客户端',
@@ -118,7 +118,7 @@ class _AboutPageState extends State<AboutPage> {
             onTap: () => _aboutController.githubUrl(),
             leading: Icon(MdiIcons.github),
             title: const Text('开源仓库'),
-            trailing: Text('github.com/gxwane/PiliPalaY', style: subTitleStyle),
+            trailing: Text('github.com/gxwane/PiliPalaZ', style: subTitleStyle),
           ),
           ListTile(
             onTap: () => _aboutController.feedback(context),

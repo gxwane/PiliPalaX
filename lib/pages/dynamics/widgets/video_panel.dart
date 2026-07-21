@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/constants.dart';
-import 'package:pilipalay/common/widgets/badge.dart';
-import 'package:pilipalay/common/widgets/network_img_layer.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/common/constants.dart';
+import 'package:pilipalaz/common/widgets/badge.dart';
+import 'package:pilipalaz/common/widgets/network_img_layer.dart';
+import 'package:pilipalaz/utils/utils.dart';
 
 import '../../../common/widgets/my_dialog.dart';
 import '../../../common/widgets/overlay_pop.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/http/member.dart';
-import 'package:pilipalay/models/member/seasons.dart';
+import 'package:pilipalaz/http/member.dart';
+import 'package:pilipalaz/models/member/seasons.dart';
 
 class MemberSeriesController extends GetxController {
   final ScrollController scrollController = ScrollController();

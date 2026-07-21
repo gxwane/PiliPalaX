@@ -2,8 +2,8 @@ import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/widgets/http_error.dart';
-import 'package:pilipalay/pages/follow_search/index.dart';
+import 'package:pilipalaz/common/widgets/http_error.dart';
+import 'package:pilipalaz/pages/follow_search/index.dart';
 
 import '../follow/widgets/follow_item.dart';
 

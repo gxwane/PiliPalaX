@@ -1,18 +1,18 @@
 import 'dart:async';
 
-import 'package:pilipalay/models/common/dynamics_type.dart';
-import 'package:pilipalay/models/common/up_panel_position.dart';
+import 'package:pilipalaz/models/common/dynamics_type.dart';
+import 'package:pilipalaz/models/common/up_panel_position.dart';
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/utils/feed_back.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/utils/feed_back.dart';
+import 'package:pilipalaz/utils/storage.dart';
 
 import 'controller.dart';
 import 'widgets/up_panel.dart';
-import 'package:pilipalay/common/widgets/spring_physics.dart';
+import 'package:pilipalaz/common/widgets/spring_physics.dart';
 
 class DynamicsPage extends StatefulWidget {
   const DynamicsPage({super.key});

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/http/user.dart';
-import 'package:pilipalay/models/user/fav_folder.dart';
-import 'package:pilipalay/models/user/info.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/http/user.dart';
+import 'package:pilipalaz/models/user/fav_folder.dart';
+import 'package:pilipalaz/models/user/info.dart';
+import 'package:pilipalaz/utils/storage.dart';
 
 class FavController extends GetxController {
   final ScrollController scrollController = ScrollController();

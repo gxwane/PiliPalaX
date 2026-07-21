@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/models/video/play/quality.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/models/video/play/quality.dart';
+import 'package:pilipalaz/utils/storage.dart';
 
 class SetSelectItem extends StatefulWidget {
   final String? title;

@@ -1,8 +1,8 @@
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/pages/member_dynamics/index.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/pages/member_dynamics/index.dart';
+import 'package:pilipalaz/utils/utils.dart';
 
 import '../../common/constants.dart';
 import '../../common/widgets/http_error.dart';

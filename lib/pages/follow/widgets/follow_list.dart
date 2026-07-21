@@ -1,10 +1,10 @@
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/common/widgets/http_error.dart';
-import 'package:pilipalay/common/widgets/no_data.dart';
-import 'package:pilipalay/models/follow/result.dart';
-import 'package:pilipalay/pages/follow/index.dart';
+import 'package:pilipalaz/common/widgets/http_error.dart';
+import 'package:pilipalaz/common/widgets/no_data.dart';
+import 'package:pilipalaz/models/follow/result.dart';
+import 'package:pilipalaz/pages/follow/index.dart';
 
 import 'follow_item.dart';
 

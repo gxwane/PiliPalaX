@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:pilipalay/models/msg/account.dart';
+import 'package:pilipalaz/models/msg/account.dart';
 
 class SessionDataModel {
   SessionDataModel({

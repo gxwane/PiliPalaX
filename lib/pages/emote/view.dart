@@ -4,7 +4,7 @@ import '../../common/widgets/network_img_layer.dart';
 import '../../models/video/reply/emote.dart';
 import 'controller.dart';
 
-import 'package:pilipalay/common/widgets/spring_physics.dart';
+import 'package:pilipalaz/common/widgets/spring_physics.dart';
 
 class EmotePanel extends StatefulWidget {
   final Function onChoose;

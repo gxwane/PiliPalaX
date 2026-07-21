@@ -12,16 +12,16 @@ import 'package:hive/hive.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:canvas_danmaku/canvas_danmaku.dart';
-import 'package:pilipalay/http/user.dart';
-import 'package:pilipalay/models/video/play/quality.dart';
-import 'package:pilipalay/models/video/play/url.dart';
-import 'package:pilipalay/pages/video/index.dart';
-import 'package:pilipalay/pages/video/introduction/widgets/menu_row.dart';
-import 'package:pilipalay/plugin/pl_player/index.dart';
-import 'package:pilipalay/plugin/pl_player/models/play_repeat.dart';
-import 'package:pilipalay/utils/storage.dart';
-import 'package:pilipalay/http/danmaku.dart';
-import 'package:pilipalay/services/shutdown_timer_service.dart';
+import 'package:pilipalaz/http/user.dart';
+import 'package:pilipalaz/models/video/play/quality.dart';
+import 'package:pilipalaz/models/video/play/url.dart';
+import 'package:pilipalaz/pages/video/index.dart';
+import 'package:pilipalaz/pages/video/introduction/widgets/menu_row.dart';
+import 'package:pilipalaz/plugin/pl_player/index.dart';
+import 'package:pilipalaz/plugin/pl_player/models/play_repeat.dart';
+import 'package:pilipalaz/utils/storage.dart';
+import 'package:pilipalaz/http/danmaku.dart';
+import 'package:pilipalaz/services/shutdown_timer_service.dart';
 import '../../../../models/video/play/CDN.dart';
 import '../../../../models/video_detail_res.dart';
 import '../../../common/widgets/my_dialog.dart';
@@ -29,7 +29,7 @@ import '../../../services/service_locator.dart';
 import '../../danmaku/controller.dart';
 import '../../danmaku_block/index.dart';
 import '../../setting/widgets/select_dialog.dart';
-import 'package:pilipalay/pages/video/introduction/detail/index.dart';
+import 'package:pilipalaz/pages/video/introduction/detail/index.dart';
 
 class HeaderControl extends StatefulWidget implements PreferredSizeWidget {
   const HeaderControl({

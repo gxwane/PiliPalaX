@@ -1,23 +1,23 @@
 // ignore_for_file: avoid_print
 
-import 'package:pilipalay/http/follow.dart';
-import 'package:pilipalay/utils/extension.dart';
+import 'package:pilipalaz/http/follow.dart';
+import 'package:pilipalaz/utils/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/http/dynamics.dart';
-import 'package:pilipalay/http/search.dart';
-import 'package:pilipalay/models/bangumi/info.dart';
-import 'package:pilipalay/models/common/dynamics_type.dart';
-import 'package:pilipalay/models/common/search_type.dart';
-import 'package:pilipalay/models/dynamics/result.dart';
-import 'package:pilipalay/models/dynamics/up.dart';
-import 'package:pilipalay/models/live/item.dart';
-import 'package:pilipalay/utils/feed_back.dart';
-import 'package:pilipalay/utils/id_utils.dart';
-import 'package:pilipalay/utils/storage.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/http/dynamics.dart';
+import 'package:pilipalaz/http/search.dart';
+import 'package:pilipalaz/models/bangumi/info.dart';
+import 'package:pilipalaz/models/common/dynamics_type.dart';
+import 'package:pilipalaz/models/common/search_type.dart';
+import 'package:pilipalaz/models/dynamics/result.dart';
+import 'package:pilipalaz/models/dynamics/up.dart';
+import 'package:pilipalaz/models/live/item.dart';
+import 'package:pilipalaz/utils/feed_back.dart';
+import 'package:pilipalaz/utils/id_utils.dart';
+import 'package:pilipalaz/utils/storage.dart';
+import 'package:pilipalaz/utils/utils.dart';
 
 import '../../models/follow/result.dart';
 

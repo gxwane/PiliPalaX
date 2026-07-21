@@ -1,16 +1,16 @@
 import 'dart:async';
 
-import 'package:pilipalay/models/common/side_bar_position.dart';
+import 'package:pilipalaz/models/common/side_bar_position.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/models/common/dynamic_badge_mode.dart';
-import 'package:pilipalay/pages/dynamics/index.dart';
-import 'package:pilipalay/pages/home/index.dart';
-import 'package:pilipalay/pages/media/index.dart';
-import 'package:pilipalay/utils/feed_back.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/models/common/dynamic_badge_mode.dart';
+import 'package:pilipalaz/pages/dynamics/index.dart';
+import 'package:pilipalaz/pages/home/index.dart';
+import 'package:pilipalaz/pages/media/index.dart';
+import 'package:pilipalaz/utils/feed_back.dart';
+import 'package:pilipalaz/utils/storage.dart';
 import './controller.dart';
 
 class MainApp extends StatefulWidget {

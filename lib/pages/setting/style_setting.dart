@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/models/common/theme_type.dart';
-import 'package:pilipalay/pages/setting/pages/color_select.dart';
-import 'package:pilipalay/pages/setting/widgets/select_dialog.dart';
-import 'package:pilipalay/pages/setting/widgets/slide_dialog.dart';
-import 'package:pilipalay/utils/global_data.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/models/common/theme_type.dart';
+import 'package:pilipalaz/pages/setting/pages/color_select.dart';
+import 'package:pilipalaz/pages/setting/widgets/select_dialog.dart';
+import 'package:pilipalaz/pages/setting/widgets/slide_dialog.dart';
+import 'package:pilipalaz/utils/global_data.dart';
+import 'package:pilipalaz/utils/storage.dart';
 
 import '../../models/common/dynamic_badge_mode.dart';
 import '../../models/common/side_bar_position.dart';

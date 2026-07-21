@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:hive/hive.dart';
-import 'package:pilipalay/models/video/play/quality.dart';
-import 'package:pilipalay/models/video/play/CDN.dart';
-import 'package:pilipalay/pages/setting/widgets/select_dialog.dart';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/models/video/play/quality.dart';
+import 'package:pilipalaz/models/video/play/CDN.dart';
+import 'package:pilipalaz/pages/setting/widgets/select_dialog.dart';
+import 'package:pilipalaz/utils/storage.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'widgets/switch_item.dart';

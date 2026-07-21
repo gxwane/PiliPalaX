@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:pilipalay/utils/storage.dart';
+import 'package:pilipalaz/utils/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';

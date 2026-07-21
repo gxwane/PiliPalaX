@@ -1,5 +1,5 @@
-import 'package:pilipalay/utils/em.dart';
-import 'package:pilipalay/utils/utils.dart';
+import 'package:pilipalaz/utils/em.dart';
+import 'package:pilipalaz/utils/utils.dart';
 
 class SearchVideoModel {
   SearchVideoModel({this.list});

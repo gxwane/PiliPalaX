@@ -1,8 +1,8 @@
-import 'package:pilipalay/utils/extension.dart';
+import 'package:pilipalaz/utils/extension.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:pilipalay/http/video.dart';
-import 'package:pilipalay/models/model_hot_video_item.dart';
+import 'package:pilipalaz/http/video.dart';
+import 'package:pilipalaz/models/model_hot_video_item.dart';
 
 class HotController extends GetxController {
   final ScrollController scrollController = ScrollController();

@@ -1,4 +1,4 @@
-import 'package:pilipalay/models/video/reply/item.dart';
+import 'package:pilipalaz/models/video/reply/item.dart';
 
 import 'config.dart';
 import 'page.dart';

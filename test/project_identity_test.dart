@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  const repository = 'https://github.com/gxwane/PiliPalaY';
+  const repository = 'https://github.com/gxwane/PiliPalaZ';
   const chineseDescription = '使用 Flutter 开发的哔哩哔哩非官方第三方客户端';
   const aiMaintenanceStatement =
       '本项目采用人机协作方式持续维护。部分代码、问题分析、测试和文档由 OpenAI Codex 协助完成，相关变更在发布前由人工测试。';
   const unofficialStatement =
-      'PiliPalaY 是非官方第三方客户端，与哔哩哔哩及其关联主体无隶属、授权或合作关系。本项目仅供学习与技术交流，使用者应遵守当地法律法规及相关平台规则。';
+      'PiliPalaZ 是非官方第三方客户端，与哔哩哔哩及其关联主体无隶属、授权或合作关系。本项目仅供学习与技术交流，使用者应遵守当地法律法规及相关平台规则。';
 
   test('public project copy uses the current repository and disclosures', () {
     final readme = File('README.md').readAsStringSync();
@@ -53,7 +53,7 @@ void main() {
       'fastlane/metadata/android/en-US/full_description.txt',
     ).readAsStringSync();
 
-    expect(pubspec, contains('name: pilipalay'));
+    expect(pubspec, contains('name: pilipalaz'));
     expect(pubspec, contains('description: $chineseDescription。'));
     expect(zhShort.trim(), chineseDescription);
     expect(zhFull, contains(chineseDescription));
@@ -67,15 +67,15 @@ void main() {
     final android = File('android/app/build.gradle').readAsStringSync();
     final ios = File('ios/Runner.xcodeproj/project.pbxproj').readAsStringSync();
 
-    expect(android, contains("namespace = 'io.github.gxwane.pilipalay'"));
-    expect(android, contains('applicationId = "io.github.gxwane.pilipalay"'));
+    expect(android, contains("namespace = 'io.github.gxwane.pilipalaz'"));
+    expect(android, contains('applicationId = "io.github.gxwane.pilipalaz"'));
     expect(
       ios,
-      contains('PRODUCT_BUNDLE_IDENTIFIER = io.github.gxwane.pilipalay;'),
+      contains('PRODUCT_BUNDLE_IDENTIFIER = io.github.gxwane.pilipalaz;'),
     );
     expect(
       File(
-        'android/app/src/main/kotlin/io/github/gxwane/pilipalay/MainActivity.kt',
+        'android/app/src/main/kotlin/io/github/gxwane/pilipalaz/MainActivity.kt',
       ).existsSync(),
       isTrue,
     );
@@ -87,7 +87,7 @@ void main() {
     );
   });
 
-  test('platform scaffolds use the PiliPalaY brand', () {
+  test('platform scaffolds use the PiliPalaZ brand', () {
     for (final path in <String>[
       'android/app/src/main/AndroidManifest.xml',
       'ios/Runner/Info.plist',
@@ -98,7 +98,7 @@ void main() {
     ]) {
       expect(
         File(path).readAsStringSync(),
-        contains('PiliPalaY'),
+        contains('PiliPalaZ'),
         reason: '$path must expose the current application brand',
       );
     }

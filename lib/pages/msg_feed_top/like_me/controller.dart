@@ -1,6 +1,6 @@
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:pilipalay/http/msg.dart';
+import 'package:pilipalaz/http/msg.dart';
 import '../../../models/msg/msgfeed_like_me.dart';
 
 class LikeMeController extends GetxController {

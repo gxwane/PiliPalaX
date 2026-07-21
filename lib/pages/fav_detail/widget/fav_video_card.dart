@@ -1,15 +1,15 @@
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:pilipalay/common/constants.dart';
-import 'package:pilipalay/common/widgets/stat/danmu.dart';
-import 'package:pilipalay/common/widgets/stat/view.dart';
-import 'package:pilipalay/http/search.dart';
-import 'package:pilipalay/http/video.dart';
-import 'package:pilipalay/models/common/search_type.dart';
-import 'package:pilipalay/utils/id_utils.dart';
-import 'package:pilipalay/utils/utils.dart';
-import 'package:pilipalay/common/widgets/network_img_layer.dart';
+import 'package:pilipalaz/common/constants.dart';
+import 'package:pilipalaz/common/widgets/stat/danmu.dart';
+import 'package:pilipalaz/common/widgets/stat/view.dart';
+import 'package:pilipalaz/http/search.dart';
+import 'package:pilipalaz/http/video.dart';
+import 'package:pilipalaz/models/common/search_type.dart';
+import 'package:pilipalaz/utils/id_utils.dart';
+import 'package:pilipalaz/utils/utils.dart';
+import 'package:pilipalaz/common/widgets/network_img_layer.dart';
 import '../../../common/widgets/badge.dart';
 
 // 收藏视频卡片 - 水平布局

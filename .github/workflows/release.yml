@@ -1,4 +1,4 @@
-name: PiliPalaY Release
+name: PiliPalaZ Release
 
 on:
   push:
@@ -131,16 +131,16 @@ jobs:
         run: |
           version='${{ needs.prepare.outputs.version }}'
           mkdir -p build/release
-          cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk "build/release/PiliPalaY-android-arm64-v8a-v${version}.apk"
-          cp build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk "build/release/PiliPalaY-android-armeabi-v7a-v${version}.apk"
-          cp build/app/outputs/flutter-apk/app-x86_64-release.apk "build/release/PiliPalaY-android-x86_64-v${version}.apk"
+          cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk "build/release/PiliPalaZ-android-arm64-v8a-v${version}.apk"
+          cp build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk "build/release/PiliPalaZ-android-armeabi-v7a-v${version}.apk"
+          cp build/app/outputs/flutter-apk/app-x86_64-release.apk "build/release/PiliPalaZ-android-x86_64-v${version}.apk"
       - name: Package universal Android APK
         if: matrix.target == 'android-universal'
         shell: bash
         run: |
           version='${{ needs.prepare.outputs.version }}'
           mkdir -p build/release
-          cp build/app/outputs/flutter-apk/app-release.apk "build/release/PiliPalaY-android-universal-v${version}.apk"
+          cp build/app/outputs/flutter-apk/app-release.apk "build/release/PiliPalaZ-android-universal-v${version}.apk"
       - name: Package unsigned iOS IPA
         if: matrix.platform == 'ios'
         shell: bash
@@ -148,11 +148,11 @@ jobs:
           version='${{ needs.prepare.outputs.version }}'
           mkdir -p build/release Payload
           cp -R build/ios/iphoneos/Runner.app Payload/
-          zip -qry "build/release/PiliPalaY-ios-unsigned-v${version}.ipa" Payload
+          zip -qry "build/release/PiliPalaZ-ios-unsigned-v${version}.ipa" Payload
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: PiliPalaY-${{ matrix.target }}
+          name: PiliPalaZ-${{ matrix.target }}
           path: build/release/*
           if-no-files-found: error
           retention-days: 14
@@ -166,7 +166,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          pattern: PiliPalaY-*
+          pattern: PiliPalaZ-*
           path: dist
           merge-multiple: true
       - name: Download release notes
@@ -179,7 +179,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
-          name: PiliPalaY v${{ needs.prepare.outputs.version }}
+          name: PiliPalaZ v${{ needs.prepare.outputs.version }}
           artifacts: dist/*
           artifactErrorsFailBuild: true
           bodyFile: release-notes/release-notes.md

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class ProjectLinks {
   ProjectLinks._();
 
-  static const String repository = 'https://github.com/gxwane/PiliPalaY';
+  static const String repository = 'https://github.com/gxwane/PiliPalaZ';
   static const String issues = '$repository/issues';
   static const String releases = '$repository/releases';
   static const String changelog = '$repository/blob/main/CHANGELOG.md';
   static const String releasesApi =
-      'https://api.github.com/repos/gxwane/PiliPalaY/releases';
+      'https://api.github.com/repos/gxwane/PiliPalaZ/releases';
   static const String latestReleaseApi = '$releasesApi/latest';
 }
 
